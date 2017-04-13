@@ -8,10 +8,8 @@ module.exports = function () {
         lastName: String,
         email: String,
         phone:String,
-        dateCreated: {type:Date ,default:Date.now},
         hackathons:[{type: mongoose.Schema.Types.ObjectId, ref: 'HackathonModel'}],
-        bookmarks: [{type: mongoose.Schema.Types.ObjectId, ref: 'BookmarkModel'}],
-        post:[]
+        dateCreated: {type:Date ,default:Date.now}
     }, {collection: 'hackathonhawk.user'});
 
     return UserSchema;
