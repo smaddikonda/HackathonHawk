@@ -1,0 +1,13 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "~4.15.0",
+    "body-parser": "~1.17.0",
+    "mongoose": "~4.8.5"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Sai Surya Teja Maddikonda"
+}

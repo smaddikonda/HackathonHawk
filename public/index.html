@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Hackathon Finder | Netorking Platform for IT Professionals</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+              charset="UTF-8"/>
+
+
+        <!--local css files-->
+        <link type="text/css" href="css/bootstrap.css" rel="stylesheet">
+        <link type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet">
+        <link type="text/css" href="css/bootstrap-social.css" rel="stylesheet">
+        <link type="text/css" href="css/style.css" rel="stylesheet">
+
+        <!--fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+
+        <!--local script files-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <script src="scripts/jquery-3.1.1.js"></script>
+        <script src="scripts/angular.js"></script>
+        <script src="scripts/angular-route.js"></script>
+
+        <script src="app.js"></script>
+        <script src="config.js"></script>
+
+        <!--Controllers-->
+        <!--COMMOM-->
+        <script src="views/main/controllers/common/main.controller.client.js"></script>
+        <script src="views/main/controllers/common/password-reset.controller.client.js"></script>
+        <!--USER-->
+        <script src="views/main/controllers/user/login.controller.client.js"></script>
+        <script src="views/main/controllers/user/signup.controller.client.js"></script>
+        <!--ORGANIZATION-->
+        <script src="views/main/controllers/organization/organization-login.controller.client.js"></script>
+        <script src="views/main/controllers/organization/organization-signup.controller.client.js"></script>
+
+        <!--services-->
+        <script src="services/user.service.client.js"></script>
+
+    </head>
+
+    <body ng-app="DevZoned">
+        <div ng-view
+             class="dz-main-viewport-div"
+             ng-class="{
+          'dz-login-page-bg': model.login,
+          'dz-password-reset-page-bg': model.pwReset
+          }">
+        </div>
+    </body>
+</html>

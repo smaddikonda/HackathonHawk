@@ -1,0 +1,541 @@
+.dz-main-viewport-div {
+    overflow-y: auto !important;
+}
+
+
+body {
+    font-size: 16px;
+    position: relative;
+    height: auto;
+    min-height: 100% !important;
+    overflow-y: auto !important;
+}
+
+.button-and-fields {
+    border-radius: 5px !important;
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+/******************************************************************************/
+/*LOGIN PAGE*/
+/*BG-Video*/
+
+video {
+    position: fixed;
+    left: 0;
+    right:0;
+    top: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: fill;
+    z-index: -100;
+}
+
+.main-video-overlay {
+    position: fixed;
+    left: 0;
+    right:0;
+    top: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height:1000%;
+    width: auto;
+    height: auto;
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65));
+    z-index: -1;
+}
+
+.login-video-overlay {
+    position: fixed;
+    left: 0;
+    right:0;
+    top: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height:1000%;
+    width: auto;
+    height: auto;
+    background: radial-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85));
+    z-index: -1;
+}
+
+/*
+#video-box {
+    float: left;
+}
+
+#video-overlay {
+    position:absolute;
+    float:left;
+    min-width: 100%;
+    min-height:100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+}
+
+#other-pages-video-overlay {
+    position:absolute;
+    float:left;
+    width: 100%;
+    height:100%;
+    background: radial-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85));
+}
+
+*/
+.dz-login-page-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+/*Name & Logo*/
+.dz-navbar-top-logo {
+    padding-top: 0px;
+    margin-top: -5px;
+    height: 50px;
+    width: auto;
+}
+
+.hh-brand {
+    font-family: 'Audiowide', cursive;
+    font-size: 50px;
+    color: rgb(255, 131, 0) !important;
+    padding-top: 30px;
+    text-shadow: 3px 3px #d43f3a;
+}
+
+.devZoned-Name {
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: 'Open Sans', sans-serif;
+    color: white !important;
+    font-size: 3em;
+    float: left;
+}
+
+/*Top Login navbar*/
+.dz-navbar-login-top {
+    background-color: #4a6491 !important;
+    padding: 0px;
+    margin: 0px;
+    height: 72.5px;
+    border: none !important;
+}
+
+.dz-navbar-brand {
+    color: white !important;
+}
+
+.dz-login-credentials{
+    width: 150px !important;
+    margin-top: 10px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+
+.dz-navbar-login-form button {
+    margin: 10px !important;
+    border-radius: 10px !important;
+}
+
+#navbar-login-button a{
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border-radius: 10px;
+    width:120px;
+    margin-right: 10px !important;
+    background-color: rgb(255, 131, 0) !important;
+    border-color: rgb(255, 131, 0) !important;
+    color: white !important;
+}
+
+#navbar-login-button :hover{
+    background-color: rgb(235, 118, 0) !important;
+    border-color: rgb(255, 131, 0) !important;
+}
+
+#navbar-signup-button a{
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border-radius: 10px;
+    width:120px;
+    background-color: rgb(255, 131, 0) !important;
+    border-color: rgb(255, 131, 0) !important;
+    color: white !important;
+}
+
+#navbar-signup-button :hover{
+    background-color: rgb(235, 118, 0) !important;
+    border-color: rgb(255, 131, 0) !important;
+}
+
+#dz-forgot-password{
+    color: white !important;
+    padding: 10px;
+}
+
+#main-page-brand {
+    position: relative;
+    width: 100%;
+    font-family: 'Audiowide', cursive;
+    font-size: 4em;
+    margin-top: 150px;
+    color: rgb(255, 131, 0);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: 900;
+}
+
+.hh-brand-name {
+    font-family: 'Audiowide', cursive !important;
+    color: rgb(255, 131, 0) !important;
+}
+
+hr {
+    max-width: 700px;
+}
+
+#introduction {
+    position: relative;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.8em;
+    margin-top: 5vh;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: 300;
+}
+
+.blinking-search {
+    animation: blinker-search 1s linear infinite;
+}
+
+@keyframes blinker-search {
+    80% {
+        opacity: 0.75
+    }
+}
+
+#search-button a{
+    position: relative;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    margin-top: 5vh;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: 300;
+    width: 400px;
+    background-color: rgb(255, 131, 0) !important;
+    border-color: rgb(55, 56, 94) !important;
+}
+
+#search-button :hover {
+    background-color: rgb(235, 118, 0) !important;
+    border-color: rgb(255, 131, 0) !important;
+}
+
+#signup-request {
+    position: relative;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25em;
+    margin-top: 5vh;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: 300;
+}
+
+#signup-button {
+    position: relative;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    margin-top: 1vh;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#signup-button a{
+    width: 150px;
+}
+
+#features-link {
+    position: relative;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25em;
+    margin-top: 5vh;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: 300;
+}
+
+#features-link a{
+    color: white;
+}
+
+#features-link-text {
+    text-decoration: underline;
+}
+
+#blinking {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+#company-link {
+    position: relative;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.25em;
+    margin-top: 5vh;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: 300;
+}
+
+#company-link a{
+    color: white;
+    text-decoration: underline;
+}
+
+/**********************************************************************************/
+
+#login-page-login-form {
+    position: absolute;
+    margin-top: 25vh;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+}
+
+#login-page-dz-brand {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 42px;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+#social-login-options {
+    position: relative;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 15px;
+}
+
+#login-page-form-input-elements-div {
+    position: relative;
+    width: 300px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-form-text {
+    font-size: 14px !important;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+.input-form-fields-text input{
+    font-size: 14px !important;
+    font-family: 'Open Sans', sans-serif;
+    width: 300px;
+    padding:5px;
+}
+
+.input-form-element-group {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+#login-page-forgot-password {
+    text-align: right;
+}
+
+#login-page-forgot-password a{
+    font-size: 14px !important;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+#login-page-login-button {
+    text-align: center;
+}
+
+#login-page-login-button a{
+
+}
+
+/****************************************************************************************/
+/*SIGN Up Page*/
+
+#signup-page-signup-form {
+    position: absolute;
+    margin-top: 17vh;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+}
+
+#social-signup-options {
+    position: relative;
+    width: 201px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 15px;
+}
+
+#signup-page-form-input-elements-div {
+    position: relative;
+    width: 300px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#signup-page-signup-button{
+    text-align: center;
+}
+
+/*******************************************************************************************/
+/*Password reset Page*/
+
+#password-reset-page-login-form {
+    position: absolute;
+    margin-top: 25vh;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+}
+
+#password-reset-page-hf-brand {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 42px;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+#password-reset-page-purpose {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/******************************************************************************************/
+#organization-login {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+#organization-signup {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+/******************************************************************************************/
+/*MEDIA QUERIES*/
+@media all and (min-width: 960px) {
+    body{
+        font-size: 16px;
+    }
+}
+
+@media all and (max-width: 959px) and (min-width: 600px) {
+    body{
+        font-size: 12px;
+    }
+}
+
+@media all and (max-width: 599px) and (min-width: 320px) {
+    body{
+        font-size: 11px;
+    }
+
+    #login-page-login-button a{
+        width: 300px;
+    }
+
+    #social-login-options {
+        width: 300px;
+    }
+
+    #social-login-options a{
+        width : 300px;
+        text-align: center;
+        padding-right: 35px;
+    }
+
+    #social-signup-options {
+        width: 300px;
+    }
+
+    #social-signup-options a{
+        width : 300px;
+        text-align: center;
+        padding-right: 35px;
+    }
+
+    #navbar-login-button a{
+        width: 100px;
+    }
+
+    #navbar-signup-button a{
+        width: 100px;
+    }
+
+}
