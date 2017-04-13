@@ -18576,7 +18576,7 @@ $.widget( "ui.tooltip", {
 		// Clear the interval for delayed tracking tooltips
 		clearInterval( this.delayedShow );
 
-		// Only set title if we had one before (see comment in _open())
+		// Only set title if we had one before (see post in _open())
 		// If the title attribute has changed since open(), don't restore
 		if ( target.data( "ui-tooltip-title" ) && !target.attr( "title" ) ) {
 			target.attr( "title", target.data( "ui-tooltip-title" ) );

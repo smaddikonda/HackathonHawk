@@ -3,7 +3,7 @@
  */
 (function (){
     angular
-        .module("DevZoned")
+        .module("HackathonHawk")
         .config(configuration);
 
     function configuration($routeProvider){

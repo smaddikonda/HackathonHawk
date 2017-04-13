@@ -7,8 +7,8 @@ module.exports = function () {
     var mongoose = require('mongoose');
     var q = require('q');
 
-    var UserSchema = require('./user.schema.server.js')();
-    var UserModel = mongoose.model('UserModel', UserSchema);
+    var PostSchema = require('./post.schema.server.js')();
+    var PostModel = mongoose.model('PostModel', PostSchema);
     var model = null;
     return api;
 

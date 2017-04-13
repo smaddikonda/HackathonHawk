@@ -4,7 +4,7 @@
 
 (function (){
     angular
-        .module("DevZoned")
+        .module("HackathonHawk")
         .controller("PasswordResetController", PasswordResetController);
 
     function PasswordResetController($location) {

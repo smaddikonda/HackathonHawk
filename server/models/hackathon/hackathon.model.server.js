@@ -1,14 +1,18 @@
 module.exports = function () {
+
+    var api = {
+        setModel : setModel
+    };
+
     var mongoose = require('mongoose');
+    var q = require('q');
 
-    var HackathonSchema = mongoose.Schema({
-        public_url: String,
-        name: String,
-        description: String,
-        start_timestamp: Date,
-        finish_timestamp: Date,
-        full_address: String
-    }, {collection : hackathonhawk.hackathon});
+    var HackathonSchema = require('./hackathon.schema.server')();
+    var HackathonModel = mongoose.model('HackathonModel', HackathonSchema);
+    var model = null;
+    return api;
 
-    return HackathonSchema;
+    function setModel(models) {
+        model = models;
+    }
 };

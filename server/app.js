@@ -5,7 +5,6 @@ module.exports = function(app)
     app.delete("/api/test/:id", deleteMessage);
 
     var connectionString = 'mongodb://127.0.0.1:27017/hackathonhawk';
-    console.log("inside app.js");
     if(process.env.MLAB_USERNAME) {
         connectionString = process.env.MLAB_USERNAME + ":" +
             process.env.MLAB_PASSWORD + "@" +
@@ -22,6 +21,19 @@ module.exports = function(app)
     });
 
     var HackathonHawkModel = mongoose.model("HackathonHawkModel", HackathonHawkSchema);
+
+    /***********************************************************/
+    /*MODELS*/
+
+    var models = require('./models/models.server')();
+    require("./services/user.service.server.js")(app, models.UserModel);
+    require("./services/hackathon.service.server")(app, models.HackathonModel);
+    require("./services/post.service.server")(app, models.PostModel);
+    require("./services/post.service.server")(app, models.GroupModel);
+
+    /***********************************************************/
+
+
 
     function findAllMessages(req, res) {
         HackathonHawkModel
@@ -61,6 +73,4 @@ module.exports = function(app)
                 }
             );
     }
-
-
 };

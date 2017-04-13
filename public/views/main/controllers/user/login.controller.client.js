@@ -3,7 +3,7 @@
  */
 (function (){
     angular
-        .module("DevZoned")
+        .module("HackathonHawk")
         .controller("LoginController", LoginController);
 
     function LoginController($location) {
