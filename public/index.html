@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Hackathon Finder | Netorking Platform for IT Professionals</title>
+        <title>Hackathon Hawk | Hackathon Finder Portal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
               charset="UTF-8"/>
+        <link href="content/images/hhLogo.png" rel="icon" type="image/x-icon" />
 
 
         <!--local css files-->
@@ -28,27 +29,40 @@
 
         <!--Controllers-->
         <!--COMMOM-->
-        <script src="views/main/controllers/common/main.controller.client.js"></script>
-        <script src="views/main/controllers/common/password-reset.controller.client.js"></script>
+        <script src="views/controllers/common/main.controller.client.js"></script>
+        <script src="views/controllers/common/password-reset.controller.client.js"></script>
+        <script src="views/controllers/common/guest-search-result.controller.client.js"></script>
+        <script src="views/controllers/common/guest-single-hackathon-search-result.controller.client.js"></script>
+
         <!--USER-->
-        <script src="views/main/controllers/user/login.controller.client.js"></script>
-        <script src="views/main/controllers/user/signup.controller.client.js"></script>
+        <script src="views/controllers/user/login.controller.client.js"></script>
+        <script src="views/controllers/user/signup.controller.client.js"></script>
+        <script src="views/controllers/user/bookmark.controller.client.js"></script>
+        <script src="views/controllers/user/profile.controller.client.js"></script>
+        <script src="views/controllers/user/network.controller.client.js"></script>
+        <script src="views/controllers/user/user-home.controller.client.js"></script>
+        <script src="views/controllers/user/search.controller.client.js"></script>
+        <script src="views/controllers/user/single-hackathon-search.controller.client.js"></script>
+
         <!--ORGANIZATION-->
-        <script src="views/main/controllers/organization/organization-login.controller.client.js"></script>
-        <script src="views/main/controllers/organization/organization-signup.controller.client.js"></script>
+        <script src="views/controllers/organizer/organizer-login.controller.client.js"></script>
+        <script src="views/controllers/organizer/organizer-signup.controller.client.js"></script>
+        <script src="views/controllers/organizer/organizer-home.controller.client.js"></script>
+        <script src="views/controllers/organizer/hackathon-home.controller.client.js"></script>
+        <script src="views/controllers/organizer/hackathon-edit.controller.client.js"></script>
 
         <!--services-->
         <script src="services/user.service.client.js"></script>
+        <script src="services/organizer.service.client.js"></script>
+        <script src="services/post.service.client.js"></script>
+        <script src="services/group.service.client.js"></script>
+        <script src="services/hackathon-search.service.client.js"></script>
 
     </head>
 
     <body ng-app="HackathonHawk">
         <div ng-view
-             class="dz-main-viewport-div"
-             ng-class="{
-          'dz-login-page-bg': model.login,
-          'dz-password-reset-page-bg': model.pwReset
-          }">
+             class="dz-main-viewport-div">
         </div>
     </body>
 </html>

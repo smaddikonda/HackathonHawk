@@ -1,7 +1,12 @@
 module.exports = function () {
 
     var api = {
-        setModel : setModel
+        setModel : setModel,
+        createUser: createUser,
+        findUserById: findUserById,
+        findUserByUsername: findUserByUsername,
+        findUserByCredentials:findUserByCredentials,
+        updateUser:updateUser
     };
 
     var mongoose = require('mongoose');
@@ -14,5 +19,85 @@ module.exports = function () {
 
     function setModel(models) {
         model = models;
+    }
+
+    function createUser(user) {
+        var deferred = q.defer();
+        UserModel
+            .create(user, function (err, user) {
+                if(err) {
+                    deferred.abort(err);
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findUserById(userId){
+        var deferred = q.defer();
+        UserModel
+            .findById(userId, function (err, user) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+
+    function findUserByUsername(username){
+        var deferred = q.defer();
+        UserModel
+            .find({username:username}, function (err, user) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(user[0]);
+                }
+            });
+        return deferred.promise;
+    }
+
+
+    function findUserByCredentials(username,password){
+        var deferred = q.defer();
+        console.log(username+password);
+        UserModel
+            .find({username:username,password:password}, function (err, user) {
+                if(!user) {
+                    console.log("err");
+                    deferred.reject(err);
+                } else {
+                    console.log("user me");
+                    deferred.resolve(user[0]);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function updateUser(userId,user) {
+        var deferred = q.defer();
+        UserModel
+            .update({_id:userId},
+                {
+                    username: user.username,
+                    password: user.password,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    phone: user.phone
+                },
+                function (err,user) {
+                    if(err){
+                        deferred.reject(err);
+                    } else {
+                        deferred.resolve(user);
+                    }
+                });
+
+        return deferred.promise;
     }
 };

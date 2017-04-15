@@ -1,5 +1,4 @@
-
-(function (){
+(function () {
     angular
         .module("HackathonHawk")
         .factory("UserService", userService);
@@ -11,33 +10,32 @@
             "updateUser": updateUser,
             "findUserByUsername": findUserByUsername,
             "createUser": createUser,
-            "deleteUser": deleteUser,
-            "login" : login
+            "deleteUser": deleteUser
         };
         return api;
-        
-        function login() {
-            
+
+        function createUser(newUser) {
+            return $http.post("/api/user", newUser);
         }
-        
-        function createUser() {
-            
+
+        function findUserByUsername(username) {
+            return $http.get("/api/user?username="+username);
         }
-        
-        function findUserByCredentials() {
-            
+
+        function updateUser(userId, newUser) {
+            return $http.put("/api/user/"+userId, newUser);
         }
-        
-        function findUserById() {
-            
+
+        function findUserById(userId) {
+            return $http.get("/api/user/"+userId);
         }
-        
-        function findUserByUsername() {
-            
+
+        function findUserByCredentials(username, password) {
+            return $http.get("/api/user?username="+username+"&password="+password);
         }
-        
-        function deleteUser() {
-            
+
+        function deleteUser(username, password) {
+            return $http.delete("/api/user/"+userId);
         }
     }
 })();

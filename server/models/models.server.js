@@ -1,18 +1,18 @@
 module.exports = function() {
     var userModel = require('./user/user.model.server')();
-    var hackathonModel = require('./hackathon/hackathon.model.server')();
+    var organizerModel = require('./organizer/organizer.model.server.js')();
     var groupModel = require('./group/group.model.server')();
     var postModel = require('./post/post.model.server')();
 
     var model = {
         UserModel : userModel,
-        HackathonModel : hackathonModel,
+        OrganizerModel : organizerModel,
         GroupModel : groupModel,
         PostModel : postModel
     };
 
     userModel.setModel(model);
-    hackathonModel.setModel(model);
+    organizerModel.setModel(model);
     groupModel.setModel(model);
     postModel.setModel(model);
 

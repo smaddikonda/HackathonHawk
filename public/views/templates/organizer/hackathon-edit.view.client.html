@@ -1,0 +1,104 @@
+<div class="login-video-overlay"></div>
+
+<nav class="navbar navbar-default navbar-fixed-top dz-navbar-login-top">
+    <div class="container-fluid">
+        <!--logo & name-->
+        <div class="navbar-header col-md-4 col-sm-4 col-xs-2">
+            <a class="navbar-brand hh-brand" href="#/">
+                hh
+            </a>
+            <!--div class="devZoned-Name">devZoned</div-->
+        </div>
+
+        <div id="navbar-menu-links-div">
+            <a class="navbar-menu-links" href="#/user/:uid/home">Home</a>
+            <a class="navbar-menu-links" href="#/user/:uid/bookmarks">Bookmarked Users</a>
+            <a class="navbar-menu-links" href="#/user/:uid/bookmarks">Groups</a>
+            <a class="navbar-menu-links">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div id="user-dashboard-main-content-upper-margin">
+    EDIT HACKATHON INFO
+</div>
+
+<div id="user-dashboard-main-content-div">
+
+    <form>
+        <div class="form-group">
+            <label>Hackathon Name</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Username">
+        </div>
+
+        <div class="form-group">
+            <label>Start Time</label>
+            <input
+                   type="text"
+                   class="form-control"
+                   placeholder="mm/dd/yyyy hh:mm AM/PM"/>
+        </div>
+
+        <div class="form-group">
+            <label>End Time</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="mm/dd/yyyy hh:mm AM/PM">
+        </div>
+
+        <div class="form-group">
+            <label>Location</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="City, State">
+        </div>
+
+        <div class="form-group">
+            <label>Full Address</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Street Address, City/Town, County/Province, State, Country, Postal code">
+        </div>
+
+        <div class="form-group">
+            <label>Hackathon Contact Email</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Email Address of the organizer">
+        </div>
+
+        <div class="form-group">
+            <label>Hackathon Web Page</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="http://www.example.com/hackathon-name">
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea rows="5"
+                      id="biography"
+                      class="button-and-fields form-control"
+                      placeholder="Other details">
+            </textarea>
+        </div>
+
+    </form>
+
+    <a class="btn btn-success btn-block button-and-fields"
+       ng-click="model.updateProfile(model.user)">Update Info</a>
+
+    <a class="btn btn-danger btn-block button-and-fields"
+       href="#/login">Cancel</a>
+
+    <div id="user-dashboard-main-content-lower-margin"></div>
+
+

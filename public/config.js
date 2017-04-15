@@ -1,6 +1,3 @@
-/**
- * Created by SMaddikonda on 3/4/2017.
- */
 (function (){
     angular
         .module("HackathonHawk")
@@ -9,40 +6,110 @@
     function configuration($routeProvider){
         $routeProvider
             .when("/", {
-                templateUrl: "views/main/templates/common/main.view.client.html",
+                templateUrl: "views/templates/common/main.view.client.html",
                 controller: "MainController",
                 controllerAs: "model"
             })
             .when("/login", {
-                templateUrl: "views/main/templates/user/login.view.client.html",
+                templateUrl: "views/templates/user/login.view.client.html",
                 controller: "LoginController",
                 controllerAs: "model"
             })
             .when("/signup", {
-                templateUrl: "views/main/templates/user/signup.view.client.html",
+                templateUrl: "views/templates/user/signup.view.client.html",
                 controller: "SignupController",
                 controllerAs: "model"
             })
             .when("/password-reset", {
-                templateUrl: "views/main/templates/common/password-reset.view.client.html",
+                templateUrl: "views/templates/common/password-reset.view.client.html",
                 controller: "PasswordResetController",
                 controllerAs: "model"
             })
-            .when("/organization-login", {
-                templateUrl: "views/main/templates/organization/organization-login.view.client.html",
-                controller: "OrganizationLoginController",
+            .when("/organizer-login", {
+                templateUrl: "views/templates/organizer/organizer-login.view.client.html",
+                controller: "OrganizerLoginController",
                 controllerAs: "model"
             })
-            .when("/organization-signup", {
-                templateUrl: "views/main/templates/organization/organization-signup.view.client.html",
-                controller: "OrganizationSignupController",
+            .when("/organizer-signup", {
+                templateUrl: "views/templates/organizer/organizer-signup.view.client.html",
+                controller: "OrganizerSignupController",
                 controllerAs: "model"
             })
 
-            .when("/user", {
-                templateUrl: "views/main/templates/user/user-dashboard.view.client.html",
-                controller: "UserController",
+            .when("/search-results", {
+                templateUrl: "views/templates/common/guest-search-result.view.client.html",
+                controller: "GuestSearchResultController",
                 controllerAs: "model"
             })
+            .when("/search-results/organizer/:hid", {
+                templateUrl: "views/templates/common/guest-single-hackathon-search-result.view.client.html",
+                controller: "GuestSingleHackathonSearchResultController",
+                controllerAs: "model"
+            })
+
+            .when("/user/:uid", {
+                templateUrl: "views/templates/user/user-dashboard.view.client.html",
+                controller: "UserHomeController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/home", {
+                templateUrl: "views/templates/user/user-dashboard.view.client.html",
+                controller: "UserHomeController",
+                controllerAs: "model"
+            })
+
+            .when("/user/:uid/search", {
+                templateUrl: "views/templates/user/search.view.client.html",
+                controller: "SearchController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/search/organizer/:hid/", {
+                templateUrl: "views/templates/user/single-hackathon-search.view.client.html",
+                controller: "SingleHackathonSearchController",
+                controllerAs: "model"
+            })
+
+            .when("/user/:uid/profile", {
+                templateUrl: "views/templates/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/bookmarks", {
+                templateUrl: "views/templates/user/bookmarks.view.client.html",
+                controller: "BookmarkController",
+                controllerAs: "model"
+            })
+            .when("/user/:uid/network", {
+                templateUrl: "views/templates/user/network.view.client.html",
+                controller: "NetworkController",
+                controllerAs: "model"
+            })
+
+            .when("/organizer/:oid", {
+                templateUrl: "views/templates/organizer/organizer-dashboard.view.client.html",
+                controller: "OrganizationHomeController",
+                controllerAs: "model"
+            })
+            .when("/organizer/:oid/home", {
+                templateUrl: "views/templates/organizer/organizer-dashboard.view.client.html",
+                controller: "OrganizationHomeController",
+                controllerAs: "model"
+            })
+            .when("/organizer/:oid/organizer", {
+                templateUrl: "views/templates/organizer/organizer-dashboard.view.client.html",
+                controller: "OrganizationHomeController",
+                controllerAs: "model"
+            })
+            .when("/organizer/:oid/organizer/:hid", {
+                templateUrl: "views/templates/organizer/hackathon-home.view.client.html",
+                controller: "HackathonHomeController",
+                controllerAs: "model"
+            })
+            .when("/organizer/:oid/organizer/:hid/edit", {
+                templateUrl: "views/templates/organizer/hackathon-edit.view.client.html",
+                controller: "HackathonEditController",
+                controllerAs: "model"
+            })
+
     }
 })();
