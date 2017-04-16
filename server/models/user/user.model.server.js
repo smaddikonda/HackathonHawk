@@ -6,6 +6,7 @@ module.exports = function () {
         findUserById: findUserById,
         findUserByUsername: findUserByUsername,
         findUserByCredentials:findUserByCredentials,
+        findUserByFacebookId: findUserByFacebookId,
         updateUser:updateUser
     };
 
@@ -77,6 +78,19 @@ module.exports = function () {
             });
         return deferred.promise;
     }
+    
+    function findUserByFacebookId(facebookid) {
+        var deferred = q.defer();
+        UserModel
+            .findOne({'facebook.id': facebookid}, function (err, user) {
+                if(!user) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(user[0]);
+                }
+            });
+        return deferred.promise;
+    }
 
     function updateUser(userId,user) {
         var deferred = q.defer();
@@ -88,7 +102,10 @@ module.exports = function () {
                     firstName: user.firstName,
                     lastName: user.lastName,
                     email: user.email,
-                    bio: user.bio
+                    bio: user.bio,
+                    bookmarks: user.bookmarks,
+                    posts: user.posts,
+                    groups: user.groups
                 },
                 function (err,user) {
                     if(err){

@@ -50,8 +50,26 @@
             .when("/user/:uid", {
                 templateUrl: "views/templates/user/user-dashboard.view.client.html",
                 controller: "UserHomeController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: { loggedin:
+                    function($q, $timeout, $http, $location, $rootScope) {
+                        var deferred = $q.defer();
+                        $http.get('/api/loggedin').success(function(user) {
+                            $rootScope.errorMessage = null;
+                            if (user !== '0') {
+                                $rootScope.currentUser = user;
+                                console.log("config says user found");
+                                deferred.resolve();
+                            } else {
+                                deferred.reject();
+                                //$location.url('/');
+                            }
+                        });
+                        return deferred.promise;
+                    }
+                }
             })
+
             .when("/user/:uid/home", {
                 templateUrl: "views/templates/user/user-dashboard.view.client.html",
                 controller: "UserHomeController",
@@ -104,8 +122,7 @@
                 templateUrl: "views/templates/organizer/organizer-edit-hackathon.view.client.html",
                 controller: "HackathonEditController",
                 controllerAs: "model"
-            })
-
+            });
 
     }
 })();

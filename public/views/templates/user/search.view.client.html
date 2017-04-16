@@ -14,15 +14,15 @@
         </div>
 
         <div id="navbar-menu-links-div">
-            <a class="navbar-menu-links" href="#/user/:uid/home">Home</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/home">Home</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/search">Search Hackathons</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/search">Search Hackathons</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/bookmarks">Bookmarks</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/bookmarks">Bookmarks</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/profile">Profile</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/profile">Profile</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/network">Network</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/network">Network</a>
 
             <a class="navbar-menu-links">Logout</a>
         </div>
@@ -45,7 +45,7 @@
             </div>
 
             <div id="search-result-heading" class="search-result-elements">
-                <a href="" ng-click="model.searchByHackathonId(h.id)">{{h.name}}</a>
+                <a href="" ng-click="model.searchByHackathonId(h.id, h._id)">{{h.name}}</a>
             </div>
 
             <div id="search-result-start-time"

@@ -13,7 +13,7 @@
         <div id="navbar-menu-links-div">
             <a class="navbar-menu-links" href="#/user/{{model.uid}}/home">Home</a>
 
-            <a class="navbar-menu-links" href="#/user/{{mode.uid}}/search">Search Hackathons</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/search">Search Hackathons</a>
 
             <a class="navbar-menu-links" href="#/user/{{model.uid}}/bookmarks">Bookmarks</a>
 
@@ -21,7 +21,9 @@
 
             <a class="navbar-menu-links" href="#/user/{{model.uid}}/network">Network</a>
 
-            <a class="navbar-menu-links">Logout</a>
+            <a class="navbar-menu-links" href="" ng-click="model.logout()">
+                Logout
+            </a>
         </div>
     </div>
 </nav>
@@ -30,25 +32,31 @@
     YOUR FEED
 </div>
 
-<div id="user-dashboard-main-content-div">
+<div ng-hide="model.allPosts" id="page-error-success-message">
+    There is no feed to show. Bookmark a hackathon or two to follow updates!
+</div>
+
+<div ng-show="model.allPosts"
+     id="user-dashboard-main-content-div">
 
     <ul class="list-group">
-        <li class="list-group-item hh-list-group-item">
+        <li ng-repeat="p in model.allPosts"
+            class="list-group-item hh-list-group-item">
+
+            <div>
+                Posted by: {{p.posterName}}
+            </div>
+
+            <div class="posts-display">
+                Date: {{p.dateCreated}}
+            </div>
+
+            <div>
+                Content: {{p.postcontent}}
+            </div>
 
         </li>
     </ul>
-
-    <div id="user-dashboard-news-image">
-        <img src="../../../../content/images/hhLogo.png">
-    </div>
-
-    <div id="user-dashboard-news-heading">
-        HOME
-    </div>
-
-    <div id="user-dashboard-news-content">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    </div>
 
 </div>
 

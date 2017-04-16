@@ -13,6 +13,12 @@ module.exports = function () {
         bookmarks: [{type: mongoose.Schema.Types.ObjectId, ref: 'OrganizerModel'}],
         posts:[{type: mongoose.Schema.Types.ObjectId, ref: 'PostModel'}],
         groups:[{type: mongoose.Schema.Types.ObjectId, ref: 'GroupModel'}],
+
+        facebook: {
+            id:String,
+            token:String
+        }
+
     }, {collection: 'hackathonhawk.user'});
 
     return UserSchema;

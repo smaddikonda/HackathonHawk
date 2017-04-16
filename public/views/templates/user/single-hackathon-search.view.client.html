@@ -14,15 +14,15 @@
         </div>
 
         <div id="navbar-menu-links-div">
-            <a class="navbar-menu-links" href="#/user/:uid/home">Home</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/home">Home</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/search">Search Hackathons</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/search">Search Hackathons</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/bookmarks">Bookmarks</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/bookmarks">Bookmarks</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/profile">Profile</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/profile">Profile</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/network">Network</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/network">Network</a>
 
             <a class="navbar-menu-links">Logout</a>
         </div>
@@ -73,6 +73,10 @@
         <span class="bold-fields">Description:</span>
         <div>{{model.hackathon.description}}</div>
     </div>
+
+    <a ng-click="model.bookmark(model.hackathon)"
+            class="button-and-fields btn btn-info"
+    id="bookmark-this-hackathon-button">Bookmark this Hackathon</a>
 
 </div>
 

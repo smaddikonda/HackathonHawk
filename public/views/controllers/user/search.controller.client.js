@@ -34,8 +34,19 @@
         }
         searchHackathons();
 
-        function searchByHackathonId(hackathonid) {
-            $location.url("/user/" + viewModel.uid + "/search/organizer/" + hackathonid + "/");
+        function searchByHackathonId(hackathonid, hackathon_id) {
+            if(hackathon_id){
+                var promise = OrganizerService.findOrganizerById(hackathon_id);
+                promise
+                    .then(function (response) {
+                        var hackathon = response.data;
+                        if(hackathon){
+                            $location.url("/user/" + viewModel.uid + "/search/organizer/" + hackathon_id + "/");
+                        }
+                    });
+            } else {
+                $location.url("/user/" + viewModel.uid + "/search/organizer/" + hackathonid + "/");
+            }
         }
     }
 })();

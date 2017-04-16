@@ -16,6 +16,11 @@ body {
     font-family: 'Open Sans', sans-serif !important;
 }
 
+#bookmark-this-hackathon-button{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
 /******************************************************************************/
 /*LOGIN PAGE*/
 /*BG-Video*/
@@ -566,6 +571,14 @@ hr {
     margin-right: 10vw;
     margin-top: 10vh;
     color: white;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+}
+
+.posts-display {
+    position: relative;
+    margin-top: 10px;
+    color: black;
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 10px;
 }
