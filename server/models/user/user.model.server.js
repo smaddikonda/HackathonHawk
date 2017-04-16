@@ -88,7 +88,7 @@ module.exports = function () {
                     firstName: user.firstName,
                     lastName: user.lastName,
                     email: user.email,
-                    phone: user.phone
+                    bio: user.bio
                 },
                 function (err,user) {
                     if(err){

@@ -13,7 +13,7 @@
             promise.then(function successCallback(response) {
                     organizer = response.data;
                     if(organizer) {
-                        $location.url("/organizer/" + organizer._id);
+                        $location.url("/organizer/" + organizer._id + "/home");
                     } else {
                         viewModel.error = "Organizer not created. Please retry";
                     }

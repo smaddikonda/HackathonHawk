@@ -86,30 +86,26 @@
             })
 
             .when("/organizer/:oid", {
-                templateUrl: "views/templates/organizer/organizer-dashboard.view.client.html",
-                controller: "OrganizationHomeController",
+                templateUrl: "views/templates/organizer/organizer-home.view.client.html",
+                controller: "OrganizerHomeController",
                 controllerAs: "model"
             })
             .when("/organizer/:oid/home", {
-                templateUrl: "views/templates/organizer/organizer-dashboard.view.client.html",
-                controller: "OrganizationHomeController",
+                templateUrl: "views/templates/organizer/organizer-home.view.client.html",
+                controller: "OrganizerHomeController",
                 controllerAs: "model"
             })
-            .when("/organizer/:oid/organizer", {
-                templateUrl: "views/templates/organizer/organizer-dashboard.view.client.html",
-                controller: "OrganizationHomeController",
+            .when("/organizer/:oid/hackathon", {
+                templateUrl: "views/templates/organizer/organizer-new-hackathon.view.client.html",
+                controller: "NewHackathonController",
                 controllerAs: "model"
             })
-            .when("/organizer/:oid/organizer/:hid", {
-                templateUrl: "views/templates/organizer/hackathon-home.view.client.html",
-                controller: "HackathonHomeController",
-                controllerAs: "model"
-            })
-            .when("/organizer/:oid/organizer/:hid/edit", {
-                templateUrl: "views/templates/organizer/hackathon-edit.view.client.html",
+            .when("/organizer/:oid/hackathon/edit", {
+                templateUrl: "views/templates/organizer/organizer-edit-hackathon.view.client.html",
                 controller: "HackathonEditController",
                 controllerAs: "model"
             })
+
 
     }
 })();

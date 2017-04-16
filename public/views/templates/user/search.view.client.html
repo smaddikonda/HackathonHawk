@@ -36,7 +36,7 @@
 <div id="search-result-main-content-div">
 
     <ul class="list-group">
-        <li ng-repeat="h in model.hackathons"
+        <li ng-repeat="h in model.hackathons | orderBy: 'start_timestamp'"
             class="list-group-item hh-list-group-item">
 
             <div id="search-result-image"

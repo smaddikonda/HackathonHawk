@@ -11,11 +11,16 @@
             "findOrganizerByUsername" : findOrganizerByUsername,
             "updateOrganizer" : updateOrganizer,
             "deleteHackathon" : deleteHackathon,
+            "findAllHackathons": findAllHackathons
         }
         return api;
 
         function createOrganizer(newOrganizer) {
             return $http.post("/api/organizer", newOrganizer);
+        }
+
+        function findAllHackathons() {
+            return $http.get("/api/hackathons/all");
         }
         
         function findOrganizerById(organizerId) {

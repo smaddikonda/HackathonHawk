@@ -6,6 +6,7 @@ module.exports = function () {
         findOrganizerById: findOrganizerById,
         findOrganizerByUsername: findOrganizerByUsername,
         findOrganizerByCredentials: findOrganizerByCredentials,
+        findAllHackathons: findAllHackathons,
         updateOrganizer: updateOrganizer
     };
 
@@ -63,7 +64,7 @@ module.exports = function () {
     function findOrganizerByCredentials(organizerName, password) {
         var deferred = q.defer();
         OrganizerModel
-            .find({organizername:username, password:password}, function (err, organizer) {
+            .find({organizername:organizerName, password:password}, function (err, organizer) {
                 if(!organizer) {
                     console.log("err");
                     deferred.reject(err);
@@ -90,6 +91,8 @@ module.exports = function () {
                     start_timestamp: organizer.start_timestamp,
                     finish_timestamp: organizer.finish_timestamp,
                     full_address: organizer.full_address,
+
+                    dateCreated: organizer.dateCreated,
                     groups: organizer.groups,
                     posts: organizer.posts,
                     bookmarks: organizer.bookmarks
@@ -102,6 +105,19 @@ module.exports = function () {
                     }
                 });
 
+        return deferred.promise;
+    }
+
+    function findAllHackathons() {
+        var deferred = q.defer();
+        OrganizerModel
+            .find({}, function (err, organizers) {
+                if(!organizers) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(organizers);
+                }
+            });
         return deferred.promise;
     }
 };

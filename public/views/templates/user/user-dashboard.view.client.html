@@ -11,15 +11,15 @@
         </div>
 
         <div id="navbar-menu-links-div">
-            <a class="navbar-menu-links" href="#/user/:uid/home">Home</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/home">Home</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/search">Search Hackathons</a>
+            <a class="navbar-menu-links" href="#/user/{{mode.uid}}/search">Search Hackathons</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/bookmarks">Bookmarks</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/bookmarks">Bookmarks</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/profile">Profile</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/profile">Profile</a>
 
-            <a class="navbar-menu-links" href="#/user/:uid/network">Network</a>
+            <a class="navbar-menu-links" href="#/user/{{model.uid}}/network">Network</a>
 
             <a class="navbar-menu-links">Logout</a>
         </div>
@@ -31,6 +31,12 @@
 </div>
 
 <div id="user-dashboard-main-content-div">
+
+    <ul class="list-group">
+        <li class="list-group-item hh-list-group-item">
+
+        </li>
+    </ul>
 
     <div id="user-dashboard-news-image">
         <img src="../../../../content/images/hhLogo.png">

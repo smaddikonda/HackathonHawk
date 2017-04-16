@@ -3,39 +3,39 @@
         .module("HackathonHawk")
         .factory("PostService", postService);
 
-    function postService() {
+    function postService($http) {
         var api = {
-            "createPost" : createPost,
-            "findPostById" : findPostById,
-            "findPostsByUser" : findPostsByUser,
-            "findPostsByHackathon" : findPostsByHackathon,
-            "editPost" : editPost,
-            "deletePost" : deletePost
+            createPost: createPost,
+            findAllPosts:findAllPosts,
+            findAllPostsByUser: findAllPostsByUser,
+            findAllPostsByOrganizer: findAllPostsByOrganizer,
+            findAllPostsByHackathon: findAllPostsByHackathon,
+            findPostById: findPostById
         }
         return api;
         
-        function createPost() {
-            
+        function createPost(post, hid, uid, oid) {
+            return $http.post("/api/post?hid=" + hid + "&uid=" + uid + "&oid=" + oid, post);
         }
         
-        function findPostById() {
-            
+        function findPostById(pid) {
+            return $http.get("/api/post/" + pid);
         }
         
-        function findPostsByUser() {
-            
+        function findAllPosts() {
+            return $http.get("/api/post");
         }
         
-        function findPostsByHackathon() {
-            
+        function findAllPostsByUser(uid) {
+            return $http.get("/api/user/" + uid + "/post");
         }
         
-        function editPost() {
-            
+        function findAllPostsByOrganizer(oid) {
+            return $http.get("/api/organizer/" + oid + "/post");
         }
         
-        function deletePost() {
-            
+        function findAllPostsByHackathon(hid) {
+            return $http.get("/api/hackathon/" + hid + "/post");
         }
     }
 

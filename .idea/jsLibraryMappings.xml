@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{Bootstrap, angular-DefinitelyTyped, angular-route-DefinitelyTyped, express-DefinitelyTyped, jQuery UI-1.10.2, jQuery-2.0.0, jquery-DefinitelyTyped, jqueryui-DefinitelyTyped, node-DefinitelyTyped}" />
+    <file url="PROJECT" libraries="{Bootstrap, angular-DefinitelyTyped, angular-route-DefinitelyTyped, express-DefinitelyTyped, jQuery UI-1.10.2, jQuery-2.0.0, jquery-DefinitelyTyped, jqueryui-DefinitelyTyped, node-DefinitelyTyped, node_modules}" />
     <includedPredefinedLibrary name="ECMAScript 6" />
   </component>
 </project>

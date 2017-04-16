@@ -33,7 +33,7 @@
     <form>
         <div class="form-group">
             <label for="username">Username</label>
-            <input
+            <input ng-model="model.user.username"
                    type="text"
                    class="form-control"
                    id="username"
@@ -51,7 +51,7 @@
 
         <div class="form-group">
             <label for="email">Email address</label>
-            <input
+            <input ng-model="model.user.email"
                    type="email"
                    class="form-control"
                    id="email"
@@ -60,7 +60,7 @@
 
         <div class="form-group">
             <label for="first-name">First Name</label>
-            <input
+            <input ng-model="model.user.firstName"
                    type="text"
                    class="form-control"
                    id="first-name"
@@ -69,7 +69,7 @@
 
         <div class="form-group">
             <label for="last-name">Last Name</label>
-            <input
+            <input ng-model="model.user.lastName"
                    type="text"
                    class="form-control"
                    id="last-name"
@@ -78,11 +78,11 @@
 
         <div class="form-group">
             <label>Bio</label>
-            <textarea rows="5"
+            <textarea ng-model="model.user.bio"
+                      rows="5"
                       id="biography"
                       class="button-and-fields form-control"
                       placeholder="Short biography">
-
             </textarea>
         </div>
     </form>

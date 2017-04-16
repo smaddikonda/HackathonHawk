@@ -1,0 +1,92 @@
+<div class="login-video-overlay"></div>
+
+<nav class="navbar navbar-default navbar-fixed-top dz-navbar-login-top">
+    <div class="container-fluid">
+        <!--logo & name-->
+        <div class="navbar-header col-md-4 col-sm-4 col-xs-2">
+            <a class="navbar-brand hh-brand" href="#/">
+                hh
+            </a>
+            <!--div class="devZoned-Name">devZoned</div-->
+        </div>
+
+        <div id="navbar-menu-links-div">
+            <a class="navbar-menu-links" href="#/user/:uid/home">Home</a>
+            <a class="navbar-menu-links" href="#/user/:uid/bookmarks">Bookmarked Users</a>
+            <a class="navbar-menu-links" href="#/user/:uid/bookmarks">Groups</a>
+            <a class="navbar-menu-links">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div id="user-dashboard-main-content-upper-margin">
+    EDIT HACKATHON INFO
+</div>
+
+<div id="user-dashboard-main-content-div">
+    <form>
+        <div class="form-group">
+            <label>Hackathon Name</label>
+            <input ng-model="model.organizer.name"
+                   type="text"
+                   class="form-control"
+                   placeholder="Username">
+        </div>
+
+        <div class="form-group">
+            <label>Start Time</label>
+            <input ng-model="model.organizer.start_timestamp"
+                   type="text"
+                   class="form-control"
+                   placeholder="mm/dd/yyyy hh:mm AM/PM"/>
+        </div>
+
+        <div class="form-group">
+            <label>End Time</label>
+            <input ng-model="model.organizer.finish_timestamp"
+                   type="text"
+                   class="form-control"
+                   placeholder="mm/dd/yyyy hh:mm AM/PM">
+        </div>
+
+        <div class="form-group">
+            <label>Full Address</label>
+            <input ng-model="model.organizer.full_address"
+                   type="text"
+                   class="form-control"
+                   placeholder="Street Address, City/Town, County/Province, State, Country, Postal code">
+        </div>
+
+        <div class="form-group">
+            <label>Hackathon Web Page URL</label>
+            <input ng-model="model.organizer.public_url"
+                   type="text"
+                   class="form-control"
+                   placeholder="http://www.example.com/hackathon-name">
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea ng-model="model.organizer.description"
+                      rows="5"
+                      id="biography"
+                      class="button-and-fields form-control"
+                      placeholder="Other details">
+            </textarea>
+        </div>
+    </form>
+
+    <div ng-show="model.error" id="page-error-success-message">
+        {{model.error}}
+    </div>
+
+    <a class="btn btn-success btn-block button-and-fields"
+       ng-click="model.editHackathon(model.organizer)">Edit Hackathon Info</a>
+
+    <a class="btn btn-danger btn-block button-and-fields"
+       href="#/organizer/{{model.oid}}/home">Cancel
+    </a>
+
+    <div id="user-dashboard-main-content-lower-margin"></div>
+
+

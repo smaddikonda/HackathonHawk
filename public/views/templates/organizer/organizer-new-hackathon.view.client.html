@@ -20,23 +20,22 @@
 </nav>
 
 <div id="user-dashboard-main-content-upper-margin">
-    EDIT HACKATHON INFO
+    POST A NEW HACKATHON
 </div>
 
 <div id="user-dashboard-main-content-div">
-
     <form>
         <div class="form-group">
             <label>Hackathon Name</label>
-            <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Username">
+            <input ng-model="model.organizer.name"
+                   type="text"
+                   class="form-control"
+                   placeholder="Username">
         </div>
 
         <div class="form-group">
             <label>Start Time</label>
-            <input
+            <input ng-model="model.organizer.start_timestamp"
                    type="text"
                    class="form-control"
                    placeholder="mm/dd/yyyy hh:mm AM/PM"/>
@@ -44,61 +43,50 @@
 
         <div class="form-group">
             <label>End Time</label>
-            <input
-                    type="text"
-                    class="form-control"
-                    placeholder="mm/dd/yyyy hh:mm AM/PM">
-        </div>
-
-        <div class="form-group">
-            <label>Location</label>
-            <input
-                    type="text"
-                    class="form-control"
-                    placeholder="City, State">
+            <input ng-model="model.organizer.finish_timestamp"
+                   type="text"
+                   class="form-control"
+                   placeholder="mm/dd/yyyy hh:mm AM/PM">
         </div>
 
         <div class="form-group">
             <label>Full Address</label>
-            <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Street Address, City/Town, County/Province, State, Country, Postal code">
+            <input ng-model="model.organizer.full_address"
+                   type="text"
+                   class="form-control"
+                   placeholder="Street Address, City/Town, County/Province, State, Country, Postal code">
         </div>
 
         <div class="form-group">
-            <label>Hackathon Contact Email</label>
-            <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Email Address of the organizer">
-        </div>
-
-        <div class="form-group">
-            <label>Hackathon Web Page</label>
-            <input
-                    type="text"
-                    class="form-control"
-                    placeholder="http://www.example.com/hackathon-name">
+            <label>Hackathon Web Page URL</label>
+            <input ng-model="model.organizer.public_url"
+                   type="text"
+                   class="form-control"
+                   placeholder="http://www.example.com/hackathon-name">
         </div>
 
         <div class="form-group">
             <label>Description</label>
-            <textarea rows="5"
+            <textarea ng-model="model.organizer.description"
+                      rows="5"
                       id="biography"
                       class="button-and-fields form-control"
                       placeholder="Other details">
             </textarea>
         </div>
-
     </form>
 
+    <div ng-show="model.error" id="page-error-success-message">
+        {{model.error}}
+    </div>
+
     <a class="btn btn-success btn-block button-and-fields"
-       ng-click="model.updateProfile(model.user)">Update Info</a>
+       ng-click="model.createHackathon(model.organizer)">Post Hackathon</a>
 
     <a class="btn btn-danger btn-block button-and-fields"
-       href="#/login">Cancel</a>
+       href="#/organizer/{{model.oid}}/home">Cancel</a>
 
     <div id="user-dashboard-main-content-lower-margin"></div>
 
+</div>
 

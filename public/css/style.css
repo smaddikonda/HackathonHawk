@@ -558,6 +558,18 @@ hr {
     float: left;
     margin-top: 2vh;
 }
+/******************************************************************************************/
+
+.post-text-area {
+    position: relative;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 10vh;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+}
+
 
 /******************************************************************************************/
 
@@ -565,6 +577,7 @@ hr {
     position: relative;
     margin-left: 10vw;
     margin-right: 10vw;
+    margin-top: 5vh;
     color: black !important;
     font-family: 'Open Sans', sans-serif;
     margin-bottom: 10px;
@@ -599,6 +612,16 @@ hr {
 
 .bold-fields {
     font-weight: 700;
+}
+
+.centered-message {
+    position: relative;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .hh-list-group-item {
@@ -687,4 +710,10 @@ hr {
         width: 100px;
     }
 
+}
+
+/****************************************************************************/
+
+#bottom-margin {
+    margin-bottom: 75px;
 }

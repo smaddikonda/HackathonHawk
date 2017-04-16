@@ -7,10 +7,10 @@ module.exports = function () {
         firstName: String,
         lastName: String,
         email: String,
-        phone:String,
+        bio: String,
+
         dateCreated: {type:Date ,default:Date.now},
-        hackathons:[{type: mongoose.Schema.Types.ObjectId, ref: 'HackathonModel'}],
-        bookmarks: [{type: mongoose.Schema.Types.ObjectId, ref: 'HackathonModel'}],
+        bookmarks: [{type: mongoose.Schema.Types.ObjectId, ref: 'OrganizerModel'}],
         posts:[{type: mongoose.Schema.Types.ObjectId, ref: 'PostModel'}],
         groups:[{type: mongoose.Schema.Types.ObjectId, ref: 'GroupModel'}],
     }, {collection: 'hackathonhawk.user'});
