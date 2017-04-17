@@ -126,7 +126,7 @@ module.exports = function (app, userModel) {
         clientID     : "836035500148-r0eh57ahbom7f676mtp0rf3peamt5fkb.apps.googleusercontent.com",
         clientSecret : "cggihC4tMa8Fjgz8bRCvufzT",
         //callbackURL  : "http://localhost:3000/auth/google/callback"
-        callbackURL  : "http://hackathonhack.herokuapp.com/auth/google/callback"
+        callbackURL  : "http://hackathonhawk.herokuapp.com/auth/google/callback"
     };
 
     app.get('/auth/google/callback',
