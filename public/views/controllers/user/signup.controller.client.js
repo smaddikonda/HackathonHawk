@@ -43,7 +43,7 @@
                 user.password == null) {
                 viewModel.error = "Please provide all the fields."
             } else {
-                var promise = UserService.createUser(user);
+                var promise = UserService.register(user);
                 promise
                     .then(
                         function (response) {

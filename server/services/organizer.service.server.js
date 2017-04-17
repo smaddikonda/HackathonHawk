@@ -1,9 +1,11 @@
 module.exports = function (app, organizerModel) {
 
     app.post("/api/organizer", createOrganizer);
+
     app.get("/api/organizer", findOrganizer);
     app.get("/api/hackathons/all", findAllHackathons);
     app.get("/api/organizer/:oid", findOrganizerById);
+    app.get("/api/organizer/api/:aid", findHackathonByAPIId);
     app.put("/api/organizer/:oid", updateOrganizer);
 
     function createOrganizer(req, res) {
@@ -27,6 +29,18 @@ module.exports = function (app, organizerModel) {
             }, function (error) {
                 res.sendStatus(500);
             });
+    }
+
+    function findHackathonByAPIId(req, res) {
+        var apiID = req.params.aid;
+        organizerModel
+            .findHackathonByApiId(apiID)
+            .then(
+                function (hackathon) {
+                    res.json(hackathon);
+                }, function (error) {
+                    res.json(null);
+                });
     }
 
     function findOrganizerById(req, res) {

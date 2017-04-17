@@ -7,6 +7,10 @@ module.exports = function () {
         email: String,
         password: String,
 
+        //required to differentiate between API and organizer-posted hackathons.
+        //API Hackathons have id but posted hackathons dont have.
+        id: String,
+
         //fields common with the hackathonWatch API
         public_url: String,
         name: String,

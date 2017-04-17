@@ -51,29 +51,18 @@
                 templateUrl: "views/templates/user/user-dashboard.view.client.html",
                 controller: "UserHomeController",
                 controllerAs: "model",
-                resolve: { loggedin:
-                    function($q, $timeout, $http, $location, $rootScope) {
-                        var deferred = $q.defer();
-                        $http.get('/api/loggedin').success(function(user) {
-                            $rootScope.errorMessage = null;
-                            if (user !== '0') {
-                                $rootScope.currentUser = user;
-                                console.log("config says user found");
-                                deferred.resolve();
-                            } else {
-                                deferred.reject();
-                                //$location.url('/');
-                            }
-                        });
-                        return deferred.promise;
-                    }
+                resolve: {
+                    loggedin:checkLoggedIn
                 }
             })
 
             .when("/user/:uid/home", {
                 templateUrl: "views/templates/user/user-dashboard.view.client.html",
                 controller: "UserHomeController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
             })
 
             .when("/user/:uid/search", {
@@ -122,7 +111,46 @@
                 templateUrl: "views/templates/organizer/organizer-edit-hackathon.view.client.html",
                 controller: "HackathonEditController",
                 controllerAs: "model"
+            })
+            .when("/admin",{
+                templateUrl:"views/templates/admin/admin-dashboard.view.client.html",
+                controller: "AdminController",
+                controllerAs: "model",
+                resolve : {
+                    isAdmin : checkIsAdmin
+                }
+            })
+            .otherwise({
+                redirectTo : "/"
             });
-
     }
 })();
+
+
+function checkLoggedIn($q, $timeout, $http, $location, $rootScope) {
+    var deferred = $q.defer();
+    $http.get('/api/loggedin')
+         .success(function(user) {
+        if (user !== '0') {
+            $rootScope.currentUser = user;
+            deferred.resolve();
+        } else {
+            $rootScope.currentUser = null;
+            deferred.reject();
+            $location.url("/");
+        }
+    });
+    return deferred.promise;
+}
+
+function checkIsAdmin($q, $timeout, $http, $location, $rootScope) {
+    var deferred = $q.defer();
+    $http.get('/api/isAdmin')
+        .success(function(user) {
+            if (user !== '0') {
+                $rootScope.currentUser = user;
+                deferred.resolve();
+            }
+        });
+    return deferred.promise;
+}

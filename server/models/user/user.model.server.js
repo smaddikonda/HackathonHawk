@@ -6,8 +6,9 @@ module.exports = function () {
         findUserById: findUserById,
         findUserByUsername: findUserByUsername,
         findUserByCredentials:findUserByCredentials,
-        findUserByFacebookId: findUserByFacebookId,
-        updateUser:updateUser
+        updateUser:updateUser,
+        findUserByGoogleId: findUserByGoogleId,
+        findAllUsers: findAllUsers
     };
 
     var mongoose = require('mongoose');
@@ -20,6 +21,10 @@ module.exports = function () {
 
     function setModel(models) {
         model = models;
+    }
+
+    function findUserByGoogleId(id) {
+        return UserModel.findOne({"google.id":id});
     }
 
     function createUser(user) {
@@ -51,6 +56,7 @@ module.exports = function () {
 
     function findUserByUsername(username){
         var deferred = q.defer();
+        console.log("Here");
         UserModel
             .find({username:username}, function (err, user) {
                 if(err) {
@@ -73,19 +79,6 @@ module.exports = function () {
                     deferred.reject(err);
                 } else {
                     console.log("user me");
-                    deferred.resolve(user[0]);
-                }
-            });
-        return deferred.promise;
-    }
-    
-    function findUserByFacebookId(facebookid) {
-        var deferred = q.defer();
-        UserModel
-            .findOne({'facebook.id': facebookid}, function (err, user) {
-                if(!user) {
-                    deferred.reject(err);
-                } else {
                     deferred.resolve(user[0]);
                 }
             });
@@ -115,6 +108,19 @@ module.exports = function () {
                     }
                 });
 
+        return deferred.promise;
+    }
+
+    function findAllUsers(){
+        var deferred = q.defer();
+        UserModel
+            .find(function (err, users) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(users);
+                }
+            });
         return deferred.promise;
     }
 };

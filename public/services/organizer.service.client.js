@@ -11,7 +11,8 @@
             "findOrganizerByUsername" : findOrganizerByUsername,
             "updateOrganizer" : updateOrganizer,
             "deleteHackathon" : deleteHackathon,
-            "findAllHackathons": findAllHackathons
+            "findAllHackathons": findAllHackathons,
+            "findHackathonByApiId": findHackathonByApiId
         }
         return api;
 
@@ -21,6 +22,10 @@
 
         function findAllHackathons() {
             return $http.get("/api/hackathons/all");
+        }
+
+        function findHackathonByApiId(apiId) {
+            return $http.get("/api/organizer/api/" + apiId);
         }
         
         function findOrganizerById(organizerId) {

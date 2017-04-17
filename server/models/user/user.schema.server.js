@@ -14,10 +14,11 @@ module.exports = function () {
         posts:[{type: mongoose.Schema.Types.ObjectId, ref: 'PostModel'}],
         groups:[{type: mongoose.Schema.Types.ObjectId, ref: 'GroupModel'}],
 
-        facebook: {
-            id:String,
-            token:String
-        }
+        roles : [{type:String , default: 'USER'}],
+
+        google: {
+            id:    String
+        },
 
     }, {collection: 'hackathonhawk.user'});
 

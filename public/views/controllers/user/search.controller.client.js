@@ -5,47 +5,66 @@
 
     function SearchController(HackathonWatchService, OrganizerService, $location, $routeParams) {
         var viewModel = this;
-        var userId = $routeParams['uid'];
-        viewModel.uid = userId;
-        viewModel.apiHackathons = null;
-        viewModel.postedHackathons = null;
+        viewModel.uid = $routeParams['uid'];
+        viewModel.apiHackathons = [];
+        viewModel.createdHackathons = [];
+        viewModel.hackathons = [];
 
+        //api
         viewModel.searchByHackathonId = searchByHackathonId;
 
         function searchHackathons() {
-            HackathonWatchService.searchHackathons()
-                .then(function (response) {
-                    apiHackathons = response.data;
-                    OrganizerService.findAllHackathons()
-                        .then(
-                            function (response) {
-                                postedHackathons = response.data;
-                                if(postedHackathons) {
-                                    for (var i = postedHackathons.length - 1; i >= 0; i--) {
-                                        if (!postedHackathons[i].name) {
-                                            postedHackathons.splice(i, 1);
-                                        }
+            var promise = HackathonWatchService.searchHackathons();
+            promise.then(
+                function (response) {
+                    var apiHackathons = response.data;
+                    if(apiHackathons) {
+                        viewModel.apiHackathons = apiHackathons;
+                    }
+                    var promise = OrganizerService.findAllHackathons();
+                    promise.then(
+                        function (response) {
+                            var hackathonsInDB = response.data;
+                            if(hackathonsInDB) {
+                                for(h in hackathonsInDB){
+                                    if(!h.id) {
+                                        viewModel.createdHackathons.push(h);
                                     }
-                                    apiHackathons = apiHackathons.concat(postedHackathons);
                                 }
-                                viewModel.hackathons = apiHackathons;
-                            });
+                                viewModel.hackathons = viewModel.apiHackathons.concat(viewModel.createdHackathons);
+                                for(var i=viewModel.hackathons.length-1; i>=0; i--){
+                                    if(viewModel.hackathons[i] == null || viewModel.hackathons[i].name == null) {
+                                        viewModel.hackathons.splice(i, 1);
+                                    }
+                                }
+                            }
+                        }
+                    )
                 });
         }
         searchHackathons();
 
-        function searchByHackathonId(hackathonid, hackathon_id) {
-            if(hackathon_id){
-                var promise = OrganizerService.findOrganizerById(hackathon_id);
+        function searchByHackathonId(apiId, organizer_id) {
+            if(apiId && !organizer_id){
+                var promise = HackathonWatchService.searchHackathonById(apiId);
                 promise
-                    .then(function (response) {
-                        var hackathon = response.data;
-                        if(hackathon){
-                            $location.url("/user/" + viewModel.uid + "/search/organizer/" + hackathon_id + "/");
+                    .then(
+                        function (response) {
+                            var apiHackathon = response.data;
+                            var organizer = apiHackathon;
+                            organizer.id = apiId;
+                            var promise = OrganizerService.createOrganizer(organizer);
+                            promise
+                                .then(
+                                    function (response) {
+                                        var organizer = response.data;
+                                        $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer._id+"/");
+                                    }
+                            );
                         }
-                    });
-            } else {
-                $location.url("/user/" + viewModel.uid + "/search/organizer/" + hackathonid + "/");
+                    );
+            } else{
+                $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer_id+"/");
             }
         }
     }

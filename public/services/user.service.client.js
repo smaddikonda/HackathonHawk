@@ -13,7 +13,8 @@
             "deleteUser": deleteUser,
             "login" : login,
             "logout" : logout,
-            "register": register
+            "register": register,
+            "findAllUsers": findAllUsers
         };
         return api;
 
@@ -51,6 +52,10 @@
 
         function deleteUser(username, password) {
             return $http.delete("/api/user/"+userId);
+        }
+
+        function findAllUsers() {
+            return $http.get("/api/all");
         }
     }
 })();
