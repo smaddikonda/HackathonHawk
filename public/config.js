@@ -55,7 +55,6 @@
                     loggedin:checkLoggedIn
                 }
             })
-
             .when("/user/:uid/home", {
                 templateUrl: "views/templates/user/user-dashboard.view.client.html",
                 controller: "UserHomeController",
@@ -64,7 +63,6 @@
                     loggedin:checkLoggedIn
                 }
             })
-
             .when("/user/:uid/search", {
                 templateUrl: "views/templates/user/search.view.client.html",
                 controller: "SearchController",
@@ -75,7 +73,6 @@
                 controller: "SingleHackathonSearchController",
                 controllerAs: "model"
             })
-
             .when("/user/:uid/profile", {
                 templateUrl: "views/templates/user/profile.view.client.html",
                 controller: "ProfileController",
@@ -92,12 +89,8 @@
                 controllerAs: "model"
             })
 
+            //Organizer routes
             .when("/organizer/:oid", {
-                templateUrl: "views/templates/organizer/organizer-home.view.client.html",
-                controller: "OrganizerHomeController",
-                controllerAs: "model"
-            })
-            .when("/organizer/:oid/home", {
                 templateUrl: "views/templates/organizer/organizer-home.view.client.html",
                 controller: "OrganizerHomeController",
                 controllerAs: "model"
@@ -112,6 +105,7 @@
                 controller: "HackathonEditController",
                 controllerAs: "model"
             })
+
             .when("/admin",{
                 templateUrl:"views/templates/admin/admin-dashboard.view.client.html",
                 controller: "AdminController",
@@ -120,6 +114,40 @@
                     isAdmin : checkIsAdmin
                 }
             })
+            .when("/admin/user/",{
+                templateUrl:"views/templates/admin/admin-manage-user.view.client.html",
+                controller: "AdminUserManagerController",
+                controllerAs: "model",
+                resolve : {
+                    isAdmin : checkIsAdmin
+                }
+            })
+            .when("/admin/user/:uid",{
+                templateUrl:"views/templates/admin/admin-edit-user.view.client.html",
+                controller: "AdminEditUserController",
+                controllerAs: "model",
+                resolve : {
+                    isAdmin : checkIsAdmin
+                }
+            })
+            .when("/admin/organizer/",{
+                templateUrl:"views/templates/admin/admin-manage-organizer.view.html",
+                controller: "AdminOrganizerManagerController",
+                controllerAs: "model",
+                resolve : {
+                    isAdmin : checkIsAdmin
+                }
+            })
+            .when("/admin/organizer/:oid",{
+                templateUrl:"views/templates/admin/admin-edit-organizer.view.client.html",
+                controller: "AdminEditOrganizerController",
+                controllerAs: "model",
+                resolve : {
+                    isAdmin : checkIsAdmin
+                }
+            })
+
+
             .otherwise({
                 redirectTo : "/"
             });

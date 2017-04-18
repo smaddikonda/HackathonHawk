@@ -3,54 +3,51 @@
 <nav class="navbar navbar-inverse color-bar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button"
-                    class="navbar-toggle hh-hamburger"
-                    data-toggle="collapse"
-                    data-target="#myCollapsibleNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
             <a class="hh-brand navbar-brand" href="#">
                 hh
             </a>
         </div>
-        <div class="collapse navbar-collapse navbar-right" id="myCollapsibleNavbar">
-
-        </div>
+        <a class="pull-right hh-navbar-admin-links" href="#/">Back to User Home</a>
     </div>
 </nav>
 
 
 <div id="user-dashboard-main-content-upper-margin">
-    ADMIN PANEL
+    ADMIN PANEL<br><br>
+    Quick Stats
 </div>
 
-<div id="user-dashboard-main-content-div">
+<div class="container-fluid" id="admin-dashboard-main-content">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-5">
+                    No. of Users in DB:
+                </div>
+                <div class="col-xs-2">
+                    {{model.usersNumber}}
+                </div>
+                <div class="col-xs-5">
+                    <a class="btn btn-info" ng-click="model.manageUsers()" >Manage Users</a>
+                </div>
+            </div>
+        </li>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Manage</th>
-            </tr>
-        </thead>
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-5">
+                    No. of Organizers in DB:
+                </div>
+                <div class="col-xs-2">
+                    {{model.organizersNumber}}
+                </div>
+                <div class="col-xs-5">
+                    <a class="btn btn-info" ng-click="model.manageOrganizers()" >Manage Organizers</a>
+                </div>
+            </div>
+        </li>
 
-        <tbody>
-            <tr ng-repeat="user in model.users">
-                <td>{{user.username}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.roles}}</td>
-                <td>
-                    <a class="btn btn-danger button-and-fields">Delete</a>
-                    <a class="btn btn-info button-and-fields">Edit</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+    </ul>
 </div>
 
 

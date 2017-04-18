@@ -2,8 +2,8 @@
     angular
         .module("HackathonHawk")
         .controller("HackathonEditController", HackathonEditController);
-    
-    function HackathonEditController(OrganizerModel) {
+
+    function HackathonEditController(OrganizerService, $location, $routeParams) {
         var viewModel = this;
         var organizerid = $routeParams['oid'];
         viewModel.oid = organizerid;
@@ -22,6 +22,8 @@
 
         function editHackathon(organizer) {
             if(!organizer ||
+                !organizer.organizername ||
+                !organizer.email ||
                 !organizer.name ||
                 !organizer.start_timestamp ||
                 !organizer.finish_timestamp ||
@@ -32,10 +34,10 @@
                 var promise = OrganizerService.updateOrganizer(viewModel.oid, organizer);
                 promise.then(
                     function successCallback(response) {
-                        $location.url("/organizer/" + viewModel.oid + "/home");
+                        $location.url("/organizer/" + viewModel.oid);
                     },
                     function errorCallback(response) {
-                        viewModel.error = "Editing the hackathon info failed. Please retry."
+                        viewModel.error = "Editing the info failed. Please retry."
                     }
                 );
             }

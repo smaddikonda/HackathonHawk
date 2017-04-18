@@ -13,43 +13,37 @@
 
 
 <div id="user-dashboard-main-content-upper-margin">
-    ADMIN - USER MANAGEMENT PANEL
+    ADMIN - ORGANIZER MANAGEMENT PANEL
 </div>
 
 <div class="container-fluid" id="admin-dashboard-main-contents-div">
     <ul class="list-group">
         <li class="list-group-item hh-list-group-heading">
             <div class="row">
-                <div class="col-xs-2">
-                    Username
+                <div class="col-xs-4">
+                    Organizer Name
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-4">
                     Email
                 </div>
-                <div class="col-xs-3">
-                    Roles
-                </div>
-                <div class="col-xs-3">
+                <div class="col-xs-4">
                     Manage
                 </div>
             </div>
         </li>
 
-        <li ng-repeat="user in model.users" class="list-group-item">
+        <li ng-repeat="organizer in model.organizers" class="list-group-item">
             <div class="row">
-                <div class="col-xs-3">
-                    {{user.username}}
+                <div class="col-xs-4">
+                    {{organizer.organizername}}
+                </div>
+                <div class="col-xs-4">
+                    {{organizer.email}}
                 </div>
                 <div class="col-xs-3">
-                    {{user.email}}
-                </div>
-                <div class="col-xs-3">
-                    {{user.roles}}
-                </div>
-                <div class="col-xs-3">
-                    <a ng-click="model.editUser(user._id)"
+                    <a ng-click="model.editOrganizer(organizer._id)"
                        class="btn btn-info button-and-fields">Edit</a>
-                    <a ng-click="model.deleteUser(user._id)"
+                    <a ng-click="model.deleteOrganizer(organizer._id)"
                        class="btn btn-danger button-and-fields">Delete</a>
                 </div>
             </div>

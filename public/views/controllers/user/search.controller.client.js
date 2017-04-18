@@ -9,40 +9,34 @@
         viewModel.apiHackathons = [];
         viewModel.createdHackathons = [];
         viewModel.hackathons = [];
-
-        //api
+        
         viewModel.searchByHackathonId = searchByHackathonId;
 
-        function searchHackathons() {
+        init();
+        function init() {
+            viewModel.apiHackathons = searchAPIHackathons();
+
+        }
+
+        function searchAPIHackathons() {
             var promise = HackathonWatchService.searchHackathons();
             promise.then(
                 function (response) {
                     var apiHackathons = response.data;
-                    if(apiHackathons) {
-                        viewModel.apiHackathons = apiHackathons;
+                    if (apiHackathons) {
+                        return apiHackathons;
                     }
-                    var promise = OrganizerService.findAllHackathons();
-                    promise.then(
-                        function (response) {
-                            var hackathonsInDB = response.data;
-                            if(hackathonsInDB) {
-                                for(h in hackathonsInDB){
-                                    if(!h.id) {
-                                        viewModel.createdHackathons.push(h);
-                                    }
-                                }
-                                viewModel.hackathons = viewModel.apiHackathons.concat(viewModel.createdHackathons);
-                                for(var i=viewModel.hackathons.length-1; i>=0; i--){
-                                    if(viewModel.hackathons[i] == null || viewModel.hackathons[i].name == null) {
-                                        viewModel.hackathons.splice(i, 1);
-                                    }
-                                }
-                            }
-                        }
-                    )
                 });
         }
-        searchHackathons();
+
+        function searchDBHackathons() {
+            var promise = OrganizerService.findAllHackathons();
+            promise
+                .then(function (response) {
+                    var dbHackathons = response.data;
+                })
+        }
+
 
         function searchByHackathonId(apiId, organizer_id) {
             if(apiId && !organizer_id){
@@ -60,7 +54,7 @@
                                         var organizer = response.data;
                                         $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer._id+"/");
                                     }
-                            );
+                                );
                         }
                     );
             } else{

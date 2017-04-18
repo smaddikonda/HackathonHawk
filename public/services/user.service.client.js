@@ -50,7 +50,7 @@
             return $http.get("/api/user?username="+username+"&password="+password);
         }
 
-        function deleteUser(username, password) {
+        function deleteUser(userId) {
             return $http.delete("/api/user/"+userId);
         }
 

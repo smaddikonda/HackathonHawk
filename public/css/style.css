@@ -512,10 +512,11 @@ hr {
 }
 
 .hh-navbar-ul li a{
-    font-size: 1.2em;
+    font-size: 1.25em;
     padding: 8px !important;
-    color: rgb(255, 131, 0) !important;
+    color: rgb(255, 153, 32) !important;
     text-align: center;
+    font-weight: bold;
 }
 
 #myCollapsibleNavbar{
@@ -533,6 +534,14 @@ a .navbar-menu-links {
     padding-right: 20px;
 }
 
+.hh-navbar-admin-links{
+    color: rgb(255, 153, 32) !important;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    padding-right: 20px;
+    margin-top: 25px;
+}
+
 #navbar-menu-links-div :hover{
     text-decoration: none !important;
     color: rgb(235, 118, 0) !important;
@@ -543,11 +552,11 @@ a .navbar-menu-links {
     font-family: 'Open Sans', sans-serif;
     font-size: 1.5em;
     color: rgb(255, 131, 0);
-    margin-top: 100px;
+    margin-top: 40px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
 #user-dashboard-main-content-lower-margin {
@@ -576,6 +585,7 @@ a .navbar-menu-links {
     position: relative;
     float: none;
     height: 100px;
+    font-size: 1.5em;
 }
 
 #user-dashboard-news-content {
@@ -587,8 +597,6 @@ a .navbar-menu-links {
 
 .post-text-area {
     position: relative;
-    margin-left: 10vw;
-    margin-right: 10vw;
     margin-top: 10vh;
     color: white;
     font-family: 'Open Sans', sans-serif;
@@ -754,4 +762,87 @@ a .navbar-menu-links {
 .color-bar{
     background-color: #4a6491 !important;
     height: 75px;
+}
+
+/****************************************************************************/
+
+
+#admin-dashboard-main-content{
+    font-family: 'Open Sans', sans-serif;
+    font-size: larger;
+    color: rgb(255,131,0);
+    position: relative;
+    width:100%;
+    text-align: left;
+}
+
+#admin-dashboard-main-content ul li a{
+    width: 100% !important;
+}
+
+#admin-dashboard-main-content ul{
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+@media all and (min-width: 769px) {
+    #admin-dashboard-main-content ul{
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+}
+
+@media all and (max-width: 959px) and (min-width: 769px) {
+    #admin-dashboard-main-content ul{
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+}
+
+@media all and (max-width: 768px) and (min-width: 399px) {
+    #admin-dashboard-main-content ul{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+#admin-dashboard-main-contents-div {
+    position: relative;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.hh-list-group-heading{
+    background-color: rgb(255,131,0) !important;
+    border-color: rgb(255,131,0) !important;
+    font-weight: bold;
+}
+
+/****************************************************************************/
+
+.organizer-home-post-hackathon-button{
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    color: rgb(255, 131, 0);
+    margin-top: 40px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+}
+
+.organizer-home-post-hackathon-button a{
+    margin-top: 10px;
+}
+
+#organizer-dashboard-main-content-div{
+    position: relative;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }

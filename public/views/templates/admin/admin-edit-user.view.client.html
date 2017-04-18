@@ -16,84 +16,81 @@
             </a>
         </div>
         <div class="collapse navbar-collapse navbar-right" id="myCollapsibleNavbar">
-            <ul class="nav navbar-nav hh-navbar-ul">
-                <li><a class="navbar-menu-links" href="#/organizer/{{model.oid}}">Home</a></li>
-                <li><a class="navbar-menu-links" href="#/organizer/{{model.oid}}/hackathon/edit">Edit Info</a></li>
-                <li><a class="navbar-menu-links" href="" ng-click="model.logout()">Logout</a></li>
-            </ul>
+
         </div>
     </div>
 </nav>
 
 
 <div id="user-dashboard-main-content-upper-margin">
-    POST A NEW HACKATHON
+    ADMIN - USER PROFILE EDITOR PANEL
 </div>
 
 <div id="user-dashboard-main-content-div">
+
     <form>
         <div class="form-group">
-            <label>Hackathon Name</label>
-            <input ng-model="model.organizer.name"
+            <label for="username">Username</label>
+            <input ng-model="model.user.username"
                    type="text"
                    class="form-control"
+                   id="username"
                    placeholder="Username">
         </div>
 
         <div class="form-group">
-            <label>Start Time</label>
-            <input ng-model="model.organizer.start_timestamp"
-                   type="text"
+            <label for="password">Password</label>
+            <input ng-model="model.user.password"
+                   id="password"
+                   type="password"
                    class="form-control"
-                   placeholder="mm/dd/yyyy hh:mm AM/PM"/>
+                   placeholder="Password"/>
         </div>
 
         <div class="form-group">
-            <label>End Time</label>
-            <input ng-model="model.organizer.finish_timestamp"
-                   type="text"
+            <label for="email">Email address</label>
+            <input ng-model="model.user.email"
+                   type="email"
                    class="form-control"
-                   placeholder="mm/dd/yyyy hh:mm AM/PM">
+                   id="email"
+                   placeholder="Email id">
         </div>
 
         <div class="form-group">
-            <label>Full Address</label>
-            <input ng-model="model.organizer.full_address"
+            <label for="first-name">First Name</label>
+            <input ng-model="model.user.firstName"
                    type="text"
                    class="form-control"
-                   placeholder="Street Address, City/Town, County/Province, State, Country, Postal code">
+                   id="first-name"
+                   placeholder="First Name">
         </div>
 
         <div class="form-group">
-            <label>Hackathon Web Page URL</label>
-            <input ng-model="model.organizer.public_url"
+            <label for="last-name">Last Name</label>
+            <input ng-model="model.user.lastName"
                    type="text"
                    class="form-control"
-                   placeholder="http://www.example.com/hackathon-name">
+                   id="last-name"
+                   placeholder="Last Name">
         </div>
 
         <div class="form-group">
-            <label>Description</label>
-            <textarea ng-model="model.organizer.description"
+            <label>Bio</label>
+            <textarea ng-model="model.user.bio"
                       rows="5"
                       id="biography"
                       class="button-and-fields form-control"
-                      placeholder="Other details">
+                      placeholder="Short biography">
             </textarea>
         </div>
     </form>
 
-    <div ng-show="model.error" id="page-error-success-message">
-        {{model.error}}
-    </div>
-
     <a class="btn btn-success btn-block button-and-fields"
-       ng-click="model.createHackathon(model.organizer)">Post Hackathon</a>
+       ng-click="model.updateProfile(model.user)">Update User Profile</a>
 
     <a class="btn btn-danger btn-block button-and-fields"
-       href="#/organizer/{{model.oid}}">Cancel</a>
-
-    <div id="user-dashboard-main-content-lower-margin"></div>
+       href="#/admin/user">Cancel</a>
 
 </div>
+
 

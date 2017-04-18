@@ -1,0 +1,47 @@
+<div class="login-video-overlay"></div>
+
+<nav class="navbar navbar-inverse color-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="hh-brand navbar-brand" href="#">
+                hh
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div id="user-dashboard-main-content-upper-margin">
+    EDIT ORGANIZER INFO
+</div>
+
+<div id="user-dashboard-main-content-div">
+    <form>
+        <div class="form-group">
+            <label>Organizer Name</label>
+            <input ng-model="model.organizer.organizername"
+                   type="text"
+                   class="form-control"
+                   placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label>Organizer Name</label>
+            <input ng-model="model.organizer.email"
+                   type="text"
+                   class="form-control"
+                   placeholder="Username">
+        </div>
+    </form>
+
+    <div ng-show="model.error" id="page-error-success-message">
+        {{model.error}}
+    </div>
+
+    <a class="btn btn-success btn-block button-and-fields"
+       ng-click="model.editOrganizer(model.organizer)">Edit Organizer Info</a>
+
+    <a class="btn btn-danger btn-block button-and-fields"
+       href="#/admin/organizer/">Cancel
+    </a>
+
+    <div id="user-dashboard-main-content-lower-margin"></div>
+</div>

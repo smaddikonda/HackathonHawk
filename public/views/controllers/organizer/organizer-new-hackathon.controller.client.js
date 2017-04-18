@@ -31,7 +31,7 @@
                 var promise = OrganizerService.updateOrganizer(viewModel.oid, organizer);
                 promise.then(
                     function successCallback(response) {
-                        $location.url("/organizer/" + viewModel.oid + "/home");
+                        $location.url("/organizer/" + viewModel.oid);
                     },
                     function errorCallback(response) {
                         viewModel.error = "Posting the hackathon failed. Please retry."

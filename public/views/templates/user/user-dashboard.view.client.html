@@ -30,11 +30,12 @@
 
 
 <div id="user-dashboard-main-content-upper-margin">
+    <span ng-hide="model.allPosts">Welcome, {{model.user.username}}<br></span><br>
     YOUR FEED
 </div>
 
 <div ng-hide="model.allPosts" id="page-error-success-message">
-    There is no feed to show. Bookmark a hackathon or two to follow updates!
+    There is no feed to show. Bookmark a hackathon or two to get updates!
 </div>
 
 <div ng-show="model.allPosts"

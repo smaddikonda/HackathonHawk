@@ -1,32 +1,38 @@
 (function () {
     angular
         .module("HackathonHawk")
-        .controller("AdminUserManageController", AdminUserManageController);
+        .controller("AdminUserManagerController", AdminUserManagerController);
 
-    function AdminUserManageController(UserService, $routeParams) {
+    function AdminUserManagerController(UserService, $location, $route) {
         var viewModel = this;
 
-        viewModel.uid = $routeParams['uid'];
-        viewModel.user = null;
+        viewModel.users = [];
+
+        viewModel.editUser = editUser;
+        viewModel.deleteUser = deleteUser;
 
         init();
         function init() {
-            var promise = UserService.findUserById(viewModel.uid);
+            var promise = UserService.findAllUsers();
             promise
                 .then(
                     function (response) {
-                        viewModel.user = response.data;
+                        viewModel.users = response.data;
                     }
                 );
         }
 
-        function updateUser(userid, user) {
-            var promise = UserService.updateUser(userid, user);
-            promise
-                .then(function (response) {
-                    viewModel.user = response.data;
+        function editUser(userid) {
+            $location.url("/admin/user/" + userid);
+        }
+
+        function deleteUser(userId) {
+            var promise = UserService.deleteUser(userId);
+            promise.then(
+                function (response) {
                     $route.reload();
-                });
+                }
+            );
         }
     }
 })();

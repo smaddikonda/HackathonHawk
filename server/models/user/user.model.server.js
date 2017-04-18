@@ -8,7 +8,8 @@ module.exports = function () {
         findUserByCredentials:findUserByCredentials,
         updateUser:updateUser,
         findUserByGoogleId: findUserByGoogleId,
-        findAllUsers: findAllUsers
+        findAllUsers: findAllUsers,
+        deleteUser: deleteUser
     };
 
     var mongoose = require('mongoose');
@@ -29,6 +30,7 @@ module.exports = function () {
 
     function createUser(user) {
         var deferred = q.defer();
+        user.roles = ["USER"];
         UserModel
             .create(user, function (err, user) {
                 if(err) {
@@ -119,6 +121,19 @@ module.exports = function () {
                     deferred.reject(err);
                 } else {
                     deferred.resolve(users);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function deleteUser(userId) {
+        var deferred = q.defer();
+        UserModel
+            .remove({_id:userId}, function (err, user) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(user);
                 }
             });
         return deferred.promise;
