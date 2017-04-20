@@ -87,7 +87,8 @@
     YOUR FEED
 </div>
 
-<div ng-hide="model.posts" id="page-error-success-message">
+<div ng-hide="model.posts.length >
+ 0" id="page-error-success-message">
     There is no feed to show. Bookmark a hackathon or two to get updates!
 </div>
 

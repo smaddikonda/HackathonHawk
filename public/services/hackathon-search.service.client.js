@@ -11,12 +11,12 @@
         return api;
 
         function searchHackathons() {
-            var url = 'http://hackathonwatch.com/api/hackathons/coming.json';
+            var url = 'https://hackathonwatch.com/api/hackathons/coming.json';
             return $http.get(url);
         }
 
         function searchHackathonById(hackathonid) {
-            var url = 'http://hackathonwatch.com/api/hackathons/' +hackathonid+ '.json';
+            var url = 'https://hackathonwatch.com/api/hackathons/' +hackathonid+ '.json';
             return $http.get(url);
         }
     }
