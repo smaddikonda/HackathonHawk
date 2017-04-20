@@ -20,11 +20,6 @@
                 controller: "SignupController",
                 controllerAs: "model"
             })
-            .when("/password-reset", {
-                templateUrl: "views/templates/common/password-reset.view.client.html",
-                controller: "PasswordResetController",
-                controllerAs: "model"
-            })
             .when("/organizer-login", {
                 templateUrl: "views/templates/organizer/organizer-login.view.client.html",
                 controller: "OrganizerLoginController",
