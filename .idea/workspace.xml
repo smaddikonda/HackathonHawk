@@ -2,59 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5460fdf7-c47d-458f-88d6-e2e4d6cc860f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/views/controllers/user/friend-finder.controller.client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/views/controllers/user/friend-profile.controller.client.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/views/templates/admin/unauthorized.view.client.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/views/templates/user/friend-finder.view.client.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/views/templates/user/friend-profile.view.client.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/models/group/group.model.server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/models/group/group.schema.server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/services/group.service.server.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/config.js" afterPath="$PROJECT_DIR$/public/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/services/organizer.service.client.js" afterPath="$PROJECT_DIR$/public/services/organizer.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/services/post.service.client.js" afterPath="$PROJECT_DIR$/public/services/post.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/services/user.service.client.js" afterPath="$PROJECT_DIR$/public/services/user.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/admin/admin-edit-organizer.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/admin/admin-edit-organizer.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/admin/admin-edit-user.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/admin/admin-edit-user.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/admin/admin-home.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/admin/admin-home.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/admin/admin-manage-organizer.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/admin/admin-manage-organizer.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/admin/admin-manage-user.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/admin/admin-manage-user.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/organizer/organizer-home.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/organizer/organizer-home.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/organizer/organizer-new-hackathon.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/organizer/organizer-new-hackathon.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/organizer/organizer-signup.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/organizer/organizer-signup.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/user/bookmark.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/user/bookmark.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/user/network.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/user/network.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/user/profile.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/user/profile.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/user/search.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/user/search.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/user/signup.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/user/signup.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/user/single-hackathon-search.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/user/single-hackathon-search.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/controllers/user/user-home.controller.client.js" afterPath="$PROJECT_DIR$/public/views/controllers/user/user-home.controller.client.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/admin/admin-dashboard.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/admin/admin-dashboard.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/common/main.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/common/main.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/organizer/organizer-edit-hackathon.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/organizer/organizer-edit-hackathon.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/organizer/organizer-home.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/organizer/organizer-home.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/organizer/organizer-new-hackathon.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/organizer/organizer-new-hackathon.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/organizer/organizer-signup.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/organizer/organizer-signup.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/user/bookmarks.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/user/bookmarks.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/user/login.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/user/login.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/user/network.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/user/network.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/user/profile.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/user/profile.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/user/search.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/user/search.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/user/signup.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/user/signup.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/user/single-hackathon-search.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/user/single-hackathon-search.view.client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/admin/admin-edit-organizer.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/admin/admin-edit-organizer.view.client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/admin/admin-edit-user.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/admin/admin-edit-user.view.client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/admin/admin-manage-organizer.view.html" afterPath="$PROJECT_DIR$/public/views/templates/admin/admin-manage-organizer.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/admin/admin-manage-user.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/admin/admin-manage-user.view.client.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/templates/user/user-dashboard.view.client.html" afterPath="$PROJECT_DIR$/public/views/templates/user/user-dashboard.view.client.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/app.js" afterPath="$PROJECT_DIR$/server/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/models.server.js" afterPath="$PROJECT_DIR$/server/models/models.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/organizer/organizer.model.server.js" afterPath="$PROJECT_DIR$/server/models/organizer/organizer.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/post/post.model.server.js" afterPath="$PROJECT_DIR$/server/models/post/post.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/user/user.model.server.js" afterPath="$PROJECT_DIR$/server/models/user/user.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/user/user.schema.server.js" afterPath="$PROJECT_DIR$/server/models/user/user.schema.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/services/organizer.service.server.js" afterPath="$PROJECT_DIR$/server/services/organizer.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/services/post.service.server.js" afterPath="$PROJECT_DIR$/server/services/post.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/services/user.service.server.js" afterPath="$PROJECT_DIR$/server/services/user.service.server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -72,11 +26,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="user.service.server.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/services/user.service.server.js">
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+            <state relative-caret-position="526">
+              <caret line="169" column="42" lean-forward="true" selection-start-line="169" selection-start-column="42" selection-end-line="169" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-edit-user.view.client.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/views/templates/admin/admin-edit-user.view.client.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="35" lean-forward="true" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -95,8 +59,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>c</find>
-      <find>hh-nav</find>
       <find>navbar-menu</find>
       <find>navbar-menu-links</find>
       <find>ul li</find>
@@ -125,6 +87,8 @@
       <find>navbar-toggle</find>
       <find>dx</find>
       <find>dz-ma</find>
+      <find>google</find>
+      <find>admin</find>
     </findStrings>
     <replaceStrings>
       <replace>l&quot;</replace>
@@ -137,21 +101,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/views/templates/admin/admin-manage-user.view.client.html" />
-        <option value="$PROJECT_DIR$/public/views/controllers/organizer/organizer-edit-hackathon.controller.client.js" />
-        <option value="$PROJECT_DIR$/public/services/user.service.client.js" />
-        <option value="$PROJECT_DIR$/server/models/user/user.schema.server.js" />
         <option value="$PROJECT_DIR$/public/views/controllers/admin/admin-home.controller.client.js" />
         <option value="$PROJECT_DIR$/public/views/controllers/admin/admin-edit-organizer.controller.client.js" />
         <option value="$PROJECT_DIR$/public/views/controllers/admin/admin-edit-user.controller.client.js" />
         <option value="$PROJECT_DIR$/public/views/controllers/admin/admin-manage-organizer.controller.client.js" />
         <option value="$PROJECT_DIR$/public/views/controllers/admin/admin-manage-user.controller.client.js" />
-        <option value="$PROJECT_DIR$/public/views/templates/admin/admin-dashboard.view.client.html" />
         <option value="$PROJECT_DIR$/public/views/templates/admin/unauthorized.view.client.html" />
         <option value="$PROJECT_DIR$/public/views/controllers/organizer/organizer-new-hackathon.controller.client.js" />
         <option value="$PROJECT_DIR$/public/views/templates/common/main.view.client.html" />
         <option value="$PROJECT_DIR$/public/views/templates/user/login.view.client.html" />
-        <option value="$PROJECT_DIR$/public/views/templates/user/user-dashboard.view.client.html" />
         <option value="$PROJECT_DIR$/public/config.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/views/controllers/user/user-home.controller.client.js" />
@@ -188,6 +146,12 @@
         <option value="$PROJECT_DIR$/public/views/templates/user/friend-finder.view.client.html" />
         <option value="$PROJECT_DIR$/public/views/controllers/user/friend-finder.controller.client.js" />
         <option value="$PROJECT_DIR$/server/services/user.service.server.js" />
+        <option value="$PROJECT_DIR$/public/views/templates/user/user-dashboard.view.client.html" />
+        <option value="$PROJECT_DIR$/public/views/templates/admin/admin-dashboard.view.client.html" />
+        <option value="$PROJECT_DIR$/public/views/templates/admin/admin-manage-user.view.client.html" />
+        <option value="$PROJECT_DIR$/public/views/templates/admin/admin-manage-organizer.view.html" />
+        <option value="$PROJECT_DIR$/public/views/templates/admin/admin-edit-organizer.view.client.html" />
+        <option value="$PROJECT_DIR$/public/views/templates/admin/admin-edit-user.view.client.html" />
       </list>
     </option>
   </component>
@@ -287,6 +251,98 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HackathonHawk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HackathonHawk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HackathonHawk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HackathonHawk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HackathonHawk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HackathonHawk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HackathonHawk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HackathonHawk" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -468,12 +524,12 @@
       <workItem from="1491578031924" duration="39345000" />
       <workItem from="1491885617611" duration="9980000" />
       <workItem from="1492111004086" duration="139594000" />
-      <workItem from="1492373520126" duration="138748000" />
+      <workItem from="1492373520126" duration="141429000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="409862000" />
+    <option name="totallyTimeSpent" value="412543000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -578,46 +634,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/views/templates/common/main.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="6" lean-forward="true" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/templates/user/login.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/templates/common/guest-search-result.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="25" lean-forward="false" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="48" column="79" lean-forward="false" selection-start-line="48" selection-start-column="79" selection-end-line="48" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/controllers/user/user-home.controller.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="46" column="9" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="46" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/templates/user/profile.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
@@ -874,14 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/templates/user/user-dashboard.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="35" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/templates/organizer/organizer-login.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -962,14 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
-          <caret line="104" column="14" lean-forward="true" selection-start-line="104" selection-start-column="14" selection-end-line="104" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -982,6 +982,62 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/templates/user/user-dashboard.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="3" column="3" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="40" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/templates/admin/admin-dashboard.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="26" column="3" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="26" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/templates/admin/admin-manage-user.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="6" lean-forward="false" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/templates/admin/admin-manage-organizer.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="6" lean-forward="false" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/templates/admin/admin-edit-organizer.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="6" lean-forward="false" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="169" column="42" lean-forward="true" selection-start-line="169" selection-start-column="42" selection-end-line="169" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/templates/admin/admin-edit-user.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="35" lean-forward="true" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
           <folding />
         </state>
       </provider>
