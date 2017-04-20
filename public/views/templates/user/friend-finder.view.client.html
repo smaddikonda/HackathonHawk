@@ -1,7 +1,5 @@
-<!--BG Video-->
 <div class="login-video-overlay"></div>
 
-<!--Navigation Bar-->
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -36,58 +34,43 @@
     </div>
 </nav>
 
+
 <div id="user-dashboard-main-content-upper-margin">
-    HACKATHON DETAILS
+    Find your hacker friends on Hackathon Hawk
 </div>
 
-<div id="single-search-result-main-content-div">
-
-    <div id="search-result-image"
-         class="search-result-elements">
-        <img src="../../../../content/images/hhLogo.png">
-    </div>
-
-    <div id="search-result-heading"
-         class="search-result-elements">
-        {{model.hackathon.name}}
-    </div>
-
-    <div id="search-result-start-time"
-         class="search-result-elements">
-        <span class="bold-fields">Start Time:</span> {{model.hackathon.start_timestamp * 1000| date:'yyyy-MM-dd HH:mm:ss'}}
-    </div>
-
-    <div id="search-result-end-time"
-         class="search-result-elements">
-        <span class="bold-fields">End Time:</span> &nbsp {{model.hackathon.finish_timestamp *1000| date:'yyyy-MM-dd HH:mm:ss'}}
-    </div>
-
-    <div id="search-result-full-address"
-         class="search-result-elements">
-        <span class="bold-fields">Address:</span> &nbsp&nbsp&nbsp {{model.hackathon.full_address}}
-    </div>
-
-    <div id="search-result-link-url"
-         class="search-result-elements">
-        <span class="bold-fields">URL:</span>
-        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <a href={{model.hackathon.public_url}} target="_blank">{{model.hackathon.public_url}}</a>
-    </div>
-
-    <div id="search-result-content"
-         class="search-result-elements">
-        <span class="bold-fields">Description:</span>
-        <div>{{model.hackathon.description}}</div>
-    </div>
-
-    <div id="bookmark-this-hackathon-button-div" class="search-result-elements">
-        <a ng-click="model.bookmark(model.hackathon)"
-           class="button-and-fields btn btn-info"
-           id="bookmark-this-hackathon-button">
-            Bookmark this Hackathon
-        </a>
-    </div>
-
+<div id="hh-friend-search-bar">
+    <input ng-model="result.username"
+           class="button-and-fields" type="search" name="search"
+           placeholder="search usernames">
+    <a class="btn btn-info button-and-fields"
+       ng-click="model.findFriendByUsername(result)">
+        Search
+    </a>
 </div>
 
+<div id="no-results-found">
+    {{model.errorMessage}}
+</div>
 
+<div ng-show="model.friends"
+     id="friend-search-main-content-div">
+    <ul class="list-group">
+        <li ng-repeat="f in model.friends"
+            class="list-group-item hh-list-group-item">
+            <div class="row">
+                <div class="col-xs-6">
+                    {{f.username}}
+                </div>
+                <div class="col-xs-6">
+
+                    <a ng-click="model.followUser(f)" ng-show="model.user.following.indexOf(f._id)==-1"
+                       class="btn btn-info pull-right">Follow</a>
+
+                    <a  ng-show="model.user.following.indexOf(f._id)>-1"
+                       class="btn btn-success pull-right">Following</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

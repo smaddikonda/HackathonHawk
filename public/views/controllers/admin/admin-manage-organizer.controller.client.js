@@ -3,9 +3,9 @@
         .module("HackathonHawk")
         .controller("AdminOrganizerManagerController", AdminOrganizerManagerController);
 
-    function AdminOrganizerManagerController(OrganizerService, $location, $route) {
+    function AdminOrganizerManagerController(OrganizerService, $location, $route, $rootScope) {
         var viewModel = this;
-
+        viewModel.currentUser = $rootScope.currentUser;
         viewModel.organizers = [];
 
         viewModel.editOrganizer = editOrganizer;

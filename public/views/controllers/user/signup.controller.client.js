@@ -48,11 +48,11 @@
                     .then(
                         function (response) {
                             var user = response.data;
-                            $rootScope.currentUser = user;
-                            if(user){
+                            if(user != null){
+                                $rootScope.currentUser = user;
                                 $location.url("/user/"+user._id);
-                            } else {
-                                viewModel.error = "User not created. Please retry";
+                            } else{
+                                viewModel.error = "Username already exists. Please pick another one.";
                             }
                         },
                         function (err) {

@@ -8,7 +8,9 @@ module.exports = function () {
         findOrganizerByCredentials: findOrganizerByCredentials,
         findAllHackathons: findAllHackathons,
         findHackathonByApiId: findHackathonByApiId,
-        updateOrganizer: updateOrganizer
+        updateOrganizer: updateOrganizer,
+        findAllBookmarkedHackathons: findAllBookmarkedHackathons,
+        deleteOrganizer: deleteOrganizer
     };
 
     var mongoose = require('mongoose');
@@ -22,20 +24,27 @@ module.exports = function () {
     function setModel(models) {
         model = models;
     }
-    
+
     function createOrganizer(organizer) {
         var deferred = q.defer();
-        OrganizerModel
-            .create(organizer, function (err, organizer) {
-                if(err) {
-                    deferred.abort(err);
-                } else {
-                    deferred.resolve(organizer);
+        OrganizerModel.findOne({organizername : organizer.organizername},
+            function (err, existingOrganizer) {
+                if(existingOrganizer == null) {
+                    OrganizerModel
+                        .create(organizer, function (err, organizer) {
+                            if(err) {
+                                deferred.abort(err);
+                            } else {
+                                deferred.resolve(organizer);
+                            }
+                        });
+                }else {
+                    deferred.resolve(null);
                 }
             });
         return deferred.promise;
     }
-    
+
     function findOrganizerById(organizerId) {
         var deferred = q.defer();
         OrganizerModel
@@ -48,7 +57,7 @@ module.exports = function () {
             });
         return deferred.promise;
     }
-    
+
     function findOrganizerByUsername(organizerName) {
         var deferred = q.defer();
         OrganizerModel
@@ -61,7 +70,7 @@ module.exports = function () {
             });
         return deferred.promise;
     }
-    
+
     function findOrganizerByCredentials(organizerName, password) {
         var deferred = q.defer();
         OrganizerModel
@@ -89,7 +98,7 @@ module.exports = function () {
             })
         return deferred.promise;
     }
-    
+
     function updateOrganizer(organizerId, organizer) {
         var deferred = q.defer();
         OrganizerModel
@@ -136,4 +145,33 @@ module.exports = function () {
             });
         return deferred.promise;
     }
+
+    function findAllBookmarkedHackathons(hackathonIds) {
+        var deferred = q.defer();
+        OrganizerModel
+            .find({_id: {$in: hackathonIds}},
+                function (err, hackathons) {
+                    if(err){
+                        console.log("Could not retrieve bookmarked hackathons")
+                    }
+                    else{
+                        deferred.resolve(hackathons);
+                    }
+                });
+        return deferred.promise;
+    }
+
+    function deleteOrganizer(hacakthonId) {
+        var deferred = q.defer();
+        OrganizerModel
+            .remove({_id:hacakthonId}, function (err, organizer) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(organizer);
+                }
+            });
+        return deferred.promise;
+    }
+
 };

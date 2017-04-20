@@ -10,7 +10,8 @@
             findAllPostsByUser: findAllPostsByUser,
             findAllPostsByOrganizer: findAllPostsByOrganizer,
             findAllPostsByHackathon: findAllPostsByHackathon,
-            findPostById: findPostById
+            findPostById: findPostById,
+            deletePost:deletePost
         }
         return api;
         
@@ -36,6 +37,10 @@
         
         function findAllPostsByHackathon(hid) {
             return $http.get("/api/hackathon/" + hid + "/post");
+        }
+
+        function deletePost(postId) {
+            return $http.delete("api/post/" + postId);
         }
     }
 

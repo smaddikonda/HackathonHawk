@@ -3,12 +3,14 @@
         .module("HackathonHawk")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController(UserService, $routeParams, $location) {
+    function ProfileController(UserService, $routeParams, $location, $rootScope) {
         var viewModel = this;
         viewModel.uid = $routeParams['uid'];
+        viewModel.currentUser = $rootScope.currentUser;
         viewModel.user = null;
 
         viewModel.updateProfile = updateProfile;
+        viewModel.logout = logout;
 
         function init(){
             var promise = UserService.findUserById(viewModel.uid);
@@ -30,6 +32,16 @@
                             $location.url("/user/" + viewModel.uid);
                         }
                     })
+        }
+
+        function logout() {
+            UserService.logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/");
+                    }
+                )
         }
     }
 })();

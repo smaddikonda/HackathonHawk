@@ -1,25 +1,20 @@
 <div class="login-video-overlay"></div>
 
-<nav class="navbar navbar-inverse color-bar">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button"
-                    class="navbar-toggle hh-hamburger"
-                    data-toggle="collapse"
-                    data-target="#myCollapsibleNavbar">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="hh-brand navbar-brand" href="#">
-                hh
-            </a>
+            <a class="navbar-brand hh-brand" href="">hh</a>
         </div>
-        <div class="collapse navbar-collapse navbar-right" id="myCollapsibleNavbar">
-            <ul class="nav navbar-nav hh-navbar-ul">
-                <li><a class="navbar-menu-links" href="#/organizer/{{model.oid}}">Home</a></li>
-                <li><a class="navbar-menu-links" href="#/organizer/{{model.oid}}/hackathon/edit">Edit Info</a></li>
-                <li><a class="navbar-menu-links" href="" ng-click="model.logout()">Logout</a></li>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/organizer/{{model.oid}}">Home</a></li>
+                <li><a href="#/organizer/{{model.oid}}/hackathon/edit">Edit Hackathon</a></li>
+                <li><a href="" ng-click="model.logout()">Logout</a></li>
             </ul>
         </div>
     </div>

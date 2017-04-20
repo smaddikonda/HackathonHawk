@@ -7,7 +7,9 @@ module.exports = function () {
         findAllPostsByUser: findAllPostsByUser,
         findAllPostsByOrganizer: findAllPostsByOrganizer,
         findAllPostsByHackathon: findAllPostsByHackathon,
-        findPostById:findPostById
+        findPostById: findPostById,
+        findAllPostsForUser: findAllPostsForUser,
+        deletePost: deletePost
     };
 
     var mongoose = require('mongoose');
@@ -118,6 +120,36 @@ module.exports = function () {
                     deferred.resolve(postsForHackathon);
                 }
             })
+        return deferred.promise;
+    }
+
+    function findAllPostsForUser(hackathonIDs) {
+        var deferred = q.defer();
+        PostModel
+            .find({hackathonId: {$in: hackathonIDs}},
+                function (err, posts) {
+                    if(err){
+                        console.log("Getting posts")
+                    }
+                    else{
+                        deferred.resolve(posts);
+                    }
+                });
+        return deferred.promise;
+    }
+
+    function deletePost(postId) {
+        var deferred = q.defer();
+        PostModel
+            .remove({_id: postId},
+                function (err, post) {
+                    if(err){
+                        console.log("Deleting post")
+                    }
+                    else{
+                        deferred.resolve(post);
+                    }
+                });
         return deferred.promise;
     }
 };

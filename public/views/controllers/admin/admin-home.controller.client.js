@@ -3,13 +3,14 @@
         .module("HackathonHawk")
         .controller("AdminController", AdminController);
 
-    function AdminController(UserService, OrganizerService, $location) {
+    function AdminController(UserService, OrganizerService, $location, $rootScope) {
         var viewModel = this;
 
         viewModel.users = [];
         viewModel.organizers = [];
         viewModel.usersNumber = null;
         viewModel.organizersNumber = null;
+        viewModel.currentUser = $rootScope.currentUser;
 
         viewModel.manageUsers = manageUsers;
         viewModel.manageOrganizers = manageOrganizers;

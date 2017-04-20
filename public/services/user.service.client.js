@@ -14,9 +14,13 @@
             "login" : login,
             "logout" : logout,
             "register": register,
-            "findAllUsers": findAllUsers
+            "findAllUsers": findAllUsers,
+            "findFriendByUsername":findFriendByUsername,
+            "followUser":followUser,
+            "getAllUsersByIds":getAllUsersByIds
         };
         return api;
+
 
         function login(user) {
             return $http.post("/api/login", user);
@@ -56,6 +60,18 @@
 
         function findAllUsers() {
             return $http.get("/api/all");
+        }
+
+        //follow users functionality
+        function getAllUsersByIds(userIds) {
+            return $http.post("/get/users/ids",userIds);
+        }
+        function followUser(mainPersonID,followerID) {
+            return $http.post("/rest/following/"+mainPersonID+"/follower/"+followerID);
+        }
+
+        function findFriendByUsername(username) {
+            return $http.get("/rest/enduser/findfriends/"+username);
         }
     }
 })();

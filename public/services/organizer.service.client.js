@@ -12,7 +12,9 @@
             "updateOrganizer" : updateOrganizer,
             "deleteHackathon" : deleteHackathon,
             "findAllHackathons": findAllHackathons,
-            "findHackathonByApiId": findHackathonByApiId
+            "findHackathonByApiId": findHackathonByApiId,
+            "findAllPostsForUser": findAllPostsForUser,
+            "findAllBookmarkedHackathons": findAllBookmarkedHackathons
         }
         return api;
 
@@ -37,15 +39,23 @@
         }
 
         function findOrganizerByUsername(organizerName) {
-            return $http.egt("api/organizer?organizername=" + organizerName);
+            return $http.get("api/organizer?organizername=" + organizerName);
+        }
+
+        function findAllPostsForUser(hackathonIds) {
+            return $http.post("/api/organizer/user/allPosts", hackathonIds);
         }
 
         function updateOrganizer(organizerId, organizer) {
             return $http.put("/api/organizer/" + organizerId, organizer);
         }
-        
-        function deleteHackathon() {
 
+        function findAllBookmarkedHackathons(hackathonIds) {
+            return $http.post("/api/user/bookmarks", hackathonIds);
+        }
+        
+        function deleteHackathon(organizerId) {
+            return $http.delete("/api/organizer/" + organizerId);
         }
     }
 

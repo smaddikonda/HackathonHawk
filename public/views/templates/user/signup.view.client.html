@@ -14,7 +14,8 @@
         </div>
         <!--login elements-->
         <div id="navbar-signup-button" class="pull-right">
-            <a class="btn btn-default button-and-fields">Sign up</a>
+            <a href="#/signup"
+               class="btn btn-default button-and-fields">Sign up</a>
         </div>
 
         <div id="navbar-login-button" class="pull-right">
@@ -26,14 +27,18 @@
 <div id="signup-page-signup-form">
     <div id="login-page-dz-brand" class="hh-brand-name">Hackathon Hawk</div>
 
-    <div id="page-error-success-message">{{model.error}}</div>
-
     <form id="signup-page-form-input-elements-div">
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{model.error}}
+        </div>
+
         <div class="input-form-element-group">
             <div class="input-form-text">First Name</div>
             <div class="input-form-fields-text">
                 <input ng-model="user.firstName"
-                        class="button-and-fields" type="text" placeholder="Jane">
+                       class="button-and-fields" type="text" placeholder="Jane">
             </div>
         </div>
 

@@ -18,9 +18,13 @@
 <div id="signup-page-signup-form">
     <div id="login-page-dz-brand" class="hh-brand-name">Hackathon Hawk</div>
     <div id="organization-signup">Hackathon Organizer Signup</div>
-    <div id="page-error-success-message">{{model.error}}</div>
 
     <form id="signup-page-form-input-elements-div">
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{model.error}}
+        </div>
         <div class="input-form-element-group">
             <div class="input-form-text">Organizer Name</div>
             <div class="input-form-fields-text">

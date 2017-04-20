@@ -1,32 +1,80 @@
 <div class="login-video-overlay"></div>
 
-<nav class="navbar navbar-inverse color-bar">
+<!-- New Navbar -->
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button"
-                    class="navbar-toggle hh-hamburger"
-                    data-toggle="collapse"
-                    data-target="#myCollapsibleNavbar">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="hh-brand navbar-brand" href="#">
-                hh
-            </a>
+            <a class="navbar-brand hh-brand" href="#/user/{{model.currentUser._id}}">hh</a>
         </div>
-        <div class="collapse navbar-collapse navbar-right" id="myCollapsibleNavbar">
-            <ul class="nav navbar-nav hh-navbar-ul">
-                <li><a class="navbar-menu-links" href="#/user/{{model.uid}}/home">Home</a></li>
-                <li><a class="navbar-menu-links" href="#/user/{{model.uid}}/search">Search Hackathons</a></li>
-                <li><a class="navbar-menu-links" href="#/user/{{model.uid}}/bookmarks">Bookmarks</a></li>
-                <li><a class="navbar-menu-links" href="#/user/{{model.uid}}/profile">Profile</a></li>
-                <li><a class="navbar-menu-links" href="#/user/{{model.uid}}/network">Network</a></li>
-                <li><a class="navbar-menu-links" href="" ng-click="model.logout()">Logout</a></li>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/user/{{model.currentUser._id}}">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" target="_self">Hackathons<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/user/{{model.currentUser._id}}/search">Search</a></li>
+                        <li><a href="#/user/{{model.currentUser._id}}/bookmarks">Bookmarks</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" target="_self">Network<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/user/{{model.currentUser._id}}/friend">Find hackers</a></li>
+                        <li><a href="#/user/{{model.currentUser._id}}/network">Hackers</a></li>
+                    </ul>
+                </li>
+                <li><a href="#/user/{{model.currentUser._id}}/profile">Profile</a></li>
+                <li><a href="" ng-click="model.logout(model.currentUser)">Logout</a></li>
             </ul>
         </div>
     </div>
 </nav>
+
+<!--end of Nav bar-->
+
+
+
+
+
+<!--<nav class="navbar navbar-inverse color-bar">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button"-->
+                    <!--class="navbar-toggle hh-hamburger"-->
+                    <!--data-toggle="collapse"-->
+                    <!--data-target="#myCollapsibleNavbar">-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <!--<a class="hh-brand navbar-brand" href="#">-->
+                <!--hh-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--<div class="collapse navbar-collapse navbar-right" id="myCollapsibleNavbar">-->
+            <!--<ul class="nav navbar-nav hh-navbar-ul">-->
+                <!--<li ng-show="model.currentUser.roles.indexOf('ADMIN')>-1">-->
+                    <!--<a class="navbar-menu-links"-->
+                       <!--href="#/admin">-->
+                        <!--Admin-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li><a class="navbar-menu-links" href="#/user/{{model.uid}}/home">Home</a></li>-->
+                <!--<li><a class="navbar-menu-links" href="#/user/{{model.uid}}/search">Hackathons</a></li>-->
+                <!--<li><a class="navbar-menu-links" href="#/user/{{model.uid}}/friend">Find Friends</a></li>-->
+                <!--<li><a class="navbar-menu-links" href="#/user/{{model.uid}}/bookmarks">Bookmarks</a></li>-->
+                <!--<li><a class="navbar-menu-links" href="#/user/{{model.uid}}/profile">Profile</a></li>-->
+                <!--<li><a class="navbar-menu-links" href="#/user/{{model.uid}}/network">Network</a></li>-->
+                <!--<li><a class="navbar-menu-links" href="" ng-click="model.logout()">Logout</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
 
 
 <div id="user-dashboard-main-content-upper-margin">
@@ -34,27 +82,30 @@
     YOUR FEED
 </div>
 
-<div ng-hide="model.allPosts" id="page-error-success-message">
+<div ng-hide="model.posts" id="page-error-success-message">
     There is no feed to show. Bookmark a hackathon or two to get updates!
 </div>
 
-<div ng-show="model.allPosts"
+<div ng-show="model.posts"
      id="user-dashboard-main-content-div">
 
     <ul class="list-group">
-        <li ng-repeat="p in model.allPosts"
-            class="list-group-item hh-list-group-item">
+        <li id="user-feed-list-group-item"
+            ng-repeat="p in model.posts | orderBy: '-dateCreated'"
+            class="list-group-item">
 
-            <div>
-                Posted by: {{p.posterName}}
+            <div id="poster-name" class="posts-display">
+                <a href="#/user/{{model.currentUser._id}}/search/organizer/{{p.hackathonId}}">
+                    {{p.posterName}}
+                </a>
+
+                <span id="posted-date" class="pull-right">
+                    posted on: {{p.dateCreated | date:'medium'}}
+                </span>
             </div>
 
-            <div class="posts-display">
-                Date: {{p.dateCreated}}
-            </div>
-
-            <div>
-                Content: {{p.postcontent}}
+            <div id="posted-content" class="posts-display">
+                {{p.postcontent}}
             </div>
 
         </li>

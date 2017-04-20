@@ -31,10 +31,14 @@
                 var promise = OrganizerService.updateOrganizer(viewModel.oid, organizer);
                 promise.then(
                     function successCallback(response) {
-                        $location.url("/organizer/" + viewModel.oid);
+                        if(response.status == 200){
+                            $location.url("/organizer/" + viewModel.oid);
+                        } else{
+                            viewModel.error = "Posting the hackathon failed. Please retry.";
+                        }
                     },
                     function errorCallback(response) {
-                        viewModel.error = "Posting the hackathon failed. Please retry."
+                        viewModel.error = "Posting the hackathon failed. Please retry.";
                     }
                 );
             }

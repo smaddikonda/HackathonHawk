@@ -7,9 +7,12 @@
         var viewModel = this;
 
         viewModel.uid = $routeParams['uid'];
+        viewModel.currentUser = $rootScope.currentUser;
         viewModel.user = null;
         viewModel.bookmarks = null;
         viewModel.allPosts = null;
+
+        viewModel.posts = [];
         
         viewModel.logout = logout;
 
@@ -20,13 +23,14 @@
                     function successCallback(response) {
                         viewModel.user = response.data;
                         viewModel.bookmarks = viewModel.user.bookmarks;
-                        for (b in viewModel.bookmarks) {
-                            OrganizerService.findAllPostsByHackathon(b)
-                                .then(function (response) {
-                                    var posts = response.data;
-                                    viewModel.allPosts.concat(posts);
-                                });
-                        }
+                        var promise = OrganizerService.findAllPostsForUser(viewModel.bookmarks);
+                        promise
+                            .then(function (response) {
+                                var posts = response.data;
+                                if(posts){
+                                    viewModel.posts = posts;
+                                }
+                            });
                     }
                 );
         }

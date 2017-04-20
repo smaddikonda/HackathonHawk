@@ -10,12 +10,13 @@
 
         function signup(organizer) {
             var promise = OrganizerService.createOrganizer(organizer);
-            promise.then(function successCallback(response) {
-                    organizer = response.data;
-                    if(organizer) {
+            promise.then(
+                function successCallback(response) {
+                    var organizer = response.data;
+                    if(organizer!=null) {
                         $location.url("/organizer/" + organizer._id);
                     } else {
-                        viewModel.error = "Organizer not created. Please retry";
+                        viewModel.error = "Organizer name already exists. Please pick a different one.";
                     }
                 },
                 function errorCallback(response) {

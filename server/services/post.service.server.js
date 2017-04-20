@@ -6,7 +6,19 @@ module.exports = function (app, postModel) {
     app.get("/api/organizer/:oid/post", findAllPostsByOrganizer);
     app.get("/api/hackathon/:hid/post", findAllPostsByHackathon);
     app.get("/api/post/:pid", findPostById);
+    app.post("/api/organizer/user/allPosts", findAllPostsForUser);
+    app.delete("/api/post/:pid", deletePost )
 
+    function findAllPostsForUser(req, res) {
+        var hackathonIDs = req.body;
+        postModel
+            .findAllPostsForUser(hackathonIDs)
+            .then(function (posts){
+                res.json(posts);
+            }, function (error) {
+                res.sendStatus(500);
+            })
+    }
     function createPost(req, res) {
         var newPost = req.body;
         var hackathonId = req.query.hid;
@@ -70,7 +82,7 @@ module.exports = function (app, postModel) {
             );
     }
 
-    function findPostById() {
+    function findPostById(req, res) {
         var postId = req.params.pid;
         postModel
             .findPostById(postId)
@@ -81,6 +93,19 @@ module.exports = function (app, postModel) {
                     res.sendStatus(500).send(err);
                 }
             );
+    }
+
+    function deletePost(req, res) {
+        var postId = req.params.pid;
+        postModel
+            .deletePost(postId)
+            .then(
+                function (post) {
+                    res.json(post);
+                }, function (err) {
+                    res.sendStatus(500).send(err);
+                }
+            )
     }
 
 };

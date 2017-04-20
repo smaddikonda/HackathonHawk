@@ -3,9 +3,9 @@
         .module("HackathonHawk")
         .controller("AdminEditUserController", AdminEditUserController);
 
-    function AdminEditUserController(UserService, $routeParams, $location) {
+    function AdminEditUserController(UserService, $routeParams, $location, $rootScope) {
         var viewModel = this;
-
+        viewModel.currentUser = $rootScope.currentUser;
         viewModel.uid = $routeParams['uid'];
         viewModel.user = null;
 

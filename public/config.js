@@ -66,27 +66,58 @@
             .when("/user/:uid/search", {
                 templateUrl: "views/templates/user/search.view.client.html",
                 controller: "SearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
             })
-            .when("/user/:uid/search/organizer/:hid/", {
+            .when("/user/:uid/search/organizer/:hid", {
                 templateUrl: "views/templates/user/single-hackathon-search.view.client.html",
                 controller: "SingleHackathonSearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
             })
             .when("/user/:uid/profile", {
                 templateUrl: "views/templates/user/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
             })
             .when("/user/:uid/bookmarks", {
                 templateUrl: "views/templates/user/bookmarks.view.client.html",
                 controller: "BookmarkController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
             })
             .when("/user/:uid/network", {
                 templateUrl: "views/templates/user/network.view.client.html",
                 controller: "NetworkController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
+            })
+            .when("/user/:uid/friend", {
+                templateUrl: "views/templates/user/friend-finder.view.client.html",
+                controller: "FriendFinderController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
+            })
+            .when("/user/:uid/friend/:fid", {
+                templateUrl: "views/templates/user/friend-profile.view.client.html",
+                controller: "FriendProfileController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
             })
 
             //Organizer routes
@@ -106,6 +137,7 @@
                 controllerAs: "model"
             })
 
+            //Admin routes
             .when("/admin",{
                 templateUrl:"views/templates/admin/admin-dashboard.view.client.html",
                 controller: "AdminController",
@@ -146,6 +178,9 @@
                     isAdmin : checkIsAdmin
                 }
             })
+            .when("/unauthorized", {
+                templateUrl : "views/templates/admin/unauthorized.view.client.html"
+            })
 
 
             .otherwise({
@@ -174,11 +209,16 @@ function checkLoggedIn($q, $timeout, $http, $location, $rootScope) {
 function checkIsAdmin($q, $timeout, $http, $location, $rootScope) {
     var deferred = $q.defer();
     $http.get('/api/isAdmin')
-        .success(function(user) {
-            if (user !== '0') {
-                $rootScope.currentUser = user;
+        .then(function(user) {
+            if (user.data !== '0') {
+                $rootScope.currentUser = user.data;
                 deferred.resolve();
+            } else{
+                $location.url("/unauthorized");
             }
+        },
+        function (err) {
+            $location.url("/unauthorized");
         });
     return deferred.promise;
 }

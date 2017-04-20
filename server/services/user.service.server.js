@@ -20,6 +20,11 @@ module.exports = function (app, userModel) {
     app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get("/api/all", findAllUsers);
 
+    app.get("/rest/enduser/findfriends/:username",searchForUsername);
+    app.post("/rest/following/:mainPersonID/follower/:followerID",followUser);
+    app.post("/get/users/ids",getUsersOnSetOfIDS);
+
+
     app.get("/api/isAdmin",
 
 
@@ -43,6 +48,9 @@ module.exports = function (app, userModel) {
                                 res.send('0');
                             }
                         });
+            }
+            else {
+                res.send('0');
             }
         });
 
@@ -77,7 +85,10 @@ module.exports = function (app, userModel) {
                                 res.json(user);
                             }
                         });
+                    } else{
+                        res.json(null);
                     }
+
                 }
             );
     }
@@ -125,8 +136,8 @@ module.exports = function (app, userModel) {
     var googleConfig = {
         clientID     : "836035500148-r0eh57ahbom7f676mtp0rf3peamt5fkb.apps.googleusercontent.com",
         clientSecret : "cggihC4tMa8Fjgz8bRCvufzT",
-        callbackURL  : "http://localhost:3000/auth/google/callback"
-        //callbackURL  : "http://hackathonhawk.herokuapp.com/auth/google/callback"
+        //callbackURL  : "http://localhost:3000/auth/google/callback"
+        callbackURL  : "http://hackathonhawk.herokuapp.com/auth/google/callback"
     };
 
     app.get('/auth/google/callback',
@@ -265,6 +276,44 @@ module.exports = function (app, userModel) {
             }, function (error) {
                 res.sendStatus(500)
             });
+    }
+
+    //follow user functionality
+    function searchForUsername(req,res) {
+        var username = req.params.username;
+        userModel
+            .searchForUsername(username)
+            .then(function (users) {
+                res.json(users);
+            }, function (error) {
+                res.sendStatus(500);
+            });
+    }
+
+    function followUser(req,res) {
+        var mainPersonID = req.params.mainPersonID;
+        var followerID = req.params.followerID;
+        userModel
+            .followUser(mainPersonID,followerID)
+            .then(function (user) {
+                res.json(user);
+            }, function (error) {
+                res.sendStatus(500);
+            });
+
+    }
+
+    function getUsersOnSetOfIDS(req,res) {
+        var userIds = req.body;
+        userModel
+            .getUsersOnSetOfIDS(userIds)
+            .then(function (users) {
+                    res.json(users);
+                }, function (error) {
+                    res.sendStatus(500);
+                }
+            );
+
     }
 
 };

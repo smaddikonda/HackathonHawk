@@ -9,7 +9,11 @@ module.exports = function () {
         updateUser:updateUser,
         findUserByGoogleId: findUserByGoogleId,
         findAllUsers: findAllUsers,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        getUsersOnSetOfIDS:getUsersOnSetOfIDS,
+        followUser:followUser,
+        searchForUsername:searchForUsername
+
     };
 
     var mongoose = require('mongoose');
@@ -31,12 +35,19 @@ module.exports = function () {
     function createUser(user) {
         var deferred = q.defer();
         user.roles = ["USER"];
-        UserModel
-            .create(user, function (err, user) {
-                if(err) {
-                    deferred.abort(err);
-                } else {
-                    deferred.resolve(user);
+        UserModel.findOne({username: user.username},
+            function (err, existingUser) {
+                if(existingUser == null){
+                    UserModel
+                        .create(user, function (err, user) {
+                            if(err) {
+                                deferred.abort(err);
+                            } else {
+                                deferred.resolve(user);
+                            }
+                        });
+                } else{
+                    deferred.resolve(null);
                 }
             });
         return deferred.promise;
@@ -138,4 +149,59 @@ module.exports = function () {
             });
         return deferred.promise;
     }
+
+    //follow functionality
+
+    function searchForUsername(uname) {
+        var deferred = q.defer();
+        UserModel
+            .find({username: { "$regex": uname, "$options": "i" }}, function (err, users) {
+                if(!users) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(users);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function followUser(mainPersonID,followerID) {
+        var deferred = q.defer();
+        UserModel
+            .find({_id:mainPersonID}, function (err, users) {
+                var mainPerson = users[0];
+                if(!mainPerson) {
+                    console.log("err");
+                    deferred.reject(err);
+                } else {
+                    UserModel
+                        .find({_id:followerID}, function (err, users) {
+                            var follower = users[0];
+                            if(!follower) {
+                                console.log("err");
+                                deferred.reject(err);
+                            } else {
+                                mainPerson.followers.push(follower._id);
+                                follower.following.push(mainPerson._id);
+                                mainPerson.save();
+                                follower.save();
+                                deferred.resolve(follower);
+                            }
+                        });
+                }
+            });
+        return deferred.promise;
+    }
+
+    function getUsersOnSetOfIDS(userIds){
+        var deferred = q.defer();
+        UserModel
+            .find({ _id: { $in: userIds}},
+                function (err, users) {
+                    deferred.resolve(users);
+                });
+        return deferred.promise;
+    }
+
+
 };

@@ -29,10 +29,8 @@ module.exports = function(app)
     require("./services/user.service.server.js")(app, models.UserModel);
     require("./services/organizer.service.server.js")(app, models.OrganizerModel);
     require("./services/post.service.server")(app, models.PostModel);
-    require("./services/group.service.server")(app, models.GroupModel);
 
     /***********************************************************/
-
 
 
     function findAllMessages(req, res) {

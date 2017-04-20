@@ -1,7 +1,17 @@
 .dz-main-viewport-div {
     overflow-y: auto !important;
+    overflow-x: hidden !important;
 }
 
+@media screen and (max-width: 768px) {
+    .dz-main-viewport-div{
+        height: 1050px !important;
+    }
+}
+
+.navbar-toggle{
+    margin-top: 20px !important;
+}
 
 body {
     font-size: 16px;
@@ -250,7 +260,7 @@ hr {
     margin-right: auto;
     text-align: center;
     font-weight: 300;
-    width: 400px;
+    width: 335px;
     background-color: rgb(255, 131, 0) !important;
     border-color: rgb(55, 56, 94) !important;
 }
@@ -403,11 +413,8 @@ hr {
 }
 
 #login-page-login-button {
+    margin-top: 3vh;
     text-align: center;
-}
-
-#login-page-login-button a{
-
 }
 
 /****************************************************************************************/
@@ -430,6 +437,7 @@ hr {
 }
 
 #signup-page-form-input-elements-div {
+    font-family: "Open Sans", sans-serif;
     position: relative;
     width: 300px !important;
     margin-left: auto;
@@ -438,6 +446,7 @@ hr {
 
 #signup-page-signup-button{
     text-align: center;
+    margin-top:3vh;
 }
 
 /*******************************************************************************************/
@@ -557,6 +566,31 @@ a .navbar-menu-links {
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 20px;
+    z-index: -1;
+}
+
+#hh-friend-search-bar{
+    position: relative;
+    margin-left: 20vw;
+    margin-right: 20vw;
+}
+
+#hh-friend-search-bar input {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 77%;
+    height: 34px;
+    border-color: white;
+    padding-bottom: 4px;
+    padding-left: 10px;
+}
+
+#hh-friend-search-bar a {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 21%;
 }
 
 #user-dashboard-main-content-lower-margin {
@@ -603,6 +637,10 @@ a .navbar-menu-links {
     margin-bottom: 10px;
 }
 
+textarea{
+    resize: none !important;
+}
+
 .posts-display {
     position: relative;
     margin-top: 10px;
@@ -638,17 +676,26 @@ a .navbar-menu-links {
     float: none;
     height: 100px;
     font-weight: 500;
-    font-size: 1.5em;
+    font-size: 1.7em;
     padding-top: 30px;
 }
 
 #search-result-content {
     position: relative;
-    float: left;
+}
+
+#bookmark-this-hackathon-button-div{
+    position: relative;
+    margin-top: 15px;
 }
 
 .search-result-elements {
     padding: 5px;
+    padding-left: 0px !important;
+}
+
+#hackathon-url a{
+    color: #b9e6e9 !important;
 }
 
 .bold-fields {
@@ -669,9 +716,11 @@ a .navbar-menu-links {
     position: relative;
     display: block;
     padding: 10px 15px;
-    margin-bottom: -1px;
+    margin-bottom: 25px !important;
     background-color: #ebebe0;
-    border: 3px solid #FF8300;
+    border-radius: 5px !important;
+    width: 100%;
+    z-index: 1;
 }
 
 #single-search-result-main-content-div {
@@ -685,6 +734,18 @@ a .navbar-menu-links {
 
 /******************************************************************************************/
 #page-error-success-message {
+    position: relative;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    color: white;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+#no-results-found {
     position: relative;
     text-align: center;
     margin-left: auto;
@@ -845,4 +906,207 @@ a .navbar-menu-links {
     margin-bottom: 10px;
     margin-left: 10vw;
     margin-right: 10vw;
+    margin-top: 20px;
+}
+
+#friend-search-main-content-div{
+    position: relative;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+    margin-top: 35px;
+}
+
+#network-main-div{
+    position: relative;
+    width: 78%;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+#network-followers{
+    position: relative;
+    width : 50%;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+    margin-top: 35px;
+}
+
+#network-following{
+    position: relative;
+    width : 50%;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+    margin-top: 35px;
+}
+
+#network-followers ul li{
+    width:200%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#network-following ul li{
+    width:200%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 930px){
+
+    .hh-hamburger{
+        display: inline !important;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 930px){
+
+    .hh-hamburger{
+        margin-right: -85vw !important;
+    }
+
+}
+
+#your-following-header{
+    font-size: larger;
+}
+
+#your-followers-header{
+    font-size: larger;
+}
+
+
+
+
+
+
+
+
+
+/**********************************************************************
+/**********************************************************************
+ */
+/*Nav bar Style*/
+
+
+.navbar{
+    background-color: rgb(74,100,145) !important;
+    height:75px;
+}
+
+
+.navbar-inverse .navbar-nav>li>a {
+    color: rgb(255,131,0) !important;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.25em;
+    font-weight: 600;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+.navbar-nav>li>ul>li>a {
+    color: rgb(255, 131, 0) !important;
+}
+
+.navbar-nav>li>ul>li>a:hover{
+    border-left: 5px solid rgb(255, 131, 0) !important;
+    background-color:  rgb(74,100,145) !important;
+}
+
+@media screen and (max-width:768px) {
+    .navbar-nav>li>a:hover {
+        border-top: none !important;
+        border-left: 5px solid rgb(255, 131, 0) !important;
+        border-bottom: none !important;
+    }
+}
+
+.navbar-nav>li>ul{
+    color: rgb(255,131,0) !important;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color:  rgb(74,100,145) !important;
+    margin-top: 5px;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    border-bottom: 5px solid;
+    padding-bottom: 15px;
+    border-color: rgb(255,131,0) !important;
+}
+
+.navbar-inverse .navbar-brand {
+    color: rgb(255,131,0) !important;
+    font-weight: bold;
+    padding:13px;
+}
+
+.navbar-nav{
+    background-color:  rgb(74,100,145) !important;
+    z-index: 1000;
+    position: relative;
+}
+
+/**********************************************************************
+/**********************************************************************/
+
+#poster-name{
+    background-color: rgb(74,100,145);
+    color: rgb(255,131,0);
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-top: 0px !important;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+#poster-name a{
+    font-size: 1.5em;
+    color: rgb(255,131,0);
+}
+
+#posted-date{
+    padding-top: 1px;
+    padding-right: 10px;
+    color: white;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+#delete-post-button {
+    padding: 0px;
+}
+
+#delete-post-button a{
+    margin-left: 40px;
+    font-size: 1.1em;
+    color: white !important;
+    padding: 4px !important;
+    margin-top: -4px;
+    margin-right: -5px;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+}
+
+#posted-content{
+    padding-left: 20px;
+}
+
+#user-feed-list-group-item{
+    position: relative;
+    display: block;
+    margin-bottom: 25px !important;
+    background-color: #ebebe0;
+    border-radius: 5px !important;
+    width: 100%;
+    z-index: 1;
+    padding:0px 0px 0px;
 }

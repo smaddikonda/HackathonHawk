@@ -3,19 +3,49 @@
         .module("HackathonHawk")
         .controller("SearchController", SearchController);
 
-    function SearchController(HackathonWatchService, OrganizerService, $location, $routeParams) {
+    function SearchController(UserService, HackathonWatchService, OrganizerService, $location, $routeParams, $rootScope) {
         var viewModel = this;
         viewModel.uid = $routeParams['uid'];
+        viewModel.currentUser = $rootScope.currentUser;
+
         viewModel.apiHackathons = [];
-        viewModel.createdHackathons = [];
+        viewModel.dbHackathons = [];
         viewModel.hackathons = [];
         
         viewModel.searchByHackathonId = searchByHackathonId;
+        viewModel.searchAPIHackathons = searchAPIHackathons;
+        viewModel.searchDBHackathons = searchDBHackathons;
+        viewModel.logout = logout;
 
         init();
         function init() {
-            viewModel.apiHackathons = searchAPIHackathons();
-
+            //First find all the API Hackathons
+            var promise = HackathonWatchService.searchHackathons();
+            promise.then(
+                function (response) {
+                    var apiHackathons = response.data;
+                    if (apiHackathons) {
+                        viewModel.apiHackathons = apiHackathons;
+                        //Find all the DB hackathons
+                        var promise = OrganizerService.findAllHackathons();
+                        promise
+                            .then(function (response) {
+                                var dbHackathons = response.data;
+                                if(dbHackathons){
+                                    viewModel.dbHackathons = dbHackathons;
+                                    //Filter DB Hackathons based on if .id is present.
+                                    for(var i=viewModel.dbHackathons.length-1; i>=0; i--){
+                                        var hack = viewModel.dbHackathons[i];
+                                        var apiId = hack.id;
+                                        if(apiId){
+                                            viewModel.dbHackathons.splice(i, 1);
+                                        }
+                                    }
+                                    viewModel.hackathons = viewModel.apiHackathons.concat(viewModel.dbHackathons);
+                                }
+                            })
+                    }
+                });
         }
 
         function searchAPIHackathons() {
@@ -24,7 +54,7 @@
                 function (response) {
                     var apiHackathons = response.data;
                     if (apiHackathons) {
-                        return apiHackathons;
+                        viewModel.apiHackathons = apiHackathons;
                     }
                 });
         }
@@ -34,11 +64,14 @@
             promise
                 .then(function (response) {
                     var dbHackathons = response.data;
+                    if(dbHackathons){
+                        viewModel.dbHackathons = dbHackathons;
+                    }
                 })
         }
 
-
         function searchByHackathonId(apiId, organizer_id) {
+            //Case when the hackathon has only .id but not ._id
             if(apiId && !organizer_id){
                 var promise = HackathonWatchService.searchHackathonById(apiId);
                 promise
@@ -46,20 +79,40 @@
                         function (response) {
                             var apiHackathon = response.data;
                             var organizer = apiHackathon;
-                            organizer.id = apiId;
-                            var promise = OrganizerService.createOrganizer(organizer);
-                            promise
-                                .then(
-                                    function (response) {
-                                        var organizer = response.data;
-                                        $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer._id+"/");
+                            var promise = OrganizerService.findHackathonByApiId(apiId);
+                            promise.then(
+                                function (response) {
+                                    var apiHack = response.data;
+                                    if(!apiHack){
+                                        organizer.id = apiId;
+                                        var promise = OrganizerService.createOrganizer(organizer);
+                                        promise
+                                            .then(
+                                                function (response) {
+                                                    var organizer = response.data;
+                                                    $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer._id+"/");
+                                                });
+                                    } else{
+                                        $location.url("/user/"+viewModel.uid+"/search/organizer/"+apiHack._id+"/");
                                     }
-                                );
+                                });
                         }
                     );
-            } else{
+            }
+            //case when hackathon
+            else{
                 $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer_id+"/");
             }
+        }
+
+        function logout() {
+            UserService.logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/");
+                    }
+                )
         }
     }
 })();
