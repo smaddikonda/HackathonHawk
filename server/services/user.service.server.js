@@ -17,7 +17,7 @@ module.exports = function (app, userModel) {
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
-    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    app.get('/auth/google', passport.authenticate('google', {scope : ['profile', 'email']}));
     app.get("/api/all", findAllUsers);
 
     app.get("/rest/enduser/findfriends/:username",searchForUsername);
@@ -134,14 +134,9 @@ module.exports = function (app, userModel) {
     }
 
     var googleConfig = {
-        clientID     : "836035500148-r0eh57ahbom7f676mtp0rf3peamt5fkb.apps.googleusercontent.com",
-        clientSecret : "cggihC4tMa8Fjgz8bRCvufzT",
-        callbackURL  : "http://localhost:3000/auth/google/callback"
-        //callbackURL  : "http://hackathonhawk.herokuapp.com/auth/google/callback"
-
-        // clientID     : process.env.GOOGLE_CLIENT_ID,
-        // clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-        // callbackURL  : process.env.GOOGLE_CALLBACK_URL
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL
     };
 
     app.get('/auth/google/callback',
