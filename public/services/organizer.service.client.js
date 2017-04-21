@@ -6,6 +6,7 @@
     function organizerService($http) {
         var api = {
             "createOrganizer" : createOrganizer,
+            "createOrganizerForAPIHackathon": createOrganizerForAPIHackathon,
             "findOrganizerById" : findOrganizerById,
             "findOrganizerByCredentials" : findOrganizerByCredentials,
             "findOrganizerByUsername" : findOrganizerByUsername,
@@ -20,6 +21,10 @@
 
         function createOrganizer(newOrganizer) {
             return $http.post("/api/organizer", newOrganizer);
+        }
+
+        function createOrganizerForAPIHackathon(newOrganizer) {
+            return $http.post("/api/organizer/hackathonWatch/add", newOrganizer);
         }
 
         function findAllHackathons() {

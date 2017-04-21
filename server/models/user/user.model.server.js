@@ -100,27 +100,33 @@ module.exports = function () {
 
     function updateUser(userId,user) {
         var deferred = q.defer();
-        UserModel
-            .update({_id:userId},
-                {
-                    username: user.username,
-                    password: user.password,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    email: user.email,
-                    bio: user.bio,
-                    bookmarks: user.bookmarks,
-                    posts: user.posts,
-                    groups: user.groups
-                },
-                function (err,user) {
-                    if(err){
-                        deferred.reject(err);
-                    } else {
-                        deferred.resolve(user);
-                    }
-                });
-
+        UserModel.findOne({username: user.username},
+            function (err, existingUser) {
+                if(existingUser == null || existingUser._id == userId){
+                    UserModel
+                        .update({_id:userId},
+                            {
+                                username: user.username,
+                                password: user.password,
+                                firstName: user.firstName,
+                                lastName: user.lastName,
+                                email: user.email,
+                                bio: user.bio,
+                                bookmarks: user.bookmarks,
+                                posts: user.posts,
+                                groups: user.groups
+                            },
+                            function (err,user) {
+                                if(err){
+                                    deferred.reject(err);
+                                } else {
+                                    deferred.resolve(user);
+                                }
+                            });
+                }else{
+                    deferred.resolve(null);
+                }
+            });
         return deferred.promise;
     }
 

@@ -3,6 +3,7 @@ module.exports = function () {
     var api = {
         setModel : setModel,
         createOrganizer: createOrganizer,
+        createOrganizerForAPIHackathon: createOrganizerForAPIHackathon,
         findOrganizerById: findOrganizerById,
         findOrganizerByUsername: findOrganizerByUsername,
         findOrganizerByCredentials: findOrganizerByCredentials,
@@ -30,6 +31,26 @@ module.exports = function () {
         OrganizerModel.findOne({organizername : organizer.organizername},
             function (err, existingOrganizer) {
                 if(existingOrganizer == null) {
+                    OrganizerModel
+                        .create(organizer, function (err, organizer) {
+                            if(err) {
+                                deferred.abort(err);
+                            } else {
+                                deferred.resolve(organizer);
+                            }
+                        });
+                }else {
+                    deferred.resolve(null);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function createOrganizerForAPIHackathon(organizer) {
+        var deferred = q.defer();
+        OrganizerModel.findOne({id : organizer.id},
+            function (err, existingApiHacakathonInDB) {
+                if(existingApiHacakathonInDB == null) {
                     OrganizerModel
                         .create(organizer, function (err, organizer) {
                             if(err) {

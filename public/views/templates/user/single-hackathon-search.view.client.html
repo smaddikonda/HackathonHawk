@@ -80,11 +80,24 @@
         <div>{{model.hackathon.description}}</div>
     </div>
 
-    <div id="bookmark-this-hackathon-button-div" class="search-result-elements">
+    <div>
+
+    </div>
+
+    <div ng-show="model.currentUser.bookmarks.indexOf(model.hackathon._id)==-1"
+            id="bookmark-this-hackathon-button-div" class="search-result-elements">
         <a ng-click="model.bookmark(model.hackathon)"
            class="button-and-fields btn btn-info"
            id="bookmark-this-hackathon-button">
             Bookmark this Hackathon
+        </a>
+    </div>
+
+    <div ng-show="model.currentUser.bookmarks.indexOf(model.hackathon._id)>-1"
+         id="bookmarked-already-div" class="search-result-elements">
+        <a class="button-and-fields btn btn-success"
+           id="bookmarked-already">
+            Bookmarked
         </a>
     </div>
 

@@ -23,15 +23,37 @@
         init();
 
         function updateProfile(user) {
-            var promise = UserService.updateUser(viewModel.uid, user);
-            promise
-                .then(
-                    function succesCallback(response) {
-                        var user = response.data;
-                        if(user) {
-                            $location.url("/user/" + viewModel.uid);
-                        }
-                    })
+
+            if( user == undefined ||
+                user.firstName == null ||
+                user.lastName == null ||
+                user.username == null ||
+                user.email == null ||
+                user.password == null ||
+                user.retypePassword == null) {
+                if(user && user.firstName && user.lastName && !user.email && user.password && user.retypePassword){
+                    viewModel.error = "Please enter a valid email id."
+                } else{
+                    viewModel.error = "Please provide all the fields."
+                }
+            } else {
+                if(user.password == user.retypePassword){
+                    var promise = UserService.updateUser(viewModel.uid, user);
+                    promise
+                        .then(
+                            function succesCallback(response) {
+                                var user = response.data;
+                                if(user) {
+                                    $location.url("/user/" + viewModel.uid);
+                                } else{
+                                    viewModel.error = "Username already exists. Please pick another one";
+                                }
+                            });
+
+                } else {
+                    viewModel.error = "The password fields do not match."
+                }
+            }
         }
 
         function logout() {

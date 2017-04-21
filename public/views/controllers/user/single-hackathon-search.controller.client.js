@@ -3,7 +3,7 @@
         .module("HackathonHawk")
         .controller("SingleHackathonSearchController", SingleHackathonSearchController);
 
-    function SingleHackathonSearchController(HackathonWatchService, OrganizerService, UserService, $location, $routeParams, $rootScope) {
+    function SingleHackathonSearchController(HackathonWatchService, OrganizerService, UserService, $location, $routeParams, $rootScope, $route) {
         var viewModel = this;
         viewModel.uid = $routeParams['uid'];
         viewModel.currentUser = $rootScope.currentUser;
@@ -43,6 +43,14 @@
                                     var user = response.data;
                                     if(user) {
                                         viewModel.success = "This Hackathon is now bookmarked";
+                                        var promise = UserService.findUserById(viewModel.uid);
+                                        promise
+                                            .then(function (response) {
+                                            var user = response.data;
+                                            if(user){
+                                                viewModel.currentUser = user;
+                                            }
+                                        });
                                     }
                                 });
                     });

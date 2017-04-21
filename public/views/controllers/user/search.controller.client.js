@@ -11,7 +11,7 @@
         viewModel.apiHackathons = [];
         viewModel.dbHackathons = [];
         viewModel.hackathons = [];
-        
+
         viewModel.searchByHackathonId = searchByHackathonId;
         viewModel.searchAPIHackathons = searchAPIHackathons;
         viewModel.searchDBHackathons = searchDBHackathons;
@@ -85,34 +85,37 @@
                                     var apiHack = response.data;
                                     if(!apiHack){
                                         organizer.id = apiId;
-                                        var promise = OrganizerService.createOrganizer(organizer);
+                                        var promise = OrganizerService.createOrganizerForAPIHackathon(organizer);
                                         promise
                                             .then(
                                                 function (response) {
                                                     var organizer = response.data;
-                                                    $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer._id+"/");
+                                                    if(organizer) {
+                                                        $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer._id+"/");
+                                                    } else{
+                                                        $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer_id+"/");
+                                                    }
                                                 });
                                     } else{
                                         $location.url("/user/"+viewModel.uid+"/search/organizer/"+apiHack._id+"/");
                                     }
                                 });
-                        }
-                    );
+                        });
             }
-            //case when hackathon
+                //case when hackathon
             else{
-                $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer_id+"/");
+                    $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer_id+"/");
+                }
+            }
+
+            function logout() {
+                UserService.logout()
+                    .then(
+                        function (response) {
+                            $rootScope.currentUser = null;
+                            $location.url("/");
+                        }
+                    )
             }
         }
-
-        function logout() {
-            UserService.logout()
-                .then(
-                    function (response) {
-                        $rootScope.currentUser = null;
-                        $location.url("/");
-                    }
-                )
-        }
-    }
-})();
+    })();

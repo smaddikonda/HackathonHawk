@@ -40,25 +40,34 @@
                 user.lastName == null ||
                 user.username == null ||
                 user.email == null ||
-                user.password == null) {
-                viewModel.error = "Please provide all the fields."
+                user.password == null ||
+                user.retypePassword == null) {
+                if(user && user.firstName && user.lastName && !user.email && user.password && user.retypePassword){
+                    viewModel.error = "Please enter a valid email id."
+                } else{
+                    viewModel.error = "Please provide all the fields."
+                }
             } else {
-                var promise = UserService.register(user);
-                promise
-                    .then(
-                        function (response) {
-                            var user = response.data;
-                            if(user != null){
-                                $rootScope.currentUser = user;
-                                $location.url("/user/"+user._id);
-                            } else{
-                                viewModel.error = "Username already exists. Please pick another one.";
+                if(user.password == user.retypePassword){
+                    var promise = UserService.register(user);
+                    promise
+                        .then(
+                            function (response) {
+                                var user = response.data;
+                                if(user != null){
+                                    $rootScope.currentUser = user;
+                                    $location.url("/user/"+user._id);
+                                } else{
+                                    viewModel.error = "Username already exists. Please pick another one.";
+                                }
+                            },
+                            function (err) {
+                                viewModel.error = "User not created. Please retry";
                             }
-                        },
-                        function (err) {
-                            viewModel.error = "User not created. Please retry";
-                        }
-                    );
+                        );
+                } else {
+                    viewModel.error = "The password fields do not match."
+                }
             }
         }
     }

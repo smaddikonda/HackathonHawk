@@ -12,6 +12,14 @@
             </a>
             <!--div class="devZoned-Name">devZoned</div-->
         </div>
+
+        <div id="navbar-signup-button" class="pull-right">
+            <a class="btn btn-default button-and-fields" href="#/organizer-signup">Sign up</a>
+        </div>
+
+        <div id="navbar-login-button" class="pull-right">
+            <a class="btn btn-default button-and-fields" href="#/organizer-login">Login</a>
+        </div>
     </div>
 </nav>
 
@@ -45,6 +53,14 @@
             <div class="input-form-text">Password</div>
             <div class="input-form-fields-text">
                 <input ng-model="organizer.password"
+                       class="button-and-fields" type="password" placeholder="**********">
+            </div>
+        </div>
+
+        <div class="input-form-element-group">
+            <div class="input-form-text">Confirm Password</div>
+            <div class="input-form-fields-text">
+                <input ng-model="organizer.retypePassword"
                        class="button-and-fields" type="password" placeholder="**********">
             </div>
         </div>
