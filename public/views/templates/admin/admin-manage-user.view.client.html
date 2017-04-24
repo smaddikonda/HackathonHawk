@@ -1,6 +1,6 @@
 <div class="login-video-overlay"></div>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -13,7 +13,10 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#/user/{{model.currentUser._id}}">Back to User Home</a>
+                    <a href="#/user/{{model.currentUser._id}}">User Home</a>
+                </li>
+                <li>
+                    <a href="#/admin">Admin Home</a>
                 </li>
                 <li>
                     <a href="#/admin/user">Manage Users</a>
@@ -21,6 +24,7 @@
                 <li>
                     <a href="#/admin/organizer">Manage Organizers</a>
                 </li>
+                <li><a href="#" ng-click="model.logout(model.currentUser)">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -50,15 +54,16 @@
             </div>
         </li>
 
-        <li ng-repeat="user in model.users" class="list-group-item">
+        <li ng-if="user._id != model.currentUser._id"
+            ng-repeat="user in model.users" class="list-group-item">
             <div class="row">
-                <div class="col-xs-3">
+                <div class="col-xs-3 admin-li-rows">
                     {{user.username}}
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-3 admin-li-rows">
                     {{user.email}}
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-3 admin-li-rows">
                     {{user.roles}}
                 </div>
                 <div class="col-xs-3">

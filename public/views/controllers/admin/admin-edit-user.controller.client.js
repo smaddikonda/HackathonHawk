@@ -10,6 +10,7 @@
         viewModel.user = null;
 
         viewModel.updateUser = updateUser;
+        viewModel.logout = logout;
 
         init();
         function init() {
@@ -22,13 +23,30 @@
                 );
         }
 
-        function updateUser(userid, user) {
-            var promise = UserService.updateUser(userid, user);
+        function updateUser(user) {
+            if(document.getElementById("admin-check-box").checked == true){
+                user.roles.push('ADMIN');
+            } else{
+                if(viewModel.user.roles.indexOf('ADMIN')>-1){
+                    user.roles.splice(user.roles.indexOf('ADMIN'),1);
+                }
+            }
+            var promise = UserService.updateUser(viewModel.uid, user);
             promise
                 .then(function (response) {
                     viewModel.user = response.data;
                     $location.url("/admin/user");
                 });
+        }
+
+        function logout() {
+            UserService.logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/");
+                    }
+                )
         }
     }
 })();

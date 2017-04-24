@@ -33,16 +33,14 @@
     <ul class="list-group">
         <li ng-repeat="h in model.hackathons"
             class="list-group-item hh-list-group-item">
+                <div id="search-result-image"
+                     class="search-result-elements">
+                    <img src="../../../../content/images/hhLogo.png">
+                </div>
 
-            <div id="search-result-image"
-                 class="search-result-elements">
-                <img src="../../../../content/images/hhLogo.png">
-            </div>
-
-            <div id="search-result-heading" class="search-result-elements">
-                <a href="" ng-click="model.searchByHackathonId(h.id)">{{h.name}}</a>
-            </div>
-
+                <div id="search-result-heading" class="truncate search-result-elements">
+                    <a href="" ng-click="model.searchByHackathonId(h.id)">{{h.name}}</a>
+                </div>
             <div id="search-result-start-time"
                  class="search-result-elements">
                 <span class="bold-fields">Start Time:</span> {{h.start_timestamp * 1000| date:'yyyy-MM-dd HH:mm:ss'}}
@@ -59,17 +57,11 @@
             </div>
 
             <div id="search-result-link-url"
-                 class="search-result-elements">
+                 class="search-result-elements truncate">
                 <span class="bold-fields">URL:</span>
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <a href={{h.public_url}} target="_blank">{{h.public_url}}</a>
             </div>
-
-            <!--div id="search-result-content"
-                 class="search-result-elements">
-                {{organizer.description}}
-            </div-->
-
         </li>
     </ul>
 

@@ -12,6 +12,7 @@ module.exports = function () {
         deleteUser: deleteUser,
         getUsersOnSetOfIDS:getUsersOnSetOfIDS,
         followUser:followUser,
+        unfollowUser:unfollowUser,
         searchForUsername:searchForUsername
 
     };
@@ -114,7 +115,7 @@ module.exports = function () {
                                 bio: user.bio,
                                 bookmarks: user.bookmarks,
                                 posts: user.posts,
-                                groups: user.groups
+                                roles: user.roles
                             },
                             function (err,user) {
                                 if(err){
@@ -192,6 +193,34 @@ module.exports = function () {
                                 mainPerson.save();
                                 follower.save();
                                 deferred.resolve(follower);
+                            }
+                        });
+                }
+            });
+        return deferred.promise;
+    }
+
+    function unfollowUser(mainPersonID, unfollowerID) {
+        var deferred = q.defer();
+        UserModel
+            .find({_id:mainPersonID}, function (err, users) {
+                var mainPerson = users[0];
+                if(!mainPerson) {
+                    console.log("err");
+                    deferred.reject(err);
+                } else {
+                    UserModel
+                        .find({_id:unfollowerID}, function (err, users) {
+                            var unfollower = users[0];
+                            if(!unfollower) {
+                                console.log("err");
+                                deferred.reject(err);
+                            } else {
+                                mainPerson.followers.splice(mainPerson.followers.indexOf(unfollower._id), 1);
+                                unfollower.following.splice(unfollower.following.indexOf(mainPerson._id), 1);
+                                mainPerson.save();
+                                unfollower.save();
+                                deferred.resolve(unfollower);
                             }
                         });
                 }

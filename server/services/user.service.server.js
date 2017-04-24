@@ -22,12 +22,11 @@ module.exports = function (app, userModel) {
 
     app.get("/rest/enduser/findfriends/:username",searchForUsername);
     app.post("/rest/following/:mainPersonID/follower/:followerID",followUser);
+    app.post("/rest/unfollowing/:mainPersonID/unfollower/:unfollowerID",unfollowUser);
     app.post("/get/users/ids",getUsersOnSetOfIDS);
 
 
     app.get("/api/isAdmin",
-
-
         function (req, res) {
             if (req.isAuthenticated()) {
 
@@ -134,9 +133,15 @@ module.exports = function (app, userModel) {
     }
 
     var googleConfig = {
-        clientID     : process.env.GOOGLE_CLIENT_ID,
-        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL  : process.env.GOOGLE_CALLBACK_URL
+        // clientID     : process.env.GOOGLE_CLIENT_ID,
+        // clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        // callbackURL  : process.env.GOOGLE_CALLBACK_URL
+
+        clientID:"836035500148-r0eh57ahbom7f676mtp0rf3peamt5fkb.apps.googleusercontent.com",
+        clientSecret:"cggihC4tMa8Fjgz8bRCvufzT",
+        callbackURL:"http://localhost:3000/auth/google/callback"
+
+
     };
 
     app.get('/auth/google/callback',
@@ -201,14 +206,24 @@ module.exports = function (app, userModel) {
     function updateUser(req, res) {
         var userId = req.params.userId;
         var user = req.body;
-        user.password = bcrypt.hashSync(user.password);
-        userModel
-            .updateUser(userId,user)
-            .then(function (user) {
-                res.json(user);
-            }, function (error) {
-                res.sendStatus(500);
+        userModel.findUserById(userId)
+            .then(function (existingUser) {
+               if(existingUser){
+                   if(user.password != existingUser.password){
+                       user.password = bcrypt.hashSync(user.password);
+                   }
+                   userModel
+                       .updateUser(userId,user)
+                       .then(function (user) {
+                           res.json(user);
+                       }, function (error) {
+                           res.sendStatus(500);
+                       });
+               }
             });
+
+
+
     }
 
     function findUserById(req, res) {
@@ -250,7 +265,11 @@ module.exports = function (app, userModel) {
         userModel
             .findUserByCredentials(username,password)
             .then(function (user) {
-                res.json(user);
+                if(user && bcrypt.compareSync(user.password, password)){
+                    res.json(user);
+                } else{
+                    res.sendStatus(500);
+                }
             }, function (error) {
                 res.sendStatus(500);
             });
@@ -300,7 +319,18 @@ module.exports = function (app, userModel) {
             }, function (error) {
                 res.sendStatus(500);
             });
+    }
 
+    function unfollowUser(req,res) {
+        var mainPersonID = req.params.mainPersonID;
+        var unfollowerID = req.params.unfollowerID;
+        userModel
+            .unfollowUser(mainPersonID,unfollowerID)
+            .then(function (user) {
+                res.json(user);
+            }, function (error) {
+                res.sendStatus(500);
+            });
     }
 
     function getUsersOnSetOfIDS(req,res) {

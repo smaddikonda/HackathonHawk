@@ -1,13 +1,16 @@
-.dz-main-viewport-div {
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
+
+#myNavbar{
+    max-height: 600px !important;
 }
 
+/*
 @media screen and (max-width: 768px) {
     .dz-main-viewport-div{
         height: 1050px !important;
+        overflow-y: auto !important;
     }
 }
+*/
 
 .navbar-toggle{
     margin-top: 20px !important;
@@ -566,12 +569,27 @@ a .navbar-menu-links {
     font-family: 'Open Sans', sans-serif;
     font-size: 1.5em;
     color: rgb(255, 131, 0);
-    margin-top: 40px;
+    margin-top: 120px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 20px;
-    z-index: -1;
+}
+
+#user-dashboard-main-content-upper-margin a{
+    margin-top: 20px;
+}
+
+#unauthorized-go-back {
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    color: rgb(255, 131, 0);
+    margin-top: 120px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
 }
 
 #hh-friend-search-bar{
@@ -681,7 +699,7 @@ textarea{
     float: none;
     height: 100px;
     font-weight: 500;
-    font-size: 1.7em;
+    font-size: 1.5em;
     padding-top: 30px;
 }
 
@@ -1119,4 +1137,42 @@ textarea{
     width: 100%;
     z-index: 1;
     padding:0px 0px 0px;
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+@media screen and (max-width:840px) {
+    #search-result-image {
+        display: none;
+    }
+
+    #search-result-heading{
+        height: 50px;
+        padding-top: 0px;
+    }
+}
+
+.friend-finder-individual-result-padding{
+    padding-top: 7px;
+}
+
+#hackathon-description{
+    text-align: justify;
+}
+
+#search-result-link-url a{
+    color: #0fb2ff;
+}
+
+#admin-check-box {
+    width: 27px;
+}
+
+.admin-li-rows{
+    padding-top: 7px;
 }

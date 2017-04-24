@@ -1,6 +1,6 @@
 <div class="login-video-overlay"></div>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -13,7 +13,10 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#/user/{{model.currentUser._id}}">Back to User Home</a>
+                    <a href="#/user/{{model.currentUser._id}}">User Home</a>
+                </li>
+                <li>
+                    <a href="#/admin">Admin Home</a>
                 </li>
                 <li>
                     <a href="#/admin/user">Manage Users</a>
@@ -21,6 +24,7 @@
                 <li>
                     <a href="#/admin/organizer">Manage Organizers</a>
                 </li>
+                <li><a href="#" ng-click="model.logout(model.currentUser)">Logout</a></li>
             </ul>
         </div>
     </div>
@@ -80,6 +84,14 @@
         </div>
 
         <div class="form-group">
+            <label for="admin-check-box">'ADMIN' previleges:</label>
+            <input id="admin-check-box"
+                   ng-checked="model.user.roles.indexOf('ADMIN') > -1"
+                   type="checkbox"
+                   class="form-control">
+        </div>
+
+        <div class="form-group">
             <label>Bio</label>
             <textarea ng-model="model.user.bio"
                       rows="5"
@@ -91,7 +103,7 @@
     </form>
 
     <a class="btn btn-success btn-block button-and-fields"
-       ng-click="model.updateProfile(model.user)">Update User Profile</a>
+       ng-click="model.updateUser(model.user)">Update User Profile</a>
 
     <a class="btn btn-danger btn-block button-and-fields"
        href="#/admin/user">Cancel</a>

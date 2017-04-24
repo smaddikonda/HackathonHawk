@@ -2,7 +2,7 @@
 <div class="login-video-overlay"></div>
 
 <!--Navigation Bar-->
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -14,6 +14,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
+                <li ng-show="model.currentUser.roles.indexOf('ADMIN')>-1">
+                    <a href="#/admin">
+                        Admin
+                    </a>
+                </li>
                 <li><a href="#/user/{{model.currentUser._id}}">Home</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" target="_self">Hackathons<span class="caret"></span></a>
@@ -51,7 +56,7 @@
                 <img src="../../../../content/images/hhLogo.png">
             </div>
 
-            <div id="search-result-heading" class="search-result-elements">
+            <div id="search-result-heading" class="truncate search-result-elements">
                 <a href="" ng-click="model.searchByHackathonId(h.id, h._id)">{{h.name}}</a>
             </div>
 

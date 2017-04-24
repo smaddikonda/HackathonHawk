@@ -10,6 +10,7 @@
         viewModel.organizer = null;
 
         viewModel.updateOrganizer = updateOrganizer;
+        viewModel.logout = logout;
 
         init();
         function init() {
@@ -22,13 +23,26 @@
                 );
         }
 
-        function updateOrganizer(organizerid, organizer) {
-            var promise = OrganizerService.updateOrganizer(organizerid, organizer);
+        function updateOrganizer(organizer) {
+            var promise = OrganizerService.updateOrganizer(viewModel.organizer._id, organizer);
             promise
                 .then(function (response) {
-                    viewModel.organizer = response.data;
-                    $location.url("/admin/organizer");
+                    var organizer = response.data;
+                    if(viewModel.organizer){
+                        viewModel.organizer = organizer;
+                        $location.url("/admin/organizer");
+                    }
                 });
+        }
+
+        function logout() {
+            UserService.logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/");
+                    }
+                )
         }
     }
 })();

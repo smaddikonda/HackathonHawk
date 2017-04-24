@@ -10,6 +10,7 @@
 
         viewModel.editOrganizer = editOrganizer;
         viewModel.deleteOrganizer = deleteOrganizer;
+        viewModel.logout = logout;
 
         init();
         function init() {
@@ -33,12 +34,22 @@
         }
 
         function deleteOrganizer(organizerId) {
-            var promise = OrganizerService.deleteUser(organizerId);
+            var promise = OrganizerService.deleteHackathon(organizerId);
             promise.then(
                 function (response) {
                     $route.reload();
                 }
             );
+        }
+
+        function logout() {
+            UserService.logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/");
+                    }
+                )
         }
     }
 })();

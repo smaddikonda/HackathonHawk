@@ -1,6 +1,6 @@
 <div class="login-video-overlay"></div>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -12,6 +12,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
+                <li ng-show="model.currentUser.roles.indexOf('ADMIN')>-1">
+                    <a href="#/admin">
+                        Admin
+                    </a>
+                </li>
                 <li><a href="#/user/{{model.currentUser._id}}">Home</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" target="_self">Hackathons<span class="caret"></span></a>
@@ -59,16 +64,18 @@
         <li ng-repeat="f in model.friends"
             class="list-group-item hh-list-group-item">
             <div class="row">
-                <div class="col-xs-6">
+                <div class="friend-finder-individual-result-padding col-xs-6">
                     {{f.username}}
                 </div>
                 <div class="col-xs-6">
 
-                    <a ng-click="model.followUser(f)" ng-show="model.user.following.indexOf(f._id)==-1"
+                    <a ng-click="model.followUser(f)"
+                       ng-show="model.user.following.indexOf(f._id)==-1"
                        class="btn btn-info pull-right">Follow</a>
 
-                    <a  ng-show="model.user.following.indexOf(f._id)>-1"
-                       class="btn btn-success pull-right">Following</a>
+                    <a ng-click="model.unfollowUser(f)"
+                            ng-show="model.user.following.indexOf(f._id)>-1"
+                       class="btn btn-success pull-right">Unfollow</a>
                 </div>
             </div>
         </li>

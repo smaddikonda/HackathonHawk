@@ -10,6 +10,7 @@
 
         viewModel.editUser = editUser;
         viewModel.deleteUser = deleteUser;
+        viewModel.logout = logout;
 
         init();
         function init() {
@@ -33,6 +34,16 @@
                     $route.reload();
                 }
             );
+        }
+
+        function logout() {
+            UserService.logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/");
+                    }
+                )
         }
     }
 })();

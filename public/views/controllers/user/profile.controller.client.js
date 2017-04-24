@@ -16,14 +16,15 @@
             var promise = UserService.findUserById(viewModel.uid);
             promise
                 .then(function successCallback(response) {
-                        viewModel.user = response.data;
+                        var user = response.data;
+                        user.retypePassword = user.password;
+                        viewModel.user = user;
                     }
                 )
         }
         init();
 
         function updateProfile(user) {
-
             if( user == undefined ||
                 user.firstName == null ||
                 user.lastName == null ||

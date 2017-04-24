@@ -17,6 +17,7 @@
             "findAllUsers": findAllUsers,
             "findFriendByUsername":findFriendByUsername,
             "followUser":followUser,
+            "unfollowUser": unfollowUser,
             "getAllUsersByIds":getAllUsersByIds
         };
         return api;
@@ -66,8 +67,13 @@
         function getAllUsersByIds(userIds) {
             return $http.post("/get/users/ids",userIds);
         }
+
         function followUser(mainPersonID,followerID) {
             return $http.post("/rest/following/"+mainPersonID+"/follower/"+followerID);
+        }
+
+        function unfollowUser(mainPersonID,unfollowerID) {
+            return $http.post("/rest/unfollowing/"+mainPersonID+"/unfollower/"+unfollowerID);
         }
 
         function findFriendByUsername(username) {

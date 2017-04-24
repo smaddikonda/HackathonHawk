@@ -14,6 +14,7 @@
 
         viewModel.manageUsers = manageUsers;
         viewModel.manageOrganizers = manageOrganizers;
+        viewModel.logout = logout;
 
         init();
         function init() {
@@ -22,8 +23,10 @@
                 .then(
                     function (response) {
                         var users = response.data;
-                        viewModel.users = users;
-                        viewModel.usersNumber = viewModel.users.length;
+                        if(users){
+                            viewModel.users = users;
+                            viewModel.usersNumber = viewModel.users.length;
+                        }
                     }
                 );
 
@@ -33,6 +36,12 @@
                     function (response) {
                         var hackathons = response.data;
                         viewModel.organizers = hackathons;
+                        for(var i=viewModel.organizers.length-1; i>=0; i--){
+                            var organizer = viewModel.organizers[i];
+                            if(!organizer.organizername){
+                                viewModel.organizers.splice(i, 1);
+                            }
+                        }
                         viewModel.organizersNumber = viewModel.organizers.length;
                     }
                 );
@@ -44,6 +53,16 @@
 
         function manageOrganizers() {
             $location.url("/admin/organizer");
+        }
+
+        function logout() {
+            UserService.logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/");
+                    }
+                )
         }
     }
 })();
