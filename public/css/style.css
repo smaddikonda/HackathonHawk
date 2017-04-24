@@ -1231,3 +1231,7 @@ textarea{
 #features-read-button{
     margin-left: 77px;
 }
+
+#search-result-link-url{
+    margin-left: 0px !important;
+}

@@ -32,8 +32,13 @@
         }
         searchHackathons();
 
-        function searchByHackathonId(hackathonid) {
-            $location.url("/search-results/organizer/" + hackathonid);
+        function searchByHackathonId(apiId, organizerId) {
+            if(apiId){
+                $location.url("/search-results/organizer/" + apiId);
+            } else{
+                $location.url("/search-results/organizer/" + organizerId);
+            }
+
         }
     }
 })();
