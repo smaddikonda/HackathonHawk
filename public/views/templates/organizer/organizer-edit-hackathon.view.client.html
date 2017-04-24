@@ -69,17 +69,19 @@
         <div class="form-group">
             <label>Start Time</label>
             <input ng-model="model.organizer.start_timestamp"
+                   id="datetimepicker-start"
                    type="text"
                    class="form-control"
-                   placeholder="mm/dd/yyyy hh:mm AM/PM"/>
+                   placeholder="yyyy/mm/dd hh:mm"/>
         </div>
 
         <div class="form-group">
             <label>End Time</label>
             <input ng-model="model.organizer.finish_timestamp"
+                   id="datetimepicker-end"
                    type="text"
                    class="form-control"
-                   placeholder="mm/dd/yyyy hh:mm AM/PM">
+                   placeholder="yyyy/mm/dd hh:mm"/>
         </div>
 
         <div class="form-group">
@@ -125,3 +127,12 @@
     <div id="user-dashboard-main-content-lower-margin"></div>
 
 </div>
+
+<script>
+    jQuery('#datetimepicker-start').datetimepicker();
+
+    jQuery('#datetimepicker-end').datetimepicker();
+
+    jQuery.datetimepicker.setLocale('en');
+
+</script>

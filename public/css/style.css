@@ -1235,3 +1235,7 @@ textarea{
 #search-result-link-url{
     margin-left: 0px !important;
 }
+
+.xdsoft_datetimepicker{
+    margin-top: -120px !important;
+}

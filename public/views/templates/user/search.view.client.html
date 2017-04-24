@@ -60,14 +60,24 @@
                 <a href="" ng-click="model.searchByHackathonId(h.id, h._id)">{{h.name}}</a>
             </div>
 
-            <div id="search-result-start-time"
-                 class="search-result-elements">
-                <span class="bold-fields">Start Time:</span> {{h.start_timestamp * 1000| date:'yyyy-MM-dd HH:mm:ss'}}
+            <div class="search-result-elements"
+                 ng-if="!h.id">
+                <span class="bold-fields">Start Time:</span>&nbsp&nbsp{{h.start_timestamp}}
             </div>
 
-            <div id="search-result-end-time"
-                 class="search-result-elements">
-                <span class="bold-fields">End Time:</span> &nbsp {{h.finish_timestamp *1000| date:'yyyy-MM-dd HH:mm:ss'}}
+            <div class="search-result-elements"
+                 ng-if="h.id">
+                <span class="bold-fields">Start Time:</span>&nbsp&nbsp{{h.start_timestamp * 1000| date:'yyyy/MM/dd HH:mm'}}
+            </div>
+
+            <div class="search-result-elements"
+                 ng-if="!h.id">
+                <span class="bold-fields">End Time:&nbsp&nbsp&nbsp</span>{{h.finish_timestamp}}
+            </div>
+
+            <div class="search-result-elements"
+                 ng-if="h.id">
+                <span class="bold-fields">End Time:&nbsp&nbsp&nbsp</span>{{h.finish_timestamp *1000| date:'yyyy/MM/dd HH:mm'}}
             </div>
 
             <div id="search-result-full-address"

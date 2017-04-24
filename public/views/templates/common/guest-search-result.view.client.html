@@ -33,26 +33,36 @@
     <ul class="list-group">
         <li ng-repeat="h in model.hackathons"
             class="list-group-item hh-list-group-item">
-                <div id="search-result-image"
-                     class="search-result-elements">
-                    <img src="../../../../content/images/hhLogo.png">
-                </div>
-
-                <div id="search-result-heading" class="truncate search-result-elements">
-                    <a href="" ng-click="model.searchByHackathonId(h.id, h._id)">{{h.name}}</a>
-                </div>
-            <div id="search-result-start-time"
+            <div id="search-result-image"
                  class="search-result-elements">
-                <span class="bold-fields">Start Time:</span> {{h.start_timestamp * 1000| date:'yyyy-MM-dd HH:mm:ss'}}
+                <img src="../../../../content/images/hhLogo.png">
             </div>
 
-            <div id="search-result-end-time"
-                 class="search-result-elements">
-                <span class="bold-fields">End Time:</span> &nbsp {{h.finish_timestamp *1000| date:'yyyy-MM-dd HH:mm:ss'}}
+            <div id="search-result-heading" class="truncate search-result-elements">
+                <a href="" ng-click="model.searchByHackathonId(h.id, h._id)">{{h.name}}</a>
             </div>
 
-            <div id="search-result-full-address"
-                 class="search-result-elements">
+            <div class="search-result-elements"
+                 ng-if="!h.id">
+                <span class="bold-fields">Start Time:</span>&nbsp&nbsp{{h.start_timestamp}}
+            </div>
+
+            <div class="search-result-elements"
+                 ng-if="h.id">
+                <span class="bold-fields">Start Time:</span>&nbsp&nbsp{{h.start_timestamp * 1000| date:'yyyy/MM/dd HH:mm'}}
+            </div>
+
+            <div class="search-result-elements"
+                 ng-if="!h.id">
+                <span class="bold-fields">End Time:&nbsp&nbsp&nbsp</span>{{h.finish_timestamp}}
+            </div>
+
+            <div class="search-result-elements"
+                 ng-if="h.id">
+                <span class="bold-fields">End Time:&nbsp&nbsp&nbsp</span>{{h.finish_timestamp *1000| date:'yyyy/MM/dd HH:mm'}}
+            </div>
+
+            <div class="search-result-elements">
                 <span class="bold-fields">Address:</span> &nbsp&nbsp&nbsp {{h.full_address}}
             </div>
 
