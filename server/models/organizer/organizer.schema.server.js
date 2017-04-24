@@ -3,7 +3,7 @@ module.exports = function () {
 
     var OrganizerSchema = mongoose.Schema({
         //required for organizer signup
-        organizername: String,
+        username: String,
         email: String,
         password: String,
 

@@ -31,6 +31,10 @@
                 controllerAs: "model"
             })
 
+            .when("/features", {
+                templateUrl: "views/templates/common/features.view.client.html"
+            })
+
             .when("/search-results", {
                 templateUrl: "views/templates/common/guest-search-result.view.client.html",
                 controller: "GuestSearchResultController",
@@ -42,7 +46,7 @@
                 controllerAs: "model"
             })
 
-            .when("/user/:uid", {
+            .when("/user", {
                 templateUrl: "views/templates/user/user-dashboard.view.client.html",
                 controller: "UserHomeController",
                 controllerAs: "model",
@@ -50,7 +54,7 @@
                     loggedin:checkLoggedIn
                 }
             })
-            .when("/user/:uid/home", {
+            .when("/user/home", {
                 templateUrl: "views/templates/user/user-dashboard.view.client.html",
                 controller: "UserHomeController",
                 controllerAs: "model",
@@ -58,7 +62,7 @@
                     loggedin:checkLoggedIn
                 }
             })
-            .when("/user/:uid/search", {
+            .when("/user/search", {
                 templateUrl: "views/templates/user/search.view.client.html",
                 controller: "SearchController",
                 controllerAs: "model",
@@ -66,7 +70,7 @@
                     loggedin:checkLoggedIn
                 }
             })
-            .when("/user/:uid/search/organizer/:hid", {
+            .when("/user/search/organizer/:hid", {
                 templateUrl: "views/templates/user/single-hackathon-search.view.client.html",
                 controller: "SingleHackathonSearchController",
                 controllerAs: "model",
@@ -74,7 +78,7 @@
                     loggedin:checkLoggedIn
                 }
             })
-            .when("/user/:uid/profile", {
+            .when("/user/profile", {
                 templateUrl: "views/templates/user/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model",
@@ -82,7 +86,7 @@
                     loggedin:checkLoggedIn
                 }
             })
-            .when("/user/:uid/bookmarks", {
+            .when("/user/bookmarks", {
                 templateUrl: "views/templates/user/bookmarks.view.client.html",
                 controller: "BookmarkController",
                 controllerAs: "model",
@@ -90,7 +94,7 @@
                     loggedin:checkLoggedIn
                 }
             })
-            .when("/user/:uid/network", {
+            .when("/user/network", {
                 templateUrl: "views/templates/user/network.view.client.html",
                 controller: "NetworkController",
                 controllerAs: "model",
@@ -98,7 +102,7 @@
                     loggedin:checkLoggedIn
                 }
             })
-            .when("/user/:uid/friend", {
+            .when("/user/friend", {
                 templateUrl: "views/templates/user/friend-finder.view.client.html",
                 controller: "FriendFinderController",
                 controllerAs: "model",
@@ -106,7 +110,7 @@
                     loggedin:checkLoggedIn
                 }
             })
-            .when("/user/:uid/friend/:fid", {
+            .when("/user/friend/:fid", {
                 templateUrl: "views/templates/user/friend-profile.view.client.html",
                 controller: "FriendProfileController",
                 controllerAs: "model",
@@ -116,20 +120,29 @@
             })
 
             //Organizer routes
-            .when("/organizer/:oid", {
+            .when("/organizer", {
                 templateUrl: "views/templates/organizer/organizer-home.view.client.html",
                 controller: "OrganizerHomeController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
             })
-            .when("/organizer/:oid/hackathon", {
+            .when("/organizer/hackathon", {
                 templateUrl: "views/templates/organizer/organizer-new-hackathon.view.client.html",
                 controller: "NewHackathonController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
             })
-            .when("/organizer/:oid/hackathon/edit", {
+            .when("/organizer/hackathon/edit", {
                 templateUrl: "views/templates/organizer/organizer-edit-hackathon.view.client.html",
                 controller: "HackathonEditController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin:checkLoggedIn
+                }
             })
 
             //Admin routes

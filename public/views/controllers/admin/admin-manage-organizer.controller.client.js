@@ -21,7 +21,7 @@
                         viewModel.organizers = response.data;
                         for(var i=viewModel.organizers.length-1; i>=0; i--){
                             var organizer = viewModel.organizers[i];
-                            if(!organizer.organizername){
+                            if(!organizer.username){
                                 viewModel.organizers.splice(i, 1);
                             }
                         }

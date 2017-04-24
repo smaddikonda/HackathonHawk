@@ -28,7 +28,7 @@ module.exports = function () {
 
     function createOrganizer(organizer) {
         var deferred = q.defer();
-        OrganizerModel.findOne({organizername : organizer.organizername},
+        OrganizerModel.findOne({username : organizer.username},
             function (err, existingOrganizer) {
                 if(existingOrganizer == null) {
                     OrganizerModel
@@ -82,7 +82,7 @@ module.exports = function () {
     function findOrganizerByUsername(organizerName) {
         var deferred = q.defer();
         OrganizerModel
-            .find({organizername:organizerName}, function (err, organizer) {
+            .find({username:organizerName}, function (err, organizer) {
                 if(err) {
                     deferred.reject(err);
                 } else {
@@ -95,7 +95,7 @@ module.exports = function () {
     function findOrganizerByCredentials(organizerName, password) {
         var deferred = q.defer();
         OrganizerModel
-            .find({organizername:organizerName, password:password}, function (err, organizer) {
+            .find({username:organizerName, password:password}, function (err, organizer) {
                 if(!organizer) {
                     console.log("err");
                     deferred.reject(err);
@@ -125,7 +125,7 @@ module.exports = function () {
         OrganizerModel
             .update({_id : organizerId},
                 {
-                    organizername: organizer.organizername,
+                    username: organizer.username,
                     password: organizer.password,
                     email: organizer.email,
 

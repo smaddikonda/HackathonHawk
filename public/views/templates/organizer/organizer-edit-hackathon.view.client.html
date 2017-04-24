@@ -8,12 +8,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand hh-brand" href="">hh</a>
+            <a class="navbar-brand hh-brand" href="#/organizer">hh</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/organizer/{{model.oid}}">Home</a></li>
-                <li><a href="#/organizer/{{model.oid}}/hackathon/edit">Edit Hackathon</a></li>
+                <li><a href="#/organizer">Home</a></li>
+                <li><a href="#/organizer/hackathon/edit">Edit Hackathon</a></li>
                 <li><a href="" ng-click="model.logout()">Logout</a></li>
             </ul>
         </div>
@@ -27,16 +27,8 @@
 <div id="user-dashboard-main-content-div">
     <form>
         <div class="form-group">
-            <label>Organizer Name</label>
-            <input ng-model="model.organizer.organizername"
-                   type="text"
-                   class="form-control"
-                   placeholder="Username">
-        </div>
-
-        <div class="form-group">
-            <label>Organizer Email</label>
-            <input ng-model="model.organizer.email"
+            <label>Organizer Username</label>
+            <input ng-model="model.organizer.username"
                    type="text"
                    class="form-control"
                    placeholder="Username">
@@ -45,9 +37,25 @@
         <div class="form-group">
             <label>Organizer Password</label>
             <input ng-model="model.organizer.password"
-                   type="text"
+                   type="password"
                    class="form-control"
-                   placeholder="Username">
+                   placeholder="password">
+        </div>
+
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input ng-model="model.organizer.retypePassword"
+                   type="password"
+                   class="form-control"
+                   placeholder="confirm password">
+        </div>
+
+        <div class="form-group">
+            <label>Organizer Email</label>
+            <input ng-model="model.organizer.email"
+                   type="email"
+                   class="form-control"
+                   placeholder="Email">
         </div>
 
         <div class="form-group">
@@ -55,7 +63,7 @@
             <input ng-model="model.organizer.name"
                    type="text"
                    class="form-control"
-                   placeholder="Username">
+                   placeholder="Hackathon Event Name">
         </div>
 
         <div class="form-group">
@@ -101,7 +109,9 @@
         </div>
     </form>
 
-    <div ng-show="model.error" id="page-error-success-message">
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
         {{model.error}}
     </div>
 
@@ -109,7 +119,7 @@
        ng-click="model.editHackathon(model.organizer)">Edit Hackathon Info</a>
 
     <a class="btn btn-danger btn-block button-and-fields"
-       href="#/organizer/{{model.oid}}">Cancel
+       href="#/organizer">Cancel
     </a>
 
     <div id="user-dashboard-main-content-lower-margin"></div>

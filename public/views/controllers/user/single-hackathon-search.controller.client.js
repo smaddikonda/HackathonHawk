@@ -5,12 +5,13 @@
 
     function SingleHackathonSearchController(HackathonWatchService, OrganizerService, UserService, $location, $routeParams, $rootScope, $route) {
         var viewModel = this;
-        viewModel.uid = $routeParams['uid'];
         viewModel.currentUser = $rootScope.currentUser;
+        viewModel.uid = viewModel.currentUser._id;
         var hackathonid =$routeParams['hid'];
         viewModel.hackathonid = hackathonid;
 
         viewModel.bookmark = bookmark;
+        viewModel.unbookmark = unbookmark;
         viewModel.logout = logout;
 
         function init() {
@@ -51,6 +52,39 @@
                                                 viewModel.currentUser = user;
                                             }
                                         });
+                                    }
+                                });
+                    });
+        }
+
+        function unbookmark(hackathon) {
+            UserService.findUserById(viewModel.uid)
+                .then(
+                    function (response) {
+                        var user = response.data;
+                        var existingBookMarks = user.bookmarks;
+                        if(existingBookMarks){
+                            for(var i= existingBookMarks.length-1; i>=0; i--){
+                                var bm = existingBookMarks[i];
+                                if(bm==hackathon._id){
+                                    existingBookMarks.splice(i,1);
+                                }
+                            }
+                        }
+                        user.bookmarks = existingBookMarks;
+                        UserService.updateUser(viewModel.uid, user)
+                            .then(
+                                function (response) {
+                                    var user = response.data;
+                                    if(user) {
+                                        var promise = UserService.findUserById(viewModel.uid);
+                                        promise
+                                            .then(function (response) {
+                                                var user = response.data;
+                                                if(user){
+                                                    viewModel.currentUser = user;
+                                                }
+                                            });
                                     }
                                 });
                     });

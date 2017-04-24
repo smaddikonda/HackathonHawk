@@ -16,7 +16,7 @@
                         var user = response.data;
                         $rootScope.currentUser = user;
                         if(user) {
-                            $location.url("/user/" + user._id);
+                            $location.url("/user");
                         } else {
                             viewModel.error = "User not found. Please retry";
                         }

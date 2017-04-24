@@ -5,8 +5,8 @@
 
     function SearchController(UserService, HackathonWatchService, OrganizerService, $location, $routeParams, $rootScope) {
         var viewModel = this;
-        viewModel.uid = $routeParams['uid'];
         viewModel.currentUser = $rootScope.currentUser;
+        viewModel.uid = viewModel.currentUser._id;
 
         viewModel.apiHackathons = [];
         viewModel.dbHackathons = [];
@@ -37,7 +37,8 @@
                                     for(var i=viewModel.dbHackathons.length-1; i>=0; i--){
                                         var hack = viewModel.dbHackathons[i];
                                         var apiId = hack.id;
-                                        if(apiId){
+                                        var hackathonName = hack.name;
+                                        if(apiId || hackathonName==null){
                                             viewModel.dbHackathons.splice(i, 1);
                                         }
                                     }
@@ -91,20 +92,20 @@
                                                 function (response) {
                                                     var organizer = response.data;
                                                     if(organizer) {
-                                                        $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer._id+"/");
+                                                        $location.url("/user/search/organizer/"+organizer._id);
                                                     } else{
-                                                        $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer_id+"/");
+                                                        $location.url("/user/search/organizer/"+organizer_id);
                                                     }
                                                 });
                                     } else{
-                                        $location.url("/user/"+viewModel.uid+"/search/organizer/"+apiHack._id+"/");
+                                        $location.url("/user/search/organizer/"+apiHack._id);
                                     }
                                 });
                         });
             }
                 //case when hackathon
             else{
-                    $location.url("/user/"+viewModel.uid+"/search/organizer/"+organizer_id+"/");
+                    $location.url("/user/search/organizer/"+organizer_id);
                 }
             }
 

@@ -3,14 +3,15 @@
         .module("HackathonHawk")
         .controller("FriendProfileController", FriendProfileController);
 
-    function FriendProfileController(UserService, $routeParams, $rootScope) {
+    function FriendProfileController(UserService, $routeParams, $rootScope, $route) {
         var viewModel = this;
-        viewModel.uid = $routeParams['uid'];
-        viewModel.fid = $routeParams['fid'];
         viewModel.currentUser = $rootScope.currentUser;
+        viewModel.uid = viewModel.currentUser._id;
+        viewModel.fid = $routeParams['fid'];
         viewModel.hacker = null;
 
         viewModel.followUser = followUser;
+        viewModel.unfollowUser = unfollowUser;
         viewModel.logout = logout;
 
         init();
@@ -39,6 +40,19 @@
                     var user = response.data;
                     if(user){
                         viewModel.user = user;
+                        $route.reload();
+                    }
+                })
+        }
+
+        function unfollowUser(friend) {
+            var promise = UserService.unfollowUser(friend._id, viewModel.uid);
+            promise
+                .then(function (response) {
+                    var user = response.data;
+                    if(user){
+                        viewModel.user = user;
+                        $route.reload();
                     }
                 })
         }

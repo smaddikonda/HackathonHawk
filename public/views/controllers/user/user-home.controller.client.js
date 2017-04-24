@@ -6,8 +6,8 @@
     function UserHomeController(UserService, OrganizerService, $routeParams, $location, $rootScope) {
         var viewModel = this;
 
-        viewModel.uid = $routeParams['uid'];
         viewModel.currentUser = $rootScope.currentUser;
+        viewModel.uid = viewModel.currentUser._id;
         viewModel.user = null;
         viewModel.bookmarks = null;
         viewModel.allPosts = null;

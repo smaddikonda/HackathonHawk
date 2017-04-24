@@ -5,8 +5,8 @@
 
     function BookmarkController(UserService, OrganizerService, $location, $routeParams, $rootScope) {
         var viewModel = this;
-        viewModel.uid = $routeParams['uid'];
         viewModel.currentUser = $rootScope.currentUser;
+        viewModel.uid = viewModel.currentUser._id;
         viewModel.bookmarks = [];
         viewModel.logout = logout;
         

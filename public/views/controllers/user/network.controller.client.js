@@ -3,16 +3,17 @@
         .module("HackathonHawk")
         .controller("NetworkController", NetworkController);
 
-    function NetworkController(UserService, $routeParams, $rootScope, $location) {
+    function NetworkController(UserService, $routeParams, $rootScope, $location, $route) {
         var viewModel = this;
-        viewModel.uid = $routeParams['uid'];
         viewModel.currentUser = $rootScope.currentUser;
+        viewModel.uid = viewModel.currentUser._id;
         viewModel.followers = [];
         viewModel.following = [];
         viewModel.allFollowers = [];
         viewModel.allFollowing = [];
 
         viewModel.followUser = followUser;
+        viewModel.unfollowUser = unfollowUser;
         viewModel.goToProfile = goToProfile;
         viewModel.logout = logout;
 
@@ -70,12 +71,25 @@
                     var user = response.data;
                     if(user){
                         viewModel.user = user;
+                        $route.reload();
+                    }
+                })
+        }
+
+        function unfollowUser(friend) {
+            var promise = UserService.unfollowUser(friend._id, viewModel.uid);
+            promise
+                .then(function (response) {
+                    var user = response.data;
+                    if(user){
+                        viewModel.user = user;
+                        $route.reload();
                     }
                 })
         }
 
         function goToProfile(hacker) {
-            $location.url("/user/" + viewModel.uid + "/friend/" + hacker._id);
+            $location.url("/user/friend/" + hacker._id);
         }
 
         function logout() {

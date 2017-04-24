@@ -3,17 +3,20 @@
         .module("HackathonHawk")
         .controller("OrganizerHomeController", OrganizerHomeController);
 
-    function OrganizerHomeController(OrganizerService, PostService, $location, $routeParams, $route) {
+    function OrganizerHomeController(OrganizerService, PostService, $location, $routeParams, $route, $rootScope) {
         var viewModel = this;
 
+        viewModel.currentUser = $rootScope.currentUser;
+        viewModel.hackathonId = viewModel.currentUser._id;
+
         viewModel.posts = [];
-        viewModel.hackathonId = $routeParams['oid'];
         viewModel.organizer = null;
         viewModel.hackathon = null;
         viewModel.message = null;
 
         viewModel.submitPost = submitPost;
         viewModel.deletePost = deletePost;
+        viewModel.logout = logout;
 
         function init() {
             var promise = OrganizerService.findOrganizerById(viewModel.hackathonId);
@@ -74,6 +77,16 @@
                     }
                 }
             );
+        }
+
+        function logout() {
+            OrganizerService.logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentOrganizer = null;
+                        $location.url("/");
+                    }
+                )
         }
 
     }

@@ -3,27 +3,29 @@
         .module("HackathonHawk")
         .controller("OrganizerLoginController", OrganizerLoginController);
 
-    function OrganizerLoginController(OrganizerService, $location) {
+    function OrganizerLoginController(OrganizerService, $location, $rootScope) {
         var viewModel = this;
 
         viewModel.login = login;
 
         function login(organizer) {
-            var promise = OrganizerService
-                .findOrganizerByCredentials(organizer.organizername, organizer.password);
+            var promise = OrganizerService.login(organizer);
 
-            promise.then(
-                function successCallback(response) {
-                    organizer = response.data;
-                    if(organizer!="") {
-                        $location.url("/organizer/" + organizer._id);
-                    } else {
+            promise
+                .then(
+                    function successCallback(response) {
+                        var organizer = response.data;
+                        $rootScope.currentUser = organizer;
+                        if(organizer) {
+                            $location.url("/organizer");
+                        } else {
+                            viewModel.error = "Organizer not found. Please retry";
+                        }
+                    },
+
+                    function errorCallback(response) {
                         viewModel.error = "Organizer not found. Please retry";
-                    }},
-
-                function errorCallback(response) {
-                    viewModel.error = "Organizer not found. Please retry";
-                });
+                    });
         }
     }
 })();

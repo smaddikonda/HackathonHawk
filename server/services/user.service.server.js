@@ -1,4 +1,4 @@
-module.exports = function (app, userModel) {
+module.exports = function (app, userModel, organizerModel) {
 
     var bcrypt = require("bcrypt-nodejs");
 
@@ -8,7 +8,7 @@ module.exports = function (app, userModel) {
 
     app.post("/api/user", createUser);
 
-    app.post("/api/login", passport.authenticate('local'), login);
+    app.post("/api/login", passport.authenticate('local-user'), login);
     app.post("/api/logout", logout);
     app.post ("/api/register", register);
     app.get ("/api/loggedin", loggedin);
@@ -57,7 +57,7 @@ module.exports = function (app, userModel) {
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
-    passport.use(new LocalStrategy(localStrategy));
+    passport.use("local-user", new LocalStrategy(localStrategy));
 
     function login(req, res) {
         var user = req.user;
@@ -123,8 +123,19 @@ module.exports = function (app, userModel) {
         userModel
             .findUserById(user._id)
             .then(
-                function (user) {
-                    done(null, user);
+                function (hacker) {
+                    if(hacker){
+                        done(null, hacker);
+                    }else {
+                        organizerModel.findOrganizerById(user._id)
+                            .then(
+                                function (organizer) {
+                                    done(null, organizer);
+                                }, function (err) {
+                                    done(err, null);
+                                }
+                            );
+                    }
                 },
                 function (err) {
                     done(err, null);
@@ -133,15 +144,9 @@ module.exports = function (app, userModel) {
     }
 
     var googleConfig = {
-        // clientID     : process.env.GOOGLE_CLIENT_ID,
-        // clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-        // callbackURL  : process.env.GOOGLE_CALLBACK_URL
-
-        clientID:"836035500148-r0eh57ahbom7f676mtp0rf3peamt5fkb.apps.googleusercontent.com",
-        clientSecret:"cggihC4tMa8Fjgz8bRCvufzT",
-        callbackURL:"http://localhost:3000/auth/google/callback"
-
-
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_CALLBACK_URL
     };
 
     app.get('/auth/google/callback',
@@ -149,7 +154,7 @@ module.exports = function (app, userModel) {
             failureRedirect: '/login'
         }), function(req, res){
             var t  = req.user;
-            var url = '/#/user/'+t._id;
+            var url = '/#/user/';
             res.redirect(url);
         });
 
@@ -208,18 +213,18 @@ module.exports = function (app, userModel) {
         var user = req.body;
         userModel.findUserById(userId)
             .then(function (existingUser) {
-               if(existingUser){
-                   if(user.password != existingUser.password){
-                       user.password = bcrypt.hashSync(user.password);
-                   }
-                   userModel
-                       .updateUser(userId,user)
-                       .then(function (user) {
-                           res.json(user);
-                       }, function (error) {
-                           res.sendStatus(500);
-                       });
-               }
+                if(existingUser){
+                    if(user.password != existingUser.password){
+                        user.password = bcrypt.hashSync(user.password);
+                    }
+                    userModel
+                        .updateUser(userId,user)
+                        .then(function (user) {
+                            res.json(user);
+                        }, function (error) {
+                            res.sendStatus(500);
+                        });
+                }
             });
 
 

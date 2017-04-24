@@ -848,6 +848,10 @@ textarea{
     margin-bottom: 75px;
 }
 
+#bottom-margin-2 {
+    margin-bottom: 75px;
+}
+
 .color-bar{
     background-color: #4a6491 !important;
     height: 75px;
@@ -1175,4 +1179,55 @@ textarea{
 
 .admin-li-rows{
     padding-top: 7px;
+}
+
+#feature-para{
+    font-family: "Open Sans", sans-serif;
+    width: 60%;
+    color: white;
+    font-size: 1.25em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.features-icons{
+    margin: 5px !important;
+    float: left;
+    position: relative;
+}
+
+#feature-search:before{
+    margin-right: 22px !important;
+}
+
+#feature-bookmark:before{
+    margin-right: 25px !important;
+    padding-left: 6px;
+}
+
+#feature-friend:before{
+    margin-right: 9px !important;
+}
+
+#feature-event:before{
+    margin-right: 20px !important;
+}
+
+#features-page-brand{
+    position: relative;
+    width: 100%;
+    font-family: 'Audiowide', cursive;
+    font-size: 4em;
+    margin-top: 100px;
+    color: rgb(255, 131, 0);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: 900;
+}
+
+#features-read-button{
+    margin-left: 77px;
 }

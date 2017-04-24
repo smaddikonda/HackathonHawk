@@ -5,8 +5,8 @@
 
     function FriendFinderController(UserService, $routeParams, $rootScope) {
         var viewModel = this;
-        viewModel.uid = $routeParams['uid'];
         viewModel.currentUser = $rootScope.currentUser;
+        viewModel.uid = viewModel.currentUser._id;
 
         viewModel.findFriendByUsername = findFriendByUsername;
         viewModel.followUser = followUser;

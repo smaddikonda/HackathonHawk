@@ -47,7 +47,7 @@ module.exports = function () {
                             .findOrganizerById(oid)
                             .then(function (organizer) {
                                 post.organizerId = oid;
-                                post.posterName = organizer.organizername;
+                                post.posterName = organizer.username;
                                 organizer.posts.push(post._id);
                                 post.save();
                                 organizer.save();

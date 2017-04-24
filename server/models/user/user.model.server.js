@@ -70,7 +70,6 @@ module.exports = function () {
 
     function findUserByUsername(username){
         var deferred = q.defer();
-        console.log("Here");
         UserModel
             .find({username:username}, function (err, user) {
                 if(err) {

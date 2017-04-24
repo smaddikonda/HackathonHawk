@@ -8,12 +8,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand hh-brand" href="">hh</a>
+            <a class="navbar-brand hh-brand" href="#/organizer">hh</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/organizer/{{model.hackathonId}}">Home</a></li>
-                <li><a href="#/organizer/{{model.hackathonId}}/hackathon/edit">Edit Hackathon</a></li>
+                <li><a href="#/organizer">Home</a></li>
+                <li><a href="#/organizer/hackathon/edit">Edit Hackathon</a></li>
                 <li><a href="" ng-click="model.logout()">Logout</a></li>
             </ul>
         </div>
@@ -27,7 +27,7 @@
         <div>You don't organize a hackathon yet.</div>
         <div>Click below to begin</div>
         <div>
-            <a href="#/organizer/{{model.hackathonId}}/hackathon"
+            <a href="#/organizer/hackathon"
                class="btn btn-default">Post a Hackathon
             </a>
         </div>
@@ -85,7 +85,7 @@
         <a ng-click="model.submitPost(post)" class="btn btn-success pull-right">POST</a>
     </div>
 
-    <div id="bottom-margin"></div>
+    <div id="bottom-margin-2"></div>
 
     <!--ul class="list-group">
         <li ng-repeat="p in model.posts"

@@ -3,11 +3,14 @@
         .module("HackathonHawk")
         .controller("NewHackathonController", NewHackathonController);
 
-    function NewHackathonController(OrganizerService, $location, $routeParams) {
+    function NewHackathonController(OrganizerService, $location, $routeParams, $rootScope) {
+
         var viewModel = this;
-        viewModel.oid = $routeParams['oid'];
+        viewModel.currentUser = $rootScope.currentUser;
+        viewModel.oid =  viewModel.currentUser._id;
 
         viewModel.createHackathon = createHackathon;
+        viewModel.logout = logout;
 
         function init() {
             var promise = OrganizerService.findOrganizerById(viewModel.oid);
@@ -32,7 +35,7 @@
                 promise.then(
                     function successCallback(response) {
                         if(response.status == 200){
-                            $location.url("/organizer/" + viewModel.oid);
+                            $location.url("/organizer/");
                         } else{
                             viewModel.error = "Posting the hackathon failed. Please retry.";
                         }
@@ -42,6 +45,16 @@
                     }
                 );
             }
+        }
+
+        function logout() {
+            OrganizerService.logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentOrganizer = null;
+                        $location.url("/");
+                    }
+                )
         }
     }
 })();

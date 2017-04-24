@@ -5,8 +5,8 @@
 
     function ProfileController(UserService, $routeParams, $location, $rootScope) {
         var viewModel = this;
-        viewModel.uid = $routeParams['uid'];
         viewModel.currentUser = $rootScope.currentUser;
+        viewModel.uid = viewModel.currentUser._id;
         viewModel.user = null;
 
         viewModel.updateProfile = updateProfile;
@@ -33,7 +33,7 @@
                 user.password == null ||
                 user.retypePassword == null) {
                 if(user && user.firstName && user.lastName && !user.email && user.password && user.retypePassword){
-                    viewModel.error = "Please enter a valid email id."
+                    viewModel.error = "Please enter a valid Organizer email id."
                 } else{
                     viewModel.error = "Please provide all the fields."
                 }

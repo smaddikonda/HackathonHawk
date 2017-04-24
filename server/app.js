@@ -26,7 +26,7 @@ module.exports = function(app)
     /*MODELS*/
 
     var models = require('./models/models.server')();
-    require("./services/user.service.server.js")(app, models.UserModel);
+    require("./services/user.service.server.js")(app, models.UserModel, models.OrganizerModel);
     require("./services/organizer.service.server.js")(app, models.OrganizerModel);
     require("./services/post.service.server")(app, models.PostModel);
 
