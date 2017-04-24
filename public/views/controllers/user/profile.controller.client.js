@@ -45,7 +45,7 @@
                             function succesCallback(response) {
                                 var user = response.data;
                                 if(user) {
-                                    $location.url("/user/" + viewModel.uid);
+                                    $location.url("/user");
                                 } else{
                                     viewModel.error = "Username already exists. Please pick another one";
                                 }

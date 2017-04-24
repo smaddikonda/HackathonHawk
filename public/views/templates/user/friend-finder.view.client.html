@@ -54,18 +54,22 @@
     </a>
 </div>
 
-<div id="no-results-found">
-    {{model.errorMessage}}
-</div>
 
-<div ng-show="model.friends"
-     id="friend-search-main-content-div">
-    <ul class="list-group">
+<div id="friend-search-main-content-div">
+
+
+    <div ng-show="model.errorMessage" class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{model.errorMessage}}
+    </div>
+
+    <ul ng-show="model.friends" class="list-group">
         <li ng-repeat="f in model.friends"
             class="list-group-item hh-list-group-item">
             <div class="row">
                 <div class="friend-finder-individual-result-padding col-xs-6">
-                    {{f.username}}
+                    <a href="#/user/friend/{{f._id}}"> {{f.username}}</a>
                 </div>
                 <div class="col-xs-6">
 
@@ -74,7 +78,7 @@
                        class="btn btn-info pull-right">Follow</a>
 
                     <a ng-click="model.unfollowUser(f)"
-                            ng-show="model.user.following.indexOf(f._id)>-1"
+                       ng-show="model.user.following.indexOf(f._id)>-1"
                        class="btn btn-success pull-right">Unfollow</a>
                 </div>
             </div>

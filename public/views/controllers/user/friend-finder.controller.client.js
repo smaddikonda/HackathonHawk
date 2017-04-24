@@ -12,7 +12,7 @@
         viewModel.followUser = followUser;
         viewModel.unfollowUser = unfollowUser;
         viewModel.logout = logout;
-        
+
         init();
         function init() {
             var promise = UserService.findUserById(viewModel.uid);
@@ -24,32 +24,45 @@
         }
 
         function findFriendByUsername(friendUsername) {
-            var friendUsername = friendUsername.username;
-            if(friendUsername){
-                var promise = UserService.findFriendByUsername(friendUsername);
-                promise.then(
-                    function (friends) {
-                        friends = friends.data;
-                        if(friends !=undefined && friends.length!=0) {
-                            for(var i=friends.length-1; i>=0; i--){
-                                if(friends[i].username == viewModel.currentUser.username){
-                                    friends.splice(i, 1);
-                                }
-                            }
-                            if(friends.length == 0){
-                                viewModel.errorMessage = "Sorry, no results matching the Username: " + friendUsername;
-                            } else{
-                                viewModel.friends = friends;
-                            }
-                        } else {
-                            viewModel.errorMessage = "Sorry, no results matching the Username: " + friendUsername;
-                        }
-                    }
-                );
+            if(!friendUsername)
+            {
+                viewModel.friends=undefined;
+                viewModel.errorMessage = "Please search by Username";
+
             }
             else{
-                viewModel.errorMessage = "Please search by Username";
+                var friendUsername = friendUsername.username;
+                if(friendUsername){
+                    var promise = UserService.findFriendByUsername(friendUsername);
+                    promise.then(
+                        function (friends) {
+                            friends = friends.data;
+                            if(friends !=undefined && friends.length!=0) {
+                                for(var i=friends.length-1; i>=0; i--){
+                                    if(friends[i].username == viewModel.currentUser.username){
+                                        friends.splice(i, 1);
+                                    }
+                                }
+                                if(friends.length == 0){
+                                    viewModel.friends=undefined;
+                                    viewModel.errorMessage = "Sorry, no results matching the Username: " + friendUsername;
+                                } else{
+                                    viewModel.errorMessage = undefined;
+                                    viewModel.friends = friends;
+                                }
+                            } else {
+                                viewModel.friends=undefined;
+                                viewModel.errorMessage = "Sorry, no results matching the Username: " + friendUsername;
+                            }
+                        }
+                    );
+                }
+                else{
+                    viewModel.friends=undefined;
+                    viewModel.errorMessage = "Please search by Username";
+                }
             }
+
         }
 
         function followUser(friend) {
